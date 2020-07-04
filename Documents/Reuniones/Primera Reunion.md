@@ -39,3 +39,12 @@
  **6 - Gestion de tareas**
  
  **7 - Resultados esperado**
+
+
+
+
+## Desarrollo de Topics
+
+**1 - Alcance de la aplicacion y gestion de tiempos**
+
+    
