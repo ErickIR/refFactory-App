@@ -2,9 +2,9 @@
 
 ## REQUERIMIENTOS
 
-  **Reporte y consulta de incidentes/eventos relacionados con los servicios municipales**
+  * Reporte y consulta de incidentes/eventos relacionados con los servicios municipales
  
-  **Consulta directorio de Junta de Vecinos**
+  * Consulta directorio de Junta de Vecinos
 
   **Bonus**
   * Consulta registro de regidores, regidoras, alcaldes pedáneos y cualquier autoridad
