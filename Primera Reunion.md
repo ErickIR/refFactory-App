@@ -12,9 +12,13 @@
  
  **Arquitectura de la aplicacion**
     - Tecnologias
+    
     - Ambientes
+    
     - Diseño de pantallas
+    
     - Modelos de Datos
+    
     - Flujo del aplicativo
     
  **Disponibilidad de cada quien y definicion de roles**
