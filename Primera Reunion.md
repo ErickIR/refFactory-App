@@ -11,6 +11,7 @@
  **Alcance de la aplicacion y gestion de tiempos**
  
  **Arquitectura de la aplicacion**
+ 
     - Tecnologias
     
     - Ambientes
