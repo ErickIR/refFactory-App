@@ -47,7 +47,7 @@
 
 **1 - Alcance de la aplicacion y gestion de tiempos**
 
-La aplicacion consitira en una sola aplicacion desarrollada en wpa, que contara con los modulos siguiente:
+La aplicacion consitira en una sola aplicacion desarrollada en PWA, que contara con los modulos siguiente:
 
 #### Ciudadano
 El ciudadano contara con las siguientes funciones:
