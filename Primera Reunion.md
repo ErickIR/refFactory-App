@@ -16,9 +16,9 @@
 
 ## Topics
 
- **Alcance de la aplicacion y gestion de tiempos**
+ **1 - Alcance de la aplicacion y gestion de tiempos**
  
- **Arquitectura de la aplicacion**
+ **2 - Arquitectura de la aplicacion**
  
     - Tecnologias
     
@@ -30,12 +30,12 @@
     
     - Flujo del aplicativo
     
- **Disponibilidad de cada quien y definicion de roles**
+ **3 - Disponibilidad de cada quien y definicion de roles**
  
- **Riesgos, Suposiciones y Dependencias**
+ **4 - Riesgos, Suposiciones y Dependencias**
  
- **Planificacion y administracion de escalas de tiempo**
+ **5 - Planificacion y administracion de escalas de tiempo**
  
- **Gestion de tareas**
+ **6 - Gestion de tareas**
  
- **Resultados esperado**
+ **7 - Resultados esperado**
