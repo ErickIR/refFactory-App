@@ -6,6 +6,14 @@
  
   **Consulta directorio de Junta de Vecinos**
 
+  - Bonus:
+  * Consulta registro de regidores, regidoras, alcaldes pedáneos y cualquier autoridad
+    municipal que aplique.
+  * Acceso a normativa municipal (Leyes y reglamentos)
+
+
+
+
 ## Topics
 
  **Alcance de la aplicacion y gestion de tiempos**
