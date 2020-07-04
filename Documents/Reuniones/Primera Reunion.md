@@ -60,5 +60,9 @@
         - el ciudadano contara con otro modulo para hacer consultas de los datos de perteneciente a las juntas de vecinos, este podra consultar cualquier junto de vecinos, pero le aparecera primeramente la cual pertene.
 
       Administrador
+      El administrador contara con las siguientes funciones:
+      - Este contara con un modulo de reportes de incidencias mas especifico.
+      - El administrador podra cambiar el estatus de las incidencias solicitadas por el ciudadano, ya que, luego que se le envio a la persona que hara el trabajo esta se pasara a en proceso y de ser completada la persona indicara que su trabajo fue completado y se pasara a completado y se subira una nueva imagen de la obra completada.
+      - El adminstrador podra editar los datos de la junta de vecinos y podra agregar nuevas juntas de vecinos al sistema.
 
       
