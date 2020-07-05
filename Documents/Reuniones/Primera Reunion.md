@@ -16,7 +16,7 @@
 
 ## Topics
 
- **1 - Alcance de la aplicacion y gestion de tiempos**
+ **1 - Alcance de la aplicacion*s*
  
  **2 - Arquitectura de la aplicacion**
  
@@ -31,16 +31,12 @@
     - Flujo del aplicativo
     
  **3 - Disponibilidad de cada quien y definicion de roles**
- 
- **4 - Riesgos, Suposiciones y Dependencias**
+
+ **4 - Gestion de Tareas**
  
  **5 - Planificacion y administracion de escalas de tiempo**
  
- **6 - Gestion de tareas**
- 
- **7 - Resultados esperado**
-
-
+ **6 - Resultados esperado**
 
 
 ## Desarrollo de Topics
@@ -62,5 +58,24 @@ El administrador contara con las siguientes funciones:
   - Este contara con un modulo de reportes de incidencias mas especifico.
   - El administrador podra cambiar el estatus de las incidencias solicitadas por el ciudadano, ya que, luego que se le envio a la persona que hara el trabajo esta se pasara a en proceso y de ser completada la persona indicara que su trabajo fue completado y se pasara a completado y se subira una nueva imagen de la obra completada.
   - El adminstrador podra editar los datos de la junta de vecinos y podra agregar nuevas juntas de vecinos al sistema.
+
+**2 - Arquitectura del aplicativo**
+
+#### Tecnologias
+
+Las tecnologias que pueden ser utilizadas para realizar PWA:
+
+- Flask-PWA y Django-PWA (Python)
+- .Net Core PWA (C#)
+- React
+- Angular
+- Vue
+
+Las tecnologias que pueden ser utilizadas para el desarrollo de backend:
+
+- .Net Core
+- Django y Flask (Python)
+
+
 
       
