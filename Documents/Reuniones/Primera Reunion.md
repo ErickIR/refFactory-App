@@ -7,12 +7,10 @@
   * Consulta directorio de Junta de Vecinos
 
   **Bonus**
+  
   * Consulta registro de regidores, regidoras, alcaldes pedáneos y cualquier autoridad
     municipal que aplique.
   * Acceso a normativa municipal (Leyes y reglamentos)
-
-
-
 
 ## Topics
 
@@ -38,10 +36,9 @@
  
  **6 - Resultados esperado**
 
-
 ## Desarrollo de Topics
 
-**1 - Alcance de la aplicacion y gestion de tiempos**
+### 1 - Alcance de la aplicacion y gestion de tiempos
 
 La aplicacion consitira en una sola aplicacion desarrollada en PWA, que contara con los modulos siguiente:
 
@@ -59,7 +56,7 @@ El administrador contara con las siguientes funciones:
   - El administrador podra cambiar el estatus de las incidencias solicitadas por el ciudadano, ya que, luego que se le envio a la persona que hara el trabajo esta se pasara a en proceso y de ser completada la persona indicara que su trabajo fue completado y se pasara a completado y se subira una nueva imagen de la obra completada.
   - El adminstrador podra editar los datos de la junta de vecinos y podra agregar nuevas juntas de vecinos al sistema.
 
-**2 - Arquitectura del aplicativo**
+### 2 - Arquitectura del aplicativo
 
 #### Tecnologias
 
