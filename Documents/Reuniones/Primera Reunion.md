@@ -12,11 +12,11 @@
     municipal que aplique.
   * Acceso a normativa municipal (Leyes y reglamentos)
 
-## Topics
+## Contenidos
 
- **1 - Alcance de la aplicacion*s*
- 
- **2 - Arquitectura de la aplicacion**
+1. [Alcance de la aplicacion](#alcance)
+
+2. [Arquitectura de la aplicacion](#arquitectura)
  
     - Tecnologias
     
@@ -28,17 +28,17 @@
     
     - Flujo del aplicativo
     
- **3 - Disponibilidad de cada quien y definicion de roles**
+3. [Disponibilidad de cada quien y definicion de roles](#roles)
 
- **4 - Gestion de Tareas**
+4. [Gestion de Tareas](#tareas)
  
- **5 - Planificacion y administracion de escalas de tiempo**
- 
- **6 - Resultados esperado**
+5. [Planificacion y administracion de escalas de tiempo](#planning)
 
-## Desarrollo de Topics
+6. [Resultado esperado](#resultado)
 
-### 1 - Alcance de la aplicacion y gestion de tiempos
+## Desarrollo de Contenidos
+
+### 1 - Alcance de la aplicacion y gestion de tiempos <a name="alcance"></a>
 
 La aplicacion consitira en una sola aplicacion desarrollada en PWA, que contara con los modulos siguiente:
 
@@ -55,15 +55,6 @@ El ciudadano contara con las siguientes funciones:
   - El ciudadano contara con un modulo de consulta de las incidencias mas votadas, las incidencias que estan trabajandose y las incidencias que ya estam completada.
   - El ciudadano contara con otro modulo para hacer consultas de los datos de perteneciente a las juntas de vecinos, este podra consultar cualquier junto de vecinos, pero le aparecera primeramente la cual pertene.
 
-  ###### Features 
-  
-  - Registro de Usuario (Ciudadano)
-  - Actualizacion de datos para uso interno de la app.
-  - Inicio de sesion mediante correo electronico y contraseña
-  - Registro de incidencias en el sector.
-  - Listado de incidencias del sector:
-  - El listado contara con filtros de las incidencias más apoyadas , en progreso y completadas.
-  - Visualización de orgranigrama de junta de vecinos.
 
 #### Administrador
 El administrador contara con las siguientes funciones:
@@ -71,7 +62,7 @@ El administrador contara con las siguientes funciones:
   - El administrador podra cambiar el estatus de las incidencias solicitadas por el ciudadano, ya que, luego que se le envio a la persona que hara el trabajo esta se pasara a en proceso y de ser completada la persona indicara que su trabajo fue completado y se pasara a completado y se subira una nueva imagen de la obra completada.
   - El adminstrador podra editar los datos de la junta de vecinos y podra agregar nuevas juntas de vecinos al sistema.
 
-### 2 - Arquitectura del aplicativo
+### 2 - Arquitectura del aplicativo <a name="arquitectura"></a>
 
 #### Tecnologias
 
@@ -88,6 +79,15 @@ Las tecnologias que pueden ser utilizadas para el desarrollo de backend:
 - .Net Core
 - Django y Flask (Python)
 
+### 4 - Gestion de tareas<a name="tareas"></a>
+
+#### Features 
 
 
-      
+  1. Registro de Usuario (Ciudadano)
+  2. Actualizacion de datos para uso interno de la app.
+  3. Inicio de sesion mediante correo electronico y contraseña
+  4. Registro de incidencias en el sector.
+  5. Listado de incidencias del sector:
+     - El listado contara con filtros de las incidencias más apoyadas,  en progreso y completadas.
+  7. Visualización de orgranigrama de junta de vecinos.
