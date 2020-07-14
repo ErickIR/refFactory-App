@@ -3,12 +3,12 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1A3A6CA7-3CF4-45C6-92FC-D1063250F4C7}</ProjectGuid>
+    <ProjectGuid>{3DFE8E72-1B52-42EF-A51F-07D5E89927E1}</ProjectGuid>
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{9AA2D3C6-3393-45F1-8E7C-5A9901728795}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>AyuntamientoApp.Droid</RootNamespace>
-    <AssemblyName>AyuntamientoApp.Android</AssemblyName>
+    <RootNamespace>CitizenApp.Droid</RootNamespace>
+    <AssemblyName>CitizenApp.Android</AssemblyName>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -99,9 +99,9 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AyuntamientoApp\AyuntamientoApp.csproj">
-      <Project>{882D12C8-70C7-4898-B0F3-10837F07FED9}</Project>
-      <Name>AyuntamientoApp</Name>
+    <ProjectReference Include="..\CitizenApp\CitizenApp.csproj">
+      <Project>{19B126C6-952F-490A-A28A-89D94167E741}</Project>
+      <Name>CitizenApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

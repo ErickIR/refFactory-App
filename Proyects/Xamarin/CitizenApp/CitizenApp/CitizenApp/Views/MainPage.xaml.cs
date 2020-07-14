@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using AyuntamientoApp.Models;
+using CitizenApp.Models;
 
-namespace AyuntamientoApp.Views
+namespace CitizenApp.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
     public partial class MainPage : MasterDetailPage
     {
-        readonly Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
+        Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
         public MainPage()
         {
             InitializeComponent();
@@ -31,9 +31,10 @@ namespace AyuntamientoApp.Views
                 switch (id)
                 {
                     case (int)MenuItemType.Browse:
+                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
                         break;
                     case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage());
+                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                 }
             }

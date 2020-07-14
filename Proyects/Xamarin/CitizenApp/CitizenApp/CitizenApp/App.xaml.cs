@@ -1,10 +1,10 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using AyuntamientoApp.Services;
-using AyuntamientoApp.Views;
+using CitizenApp.Services;
+using CitizenApp.Views;
 
-namespace AyuntamientoApp
+namespace CitizenApp
 {
     public partial class App : Application
     {
@@ -12,6 +12,8 @@ namespace AyuntamientoApp
         public App()
         {
             InitializeComponent();
+
+            DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
 

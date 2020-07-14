@@ -5,13 +5,15 @@ using System.Runtime.CompilerServices;
 
 using Xamarin.Forms;
 
-using AyuntamientoApp.Models;
-using AyuntamientoApp.Services;
+using CitizenApp.Models;
+using CitizenApp.Services;
 
-namespace AyuntamientoApp.ViewModels
+namespace CitizenApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>() ?? new MockDataStore();
+
         bool isBusy = false;
         public bool IsBusy
         {

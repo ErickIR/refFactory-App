@@ -4,8 +4,8 @@
             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d"
-            xmlns:views="clr-namespace:AyuntamientoApp.Views"
-            x:Class="AyuntamientoApp.Views.MainPage">
+            xmlns:views="clr-namespace:CitizenApp.Views"
+            x:Class="CitizenApp.Views.MainPage">
 
     <MasterDetailPage.Master>
         <views:MenuPage />
@@ -19,6 +19,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
+                <views:ItemsPage />
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Detail>

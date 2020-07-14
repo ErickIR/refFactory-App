@@ -1,11 +1,11 @@
-﻿using AyuntamientoApp.Models;
+﻿using CitizenApp.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace AyuntamientoApp.Views
+namespace CitizenApp.Views
 {
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
@@ -13,7 +13,7 @@ namespace AyuntamientoApp.Views
     public partial class MenuPage : ContentPage
     {
         MainPage RootPage { get => Application.Current.MainPage as MainPage; }
-        readonly List<HomeMenuItem> menuItems;
+        List<HomeMenuItem> menuItems;
         public MenuPage()
         {
             InitializeComponent();
