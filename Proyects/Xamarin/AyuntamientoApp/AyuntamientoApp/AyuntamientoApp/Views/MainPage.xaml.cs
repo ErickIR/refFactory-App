@@ -33,7 +33,7 @@ namespace AyuntamientoApp.Views
                     case (int)MenuItemType.Browse:
                         break;
                     case (int)MenuItemType.About:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        MenuPages.Add(id, new NavigationPage());
                         break;
                 }
             }
