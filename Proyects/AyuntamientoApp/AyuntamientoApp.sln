@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AyuntamientoApp.Android", "AyuntamientoApp\AyuntamientoApp.Android\AyuntamientoApp.Android.csproj", "{4314BD6E-4634-4471-A4F6-2C2EAE0A9E30}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AyuntamientoApp", "AyuntamientoApp\AyuntamientoApp\AyuntamientoApp.csproj", "{384346AC-4311-4D9F-A6D3-5CE3AA4BAFCA}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4314BD6E-4634-4471-A4F6-2C2EAE0A9E30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4314BD6E-4634-4471-A4F6-2C2EAE0A9E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4314BD6E-4634-4471-A4F6-2C2EAE0A9E30}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{4314BD6E-4634-4471-A4F6-2C2EAE0A9E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4314BD6E-4634-4471-A4F6-2C2EAE0A9E30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4314BD6E-4634-4471-A4F6-2C2EAE0A9E30}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{384346AC-4311-4D9F-A6D3-5CE3AA4BAFCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{384346AC-4311-4D9F-A6D3-5CE3AA4BAFCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{384346AC-4311-4D9F-A6D3-5CE3AA4BAFCA}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{384346AC-4311-4D9F-A6D3-5CE3AA4BAFCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{384346AC-4311-4D9F-A6D3-5CE3AA4BAFCA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{384346AC-4311-4D9F-A6D3-5CE3AA4BAFCA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1EFB11E0-2122-42B5-9A6A-02AF1BF0CF69}
+	EndGlobalSection
+EndGlobal
