@@ -13,7 +13,6 @@ namespace CitizenApp
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
 
