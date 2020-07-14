@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace WeaponCenter.Services
+namespace AyuntamientoApp.Services
 {
     public interface IPageService
     {

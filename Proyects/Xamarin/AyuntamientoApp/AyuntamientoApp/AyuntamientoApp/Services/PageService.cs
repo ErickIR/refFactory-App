@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
-using WeaponCenter.Views;
+using AyuntamientoApp.Views;
 using Xamarin.Forms;
 
-namespace WeaponCenter.Services
+namespace AyuntamientoApp.Services
 {
     public class PageService : IPageService
     {
