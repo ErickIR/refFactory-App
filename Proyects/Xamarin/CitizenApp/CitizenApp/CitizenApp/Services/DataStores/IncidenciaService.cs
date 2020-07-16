@@ -23,20 +23,20 @@ namespace CitizenApp.Services.DataStores
             };
         }
 
-        public async Task<Incidencia> AddNewAsync(Incidencia item)
+        public async Task<Incidencia> RegistrarNuevoAsync(Incidencia item)
         {
             Incidencias.Add(item);
             return await Task.FromResult(item);
         }
 
-        public async Task<bool> DeleteAsync(int itemId)
+        public async Task<bool> EliminarRegistroAsync(int itemId)
         {
             Incidencias.RemoveAll(Incidencia => Incidencia.IncidenciaId == itemId);
 
             return await Task.FromResult(true);
         }
 
-        public async Task<bool> EditAsync(Incidencia item)
+        public async Task<bool> EditarRegistroAsync(Incidencia item)
         {
             var oldItem = Incidencias.Where((Incidencia arg) => arg.IncidenciaId == item.IncidenciaId).FirstOrDefault();
             Incidencias.Remove(oldItem);
@@ -45,12 +45,12 @@ namespace CitizenApp.Services.DataStores
             return await Task.FromResult(true);
         }
 
-        public async Task<IEnumerable<Incidencia>> GetAllAsync()
+        public async Task<IEnumerable<Incidencia>> ObtenerTodosRegistrosAsync()
         {
             return await Task.FromResult(Incidencias);
         }
 
-        public async Task<Incidencia> GetByIdAsync(int itemId)
+        public async Task<Incidencia> ObtenerRegistroPorIdAsync(int itemId)
         {
             var incidencia = Incidencias.Find(cur => cur.IncidenciaId == itemId);
 

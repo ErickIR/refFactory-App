@@ -7,10 +7,10 @@ namespace CitizenApp.Services
 {
     interface IDataStore<T>
     {
-        Task<IEnumerable<T>> GetAllAsync();
-        Task<T> GetByIdAsync(int itemId);
-        Task<T> AddNewAsync(T item);
-        Task<bool> EditAsync(T item);
-        Task<bool> DeleteAsync(int itemId);
+        Task<IEnumerable<T>> ObtenerTodosRegistrosAsync();
+        Task<T> ObtenerRegistroPorIdAsync(int itemId);
+        Task<T> RegistrarNuevoAsync(T item);
+        Task<bool> EditarRegistroAsync(T item);
+        Task<bool> EliminarRegistroAsync(int itemId);
     }
 }
