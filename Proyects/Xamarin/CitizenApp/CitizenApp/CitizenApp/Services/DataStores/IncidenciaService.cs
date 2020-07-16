@@ -26,7 +26,6 @@ namespace CitizenApp.Services.DataStores
         public async Task<Incidencia> AddNewAsync(Incidencia item)
         {
             Incidencias.Add(item);
-
             return await Task.FromResult(item);
         }
 
