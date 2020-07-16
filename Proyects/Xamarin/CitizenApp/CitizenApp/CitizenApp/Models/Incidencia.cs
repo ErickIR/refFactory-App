@@ -10,6 +10,7 @@ namespace CitizenApp.Models
         public int EmpleadoId { get; set; }
         public int UsuarioId { get; set; }
         public int StatusId { get; set; }
+        public int TipoIncidenciaId { get; set; }
         public int BarrioId { get; set; }
         public string Titulo { get; set; }
         public string Descripcion { get; set; }

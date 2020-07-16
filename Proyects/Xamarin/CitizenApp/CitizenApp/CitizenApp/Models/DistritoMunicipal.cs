@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CitizenApp.Models
 {
-    class DistritoMunicipal
+    public class DistritoMunicipal
     {
         public int DistritoMunicipalId { get; set; }
         public int MunicipioId { get; set; }

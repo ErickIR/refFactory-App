@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CitizenApp.Models
 {
-    class TipoDocumento
+    public class TipoDocumento
     {
         public int TipoDocumentoId { get; set; }
         public string Descripcion { get; set; }

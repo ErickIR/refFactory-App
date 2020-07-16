@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CitizenApp.Models
 {
-    class Provincia
+    public class Provincia
     {
         public int ProvinciaId { get; set; }
         public int RegionId { get; set; }

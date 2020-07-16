@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CitizenApp.Models
 {
-    class Sector
+    public class Sector
     {
         public int SectorId { get; set; }
         public int SeccionId { get; set; }
