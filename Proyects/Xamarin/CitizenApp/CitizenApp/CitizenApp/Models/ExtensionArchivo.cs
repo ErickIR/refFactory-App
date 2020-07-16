@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CitizenApp.Models
 {
-    class ExtensionArchivo
+    public class ExtensionArchivo
     {
         public int ExtensionArchivoId { get; set; }
         public string Descripcion { get; set; }
