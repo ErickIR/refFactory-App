@@ -8,9 +8,9 @@ namespace CitizenApp.Services
     interface IDataStore<T>
     {
         Task<IEnumerable<T>> GetAllAsync();
-        Task<T> GetByIdAsync();
-        Task<T> CreateNewAsync();
-        Task<T> EditAsync();
-        Task<bool> DeleteAsync();
+        Task<T> GetByIdAsync(int itemId);
+        Task<T> AddNewAsync(T item);
+        Task<bool> EditAsync(T item);
+        Task<bool> DeleteAsync(int itemId);
     }
 }
