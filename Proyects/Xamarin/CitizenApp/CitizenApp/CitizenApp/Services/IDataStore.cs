@@ -5,12 +5,12 @@ using System.Threading.Tasks;
 
 namespace CitizenApp.Services
 {
-    interface IDataStore<T>
+    public abstract class IDataStore<T>
     {
-        Task<IEnumerable<T>> ObtenerTodosRegistrosAsync();
-        Task<T> ObtenerRegistroPorIdAsync(int itemId);
-        Task<T> RegistrarNuevoAsync(T item);
-        Task<bool> EditarRegistroAsync(T item);
-        Task<bool> EliminarRegistroAsync(int itemId);
+        public abstract Task<IEnumerable<T>> ObtenerTodosRegistrosAsync();
+        public abstract Task<T> ObtenerRegistroPorIdAsync(int itemId);
+        public abstract Task<T> RegistrarNuevoAsync(T item);
+        public abstract Task<bool> EditarRegistroAsync(T item);
+        public abstract Task<bool> EliminarRegistroAsync(int itemId);
     }
 }
