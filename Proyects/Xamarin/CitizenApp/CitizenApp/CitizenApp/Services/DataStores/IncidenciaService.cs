@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 using CitizenApp.Models;
+using CitizenApp.Services.Interfaces;
 using System.Linq;
 
 namespace CitizenApp.Services.DataStores
 {
-    class IncidenciaService : IDataStore<Incidencia>
+    public class IncidenciaService : IGettable<Incidencia>, IEditable<Incidencia>, IDeletable<Incidencia>, IAddible<Incidencia>
     {
         List<Incidencia> Incidencias;
 
