@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CitizenApp.Services.DataStores
+namespace CitizenApp.Services.Services
 {
     class LocalidadService
     {
@@ -121,23 +121,23 @@ namespace CitizenApp.Services.DataStores
             return await Task.FromResult(regiones);
         }
 
-        public async Task<List<Barrio>> ObtenerBarriosPorMunicipioID(int municipioId)
-        {
-            var distritoMunicipalesResult = distritoMunicipales.FindAll(x => x.MunicipioId == municipioId);
+        //public async Task<List<Barrio>> ObtenerBarriosPorMunicipioID(int municipioId)
+        //{
+        //    var distritoMunicipalesResult = distritoMunicipales.FindAll(x => x.MunicipioId == municipioId);
             
-            foreach (var item in distritoMunicipalesResult)
-            {
-                var seccionesResult = ObtenerSeccionesPorDistritoMunicipalesID(item.DistritoMunicipalId);
-                foreach (var seccion in seccionesResult)
-                {
+        //    foreach (var item in distritoMunicipalesResult)
+        //    {
+        //        var seccionesResult = ObtenerSeccionesPorDistritoMunicipalesID(item.DistritoMunicipalId);
+        //        foreach (var seccion in seccionesResult)
+        //        {
 
-                }
-            }
+        //        }
+        //    }
 
 
-            var barriosResult = barrios.FindAll(x => x.SectorId == sectorId);
-            return await Task.FromResult(barriosResult);
-        }
+        //    var barriosResult = barrios.FindAll(x => x.SectorId == sectorId);
+        //    return await Task.FromResult(barriosResult);
+        //}
 
 
     }

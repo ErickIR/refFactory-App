@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CitizenApp.Services.DataStores
+namespace CitizenApp.Services.Services
 {
     public class ArchivosService
     {
