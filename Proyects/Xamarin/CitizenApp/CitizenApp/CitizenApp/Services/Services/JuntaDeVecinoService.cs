@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CitizenApp.Services.DataStores
+namespace CitizenApp.Services.Services
 {
     class JuntaDeVecinoService 
     {
@@ -25,11 +25,12 @@ namespace CitizenApp.Services.DataStores
             var juntaDeVecino = juntaDeVecinos.Find(x => x.BarrioId == barrioId);
             return await Task.FromResult(juntaDeVecino);
         }
-        public async Task<List<JuntaDeVecinos>> ObtenerJuntaDeVecinoPorMunicipioID(int municipioID)
-        {
+
+        //public async Task<List<JuntaDeVecinos>> ObtenerJuntaDeVecinoPorMunicipioID(int municipioID)
+        //{
             
-            return await Task.FromResult(juntaDeVecino);
-        }
+        //    return await Task.FromResult(juntaDeVecino);
+        //}
 
 
 

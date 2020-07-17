@@ -4,7 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CitizenApp.Models;
 
-namespace CitizenApp.Services.DataStores
+namespace CitizenApp.Services.Services
 {
     public class EntidadesMunicipalesService
     {
