@@ -5,7 +5,7 @@ using System.Text;
 
 namespace CitizenApp.Services.DataStores
 {
-    class JuntaDeVecinoService : IDataStore<JuntaDeVecinos>
+    class JuntaDeVecinoService 
     {
     }
 }

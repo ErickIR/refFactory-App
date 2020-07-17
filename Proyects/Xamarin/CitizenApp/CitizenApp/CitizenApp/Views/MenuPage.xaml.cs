@@ -13,20 +13,25 @@ namespace CitizenApp.Views
     public partial class MenuPage : ContentPage
     {
         MainPage RootPage { get => Application.Current.MainPage as MainPage; }
-        List<HomeMenuItem> menuItems;
+        List<HomeMenuItem> mainMenuItems;
         public MenuPage()
         {
             InitializeComponent();
 
-            menuItems = new List<HomeMenuItem>
+            mainMenuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
-                new HomeMenuItem {Id = MenuItemType.About, Title="About" }
+                new HomeMenuItem {Id = MenuItemType.Inicio, Title="Inicio" },
+                new HomeMenuItem {Id = MenuItemType.Incidencias, Title="Incidencias" },
+                new HomeMenuItem {Id = MenuItemType.JuntasDeVecinos, Title="Juntas de Vecinos" },
+                new HomeMenuItem {Id = MenuItemType.EntidadesMunicipales, Title="Entidades Municipales" },
+                new HomeMenuItem {Id = MenuItemType.NormativasMunicipales, Title="Normativas Municipales" },
+                new HomeMenuItem {Id = MenuItemType.Informacion, Title="Informacion" },
+                new HomeMenuItem {Id = MenuItemType.CerrarSesion, Title="Cerrar Sesion" }
             };
 
-            ListViewMenu.ItemsSource = menuItems;
+            ListViewMenu.ItemsSource = mainMenuItems;
 
-            ListViewMenu.SelectedItem = menuItems[0];
+            ListViewMenu.SelectedItem = mainMenuItems[0];
             ListViewMenu.ItemSelected += async (sender, e) =>
             {
                 if (e.SelectedItem == null)
@@ -35,6 +40,7 @@ namespace CitizenApp.Views
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
                 await RootPage.NavigateFromMenu(id);
             };
+
         }
     }
 }
