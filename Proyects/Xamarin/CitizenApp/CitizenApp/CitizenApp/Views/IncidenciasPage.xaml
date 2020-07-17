@@ -8,13 +8,16 @@
              x:Class="CitizenApp.Views.IncidenciasPage"
              Title="{Binding Title}">
 
+    <ContentPage.BindingContext>
+        <vm:IncidenciasListViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.ToolbarItems>
         <d:ToolbarItem IconImageSource="" Text="User" Command="{}" />
     </ContentPage.ToolbarItems>
 
-    <CollectionView x:Name="IncidenciasCollectionView"
+    <ListView x:Name="IncidenciasCollectionView"
                     ItemsSource="{Binding Incidencias}">
-        <CollectionView.ItemTemplate>
+        <ListView.ItemTemplate>
             <DataTemplate>
                 <StackLayout Padding="5" Orientation="Vertical">
                     <StackLayout Padding="10" Orientation="Vertical">
@@ -39,7 +42,7 @@
                     </StackLayout>
                 </StackLayout>
             </DataTemplate>
-        </CollectionView.ItemTemplate>
+        </ListView.ItemTemplate>
         
-    </CollectionView>
+    </ListView>
 </ContentPage>
