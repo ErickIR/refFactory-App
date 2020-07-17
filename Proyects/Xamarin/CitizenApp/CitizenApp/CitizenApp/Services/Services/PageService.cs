@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using CitizenApp.Services.Interfaces;
 
-namespace CitizenApp.Services
+namespace CitizenApp.Services.Services
 {
     public class PageService : IPageService
     {

@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CitizenApp.ViewModels"
+             mc:Ignorable="d"
+             x:Class="CitizenApp.Views.IncidenciasPage"
+             Title="{Binding Title}">
+
+    <ContentPage.ToolbarItems>
+        <d:ToolbarItem IconImageSource="" Text="User" Command="{}" />
+    </ContentPage.ToolbarItems>
+
+    <CollectionView x:Name="IncidenciasCollectionView"
+                    ItemsSource="{Binding Incidencias}">
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout Padding="5" Orientation="Vertical">
+                    <StackLayout Padding="10" Orientation="Vertical">
+                        <Label Text="{Binding Titulo}" 
+                               d:Text="{Binding .}"
+                               LineBreakMode="NoWrap" 
+                               FontSize="16" />
+                        <Label Text="Nombre Barrio" 
+                               d:Text="Barrio"
+                               LineBreakMode="NoWrap"
+                               FontSize="13" />
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Nombre Usuario" 
+                                   d:Text="Barrio"
+                                   LineBreakMode="NoWrap"
+                                   FontSize="13" />
+                            <Label Text="## Apoyan esta causa"
+                                   d:Text="Apoyo"
+                                   LineBreakMode="NoWrap"
+                                   FontSize="13" />
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+        
+    </CollectionView>
+</ContentPage>

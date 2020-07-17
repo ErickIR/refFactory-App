@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using CitizenApp.Models;
 using System.Linq;
 
-namespace CitizenApp.Services.DataStores
+namespace CitizenApp.Services.Services
 {
     public class IncidenciaService 
     {

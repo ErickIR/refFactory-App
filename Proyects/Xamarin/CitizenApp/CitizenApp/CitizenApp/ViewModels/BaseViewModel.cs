@@ -6,13 +6,16 @@ using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 using CitizenApp.Models;
-using CitizenApp.Services;
+using CitizenApp.Services.Interfaces;
+using CitizenApp.Services.Services;
 
 namespace CitizenApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        
+        internal IncidenciaService IncidenciaService = new IncidenciaService();
+        internal IPageService PageService = new PageService();
+
         bool isBusy = false;
         public bool IsBusy
         {
