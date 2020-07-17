@@ -25,7 +25,7 @@ namespace CitizenApp.Views
         {
             base.OnAppearing();
 
-            if (viewModel.Incidencias.Count == 0)
+            if (viewModel.IncidenciasList.Count == 0)
                 viewModel.IsBusy = true;
             viewModel.LoadIncidenciasCommand.Execute(true);
         }

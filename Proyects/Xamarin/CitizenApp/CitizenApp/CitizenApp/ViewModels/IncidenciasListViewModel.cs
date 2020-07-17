@@ -11,7 +11,7 @@ namespace CitizenApp.ViewModels
 {
     public class IncidenciasListViewModel : BaseViewModel
     {
-        public ObservableCollection<Incidencia> Incidencias { get; set; }
+        public ObservableCollection<Incidencia> IncidenciasList { get; set; }
         public Incidencia SelectedIncidencia { get; set; }
 
         public Command LoadIncidenciasCommand { get; set; }
@@ -22,7 +22,7 @@ namespace CitizenApp.ViewModels
         {
             Title = "Incidencias";
 
-            Incidencias = new ObservableCollection<Incidencia>();
+            IncidenciasList = new ObservableCollection<Incidencia>();
 
             LoadIncidenciasCommand = new Command(async () => await ExecuteLoadIncidenciasCommand());
         }
@@ -33,11 +33,11 @@ namespace CitizenApp.ViewModels
 
             try
             {
-                Incidencias.Clear();
-                var weapons = await IncidenciaService.ObtenerTodosRegistrosIncidenciaAsync();
-                foreach (var item in weapons)
+                IncidenciasList.Clear();
+                var incidencias = await IncidenciaService.ObtenerTodosRegistrosIncidenciaAsync();
+                foreach (var item in incidencias)
                 {
-                    Incidencias.Add(item);
+                    IncidenciasList.Add(item);
                 }
             }
             catch (Exception ex)
