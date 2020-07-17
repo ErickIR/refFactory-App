@@ -1,12 +1,13 @@
 ﻿using CitizenApp.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace CitizenApp.Services.DataStores
 {
-    class LocalidadService
+    public class LocalidadService
     {
         List<Region> regiones;
         List<Provincia> provincias;
@@ -79,64 +80,67 @@ namespace CitizenApp.Services.DataStores
             };
         }
 
-        public async Task<List<Barrio>> ObtenerBarriosPorSectorID(int sectorId)
+        public async Task<List<Barrio>> ObtenerBarriosPorSectorIDAsync(int sectorId)
         {
             var barriosResult = barrios.FindAll(x => x.SectorId == sectorId);
             return await Task.FromResult(barriosResult);
         }
 
-        public async Task<List<Sector>> ObtenerSectoresPorSeccionID(int seccionId)
+        public async Task<List<Sector>> ObtenerSectoresPorSeccionIDAsync(int seccionId)
         {
             var sectoresResult = sectores.FindAll(x => x.SeccionId == seccionId);
             return await Task.FromResult(sectoresResult);
         }
 
-        public async Task<List<Seccion>> ObtenerSeccionesPorDistritoMunicipalesID(int distritoMunicipalesId)
+        public async Task<List<Seccion>> ObtenerSeccionesPorDistritoMunicipalesIDAsync(int distritoMunicipalesId)
         {
             var seccionesResult = secciones.FindAll(x => x.DistritoMunicipalId == distritoMunicipalesId);
             return await Task.FromResult(seccionesResult);
         }
 
-        public async Task<List<DistritoMunicipal>> ObtenerDistritoMunicipalesPorMunicipioID(int municipioId)
+        public async Task<List<DistritoMunicipal>> ObtenerDistritoMunicipalesPorMunicipioIDAsync(int municipioId)
         {
             var distritoMunicipalesResult = distritoMunicipales.FindAll(x => x.MunicipioId == municipioId);
             return await Task.FromResult(distritoMunicipalesResult);
         }
 
-        public async Task<List<Municipio>> ObtenerMunicipiosPorProvinciaID(int provinciaId)
+        public async Task<List<Municipio>> ObtenerMunicipiosPorProvinciaIDAsync(int provinciaId)
         {
             var municipiosResult = municipios.FindAll(x => x.ProvinciaId == provinciaId);
             return await Task.FromResult(municipiosResult);
         }
 
-        public async Task<List<Provincia>> ObtenerProvinciasPorRegionID(int regionId)
+        public async Task<List<Provincia>> ObtenerProvinciasPorRegionIDAsync(int regionId)
         {
             var provinciasResult = provincias.FindAll(x => x.RegionId == regionId);
             return await Task.FromResult(provinciasResult);
         }
 
-        public async Task<List<Region>> ObtenerRegiones()
+        public async Task<List<Region>> ObtenerRegionesAsync()
         {
            
             return await Task.FromResult(regiones);
         }
 
-        public async Task<List<Barrio>> ObtenerBarriosPorMunicipioID(int municipioId)
+        public async Task<List<Barrio>> ObtenerBarriosPorDistritosMunicipalesIDAsync(int distritosMunicipalesId)
         {
-            var distritoMunicipalesResult = distritoMunicipales.FindAll(x => x.MunicipioId == municipioId);
-            
-            foreach (var item in distritoMunicipalesResult)
+            var listaSecciones = await ObtenerSeccionesPorDistritoMunicipalesIDAsync(distritosMunicipalesId);
+            List<Sector> listSectores = new List<Sector>();
+            List<Barrio> listBarrios = new List<Barrio>();
+            foreach (var seccion in listaSecciones)
             {
-                var seccionesResult = ObtenerSeccionesPorDistritoMunicipalesID(item.DistritoMunicipalId);
-                foreach (var seccion in seccionesResult)
-                {
-
-                }
+               
+                listSectores = listSectores.Concat(await ObtenerSectoresPorSeccionIDAsync(seccion.SeccionId)).ToList();
+                
             }
 
+            foreach (var sector in listSectores)
+            {
+                listBarrios = listBarrios.Concat(await ObtenerBarriosPorSectorIDAsync(sector.SectorId)).ToList();
+            }
 
-            var barriosResult = barrios.FindAll(x => x.SectorId == sectorId);
-            return await Task.FromResult(barriosResult);
+            
+            return await Task.FromResult(listBarrios);
         }
 
 
