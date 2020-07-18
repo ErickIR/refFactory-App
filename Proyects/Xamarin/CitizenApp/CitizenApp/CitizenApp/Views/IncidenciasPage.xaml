@@ -20,10 +20,28 @@
                  Priority="0" />
     </ContentPage.ToolbarItems>
 
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Title}"
+               FontSize="30"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               TextColor="White" 
+               FontAttributes="Bold"
+               FontFamily="Josefin Sans" />
+    </NavigationPage.TitleView>
 
 
     <ContentPage.Content>
-        <FlexLayout>
+        <StackLayout>
+            <Frame 
+                Margin="8"
+                HeightRequest="40"
+                BorderColor="#C4C4C4"
+                CornerRadius="30"
+                BackgroundColor="#FFFFFF"
+                Padding="5">
+                <Entry Placeholder="Buscar Incidencias..." ReturnType="Search" Text="{Binding Search}" ReturnCommand="{Binding SearchIncidenciaCommand}" />
+            </Frame>
             <ScrollView>
                 <ListView 
                     HasUnevenRows="True"
@@ -43,7 +61,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
-        </FlexLayout>
+        </StackLayout>
     </ContentPage.Content>
     
 </ContentPage>

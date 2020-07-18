@@ -130,6 +130,13 @@ namespace CitizenApp.Services.Services
             return await Task.FromResult(incidencias);
         }
 
+        public async Task<IEnumerable<Incidencia>> ObtenerIncidenciasPorPalabraAsync(string search)
+        {
+            var incidencias = Incidencias.FindAll(inc => inc.Titulo.Contains(search) || inc.Descripcion.Contains(search));
+
+            return await Task.FromResult(incidencias);
+        }
+        
         public async Task<IEnumerable<Incidencia>> ObtenerMisIncidenciasAsync(int userId)
         {
             var incidencias = Incidencias.FindAll(inc => inc.UsuarioId == userId);
