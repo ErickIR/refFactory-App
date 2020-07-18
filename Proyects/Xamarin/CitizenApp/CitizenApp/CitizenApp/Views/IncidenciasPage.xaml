@@ -7,11 +7,20 @@
              xmlns:controls="clr-namespace:CitizenApp.Controls"
              mc:Ignorable="d"
              x:Class="CitizenApp.Views.IncidenciasPage"
-             Title="{Binding Title}">
+             Title="{Binding Title}"
+             >
 
     <ContentPage.ToolbarItems>
-        <d:ToolbarItem IconImageSource="" Text="User" Command="{Binding AddNewIncidenciaCommand}" />
+        <d:ToolbarItem IconImageSource="" 
+                       Text="User" 
+                       
+                       Command="{Binding AddNewIncidenciaCommand}" />
+        <ToolbarItem 
+                 IconImageSource="account_circle"
+                 Order="Primary"
+                 Priority="0" />
     </ContentPage.ToolbarItems>
+  
 
     <ListView ItemsSource="{Binding IncidenciasList}">
         <ListView.ItemTemplate>
