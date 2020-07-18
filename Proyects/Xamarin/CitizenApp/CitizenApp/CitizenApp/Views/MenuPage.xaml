@@ -18,7 +18,8 @@
                 </StackLayout>
             </Grid>
             <StackLayout Grid.Row="1" BackgroundColor="#D9E0E9">
-                <ListView x:Name="ListViewMenu" SeparatorVisibility="Default"
+                <ListView x:Name="ListViewMenu" IsGroupingEnabled="True"
+                    GroupDisplayBinding="{Binding GroupName}" SeparatorVisibility="Default"
                     HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>

@@ -23,4 +23,39 @@ namespace CitizenApp.Models
 
         public string Icon { get; set; }
     }
+
+    public class HomeMenuGroup : List<HomeMenuItem>
+    {
+        public string GroupName { get; private set; }
+
+        private HomeMenuGroup(string name)
+        {
+            GroupName = name;
+        }
+
+        static HomeMenuGroup()
+        {
+            
+            List<HomeMenuGroup> Groups = new List<HomeMenuGroup>
+            {
+                new HomeMenuGroup("Principal")
+                {
+                    new HomeMenuItem {Id = MenuItemType.Inicio, Title="Inicio" },
+                    new HomeMenuItem {Id = MenuItemType.Incidencias, Title="Incidencias" },
+                    new HomeMenuItem {Id = MenuItemType.JuntasDeVecinos, Title="Juntas de Vecinos" },
+                    new HomeMenuItem {Id = MenuItemType.EntidadesMunicipales, Title="Entidades Municipales" },
+                    new HomeMenuItem {Id = MenuItemType.NormativasMunicipales, Title="Normativas Municipales" }
+                },
+                new HomeMenuGroup("Usuario")
+                {
+                    new HomeMenuItem {Id = MenuItemType.Informacion, Title="Informacion" },
+                    new HomeMenuItem {Id = MenuItemType.CerrarSesion, Title="Cerrar Sesion" }
+                }
+            };
+
+            All = Groups;
+        }
+
+        public static IList<HomeMenuGroup> All { get; private set; }
+    }
 }

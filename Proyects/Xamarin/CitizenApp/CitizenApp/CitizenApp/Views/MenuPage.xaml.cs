@@ -13,25 +13,15 @@ namespace CitizenApp.Views
     public partial class MenuPage : ContentPage
     {
         MainPage RootPage { get => Application.Current.MainPage as MainPage; }
-        List<HomeMenuItem> mainMenuItems;
+        List<HomeMenuGroup> mainMenuGroups;
         public MenuPage()
         {
             InitializeComponent();
 
-            mainMenuItems = new List<HomeMenuItem>
-            {
-                new HomeMenuItem {Id = MenuItemType.Inicio, Title="Inicio" },
-                new HomeMenuItem {Id = MenuItemType.Incidencias, Title="Incidencias" },
-                new HomeMenuItem {Id = MenuItemType.JuntasDeVecinos, Title="Juntas de Vecinos" },
-                new HomeMenuItem {Id = MenuItemType.EntidadesMunicipales, Title="Entidades Municipales" },
-                new HomeMenuItem {Id = MenuItemType.NormativasMunicipales, Title="Normativas Municipales" },
-                new HomeMenuItem {Id = MenuItemType.Informacion, Title="Informacion" },
-                new HomeMenuItem {Id = MenuItemType.CerrarSesion, Title="Cerrar Sesion" }
-            };
+            mainMenuGroups = (List<HomeMenuGroup>)HomeMenuGroup.All;
 
-            ListViewMenu.ItemsSource = mainMenuItems;
+            ListViewMenu.ItemsSource = mainMenuGroups;
 
-            ListViewMenu.SelectedItem = mainMenuItems[0];
             ListViewMenu.ItemSelected += async (sender, e) =>
             {
                 if (e.SelectedItem == null)
