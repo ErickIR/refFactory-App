@@ -13,25 +13,37 @@
 
     <ContentPage.ToolbarItems>
         <d:ToolbarItem IconImageSource="" 
-                       Text="User" 
-                       
+                       Text="User"
                        Command="{Binding AddNewIncidenciaCommand}" />
-        <ToolbarItem 
-                 IconImageSource="account_circle"
+        <ToolbarItem IconImageSource="account_circle"
                  Order="Primary"
                  Priority="0" />
     </ContentPage.ToolbarItems>
-  
 
-    <ListView ItemsSource="{Binding IncidenciasList}">
-        <ListView.ItemTemplate>
-            <DataTemplate>
-                <ViewCell>
-                    <controls:CardView />
-                </ViewCell>
-            </DataTemplate>
-        </ListView.ItemTemplate>
 
-    </ListView>
+
+    <ContentPage.Content>
+        <FlexLayout>
+            <ScrollView>
+                <ListView 
+                    HasUnevenRows="True"
+                    SeparatorVisibility="Default"
+                    ItemsSource="{Binding IncidenciasList}">
+                    <ListView.RowHeight>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="Android" Value="120" />
+                        </OnPlatform>
+                    </ListView.RowHeight>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <controls:CardView />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+        </FlexLayout>
+    </ContentPage.Content>
     
 </ContentPage>

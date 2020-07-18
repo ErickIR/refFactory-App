@@ -5,40 +5,31 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="CitizenApp.Controls.CardView">
-  <ContentView.Content>
-        <StackLayout HorizontalOptions="FillAndExpand" Orientation="Horizontal">
-            <BoxView WidthRequest="7" />
-            <Frame HorizontalOptions="FillAndExpand" 
-                       Margin="0,0,0,0" 
-                       HasShadow="False">
-                <Grid VerticalOptions="CenterAndExpand" 
-                          Padding="0" HorizontalOptions="FillAndExpand"
-                          BackgroundColor="Transparent">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="auto" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Row="0" Grid.Column="0">
-                        <Frame>
-                            <Image Source="" HeightRequest="50" />
-                        </Frame>
+    
+    <ContentView.Content>
+        <Frame 
+            Margin="20,15,20,15" 
+            HeightRequest="102"
+            BorderColor="#f2f5f7"
+            CornerRadius="30"
+            BackgroundColor="#f2f5f7"
+            Padding="15">
+            <StackLayout Orientation="Horizontal">
+                <Image Source="incidencia.png" HorizontalOptions="Start"/>
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <Label Text="{Binding Titulo}"
+                       FontSize="16"
+                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+                    <BoxView Color="Gray"
+                         HeightRequest="2"
+                         HorizontalOptions="Fill"/>
+                    <Label Text="{Binding BarrioId}" FontSize="14" HorizontalOptions="CenterAndExpand"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding UsuarioId}" FontSize="14" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="## han apoyado esto." FontSize="14" FontAttributes="Bold" HorizontalOptions="End"/>
                     </StackLayout>
-                    <StackLayout Grid.Row="0" Grid.Column="1"  Orientation="Vertical">
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding Titulo}"/>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding BarrioId}"/>
-                        </StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="{Binding UsuarioId}"/>
-                        </StackLayout>
-                    </StackLayout>
-                </Grid>
-            </Frame>
-        </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
     </ContentView.Content>
 </ContentView>
