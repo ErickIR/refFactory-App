@@ -18,7 +18,7 @@
 
 - `Archivos/IncidenciaId` --> Obtiene todos los archivos de la incidencia seleccionada.
 
-- `Archivos/TipoArchivoId` --> Obtiene el ULTIMO de los archivos de ese tipo.
+- `Archivos/TipoArchivoId` --> Obtiene el ULTIMO de los archivos de ese tipo.(OJO PREGUNTAR MENTOR)
 
 ### TIPOS INCIDENCIA
 
@@ -32,11 +32,7 @@
 
 - `JuntaDeVecinoByBarrio/BarrioId` --> Obtiene la junta de vecinos registrada en ese barrio y sus integrantes.
 
-- `JuntaDeVecinos/MunicipioId` --> Obtiene las juntas de vecinos que se encuentran en los barrios del municipio seleccionado.
- 
-- `JuntaDeVecinos/BarrioId` --> Obtiene la junta de vecinos en base al barrioId.
-
-- `JuntaDeVecinos/NombreBarrio` --> Obtiene la junta de vecinos en base al nombre del barrio al que pertenece.
+- `JuntaDeVecinos/DistritoMunicipalId` --> Obtiene las juntas de vecinos que se encuentran en los barrios del distrito municipal seleccionado.
 
 - `IntegrantesJdV/JuntaDeVecinosId` --> Obtiene los integrantes de la junta de vecinos.
 
