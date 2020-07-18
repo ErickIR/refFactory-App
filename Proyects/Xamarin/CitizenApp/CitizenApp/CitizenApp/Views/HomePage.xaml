@@ -7,6 +7,7 @@
              mc:Ignorable="d"
              x:Class="CitizenApp.Views.HomePage"
              BackgroundColor="#D9E0E9"
+             BackgroundImageSource="BackGroundMain"
              >
 
     <ContentPage.ToolbarItems>
@@ -25,13 +26,15 @@
 
    
     <ContentPage.Content>
-        <StackLayout>
-            <Image
-                Source="MainPhoto"
-                VerticalOptions="Start"
-                HorizontalOptions="CenterAndExpand"></Image>
+        <ScrollView>
+        <StackLayout
+            VerticalOptions="Center"
+            Padding="0,150,0,0">
+                
+            
             <Grid
-                RowSpacing="10"
+                
+                RowSpacing="40"
                 ColumnSpacing="-50">
                 <Grid.RowDefinitions>
                     <RowDefinition
@@ -43,59 +46,94 @@
                         Width="*">
                     </ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Button
-                    BackgroundColor="White"
-                    BorderColor="Black"
+
+                    <Frame
                     Grid.Row="0"
                     Grid.Column="0"
+                    HasShadow="True"
                     WidthRequest="135"
                     HeightRequest="135"
-                    VerticalOptions="Center"
+                     VerticalOptions="Center"
                     HorizontalOptions="Center"
-                    android:Button.UseDefaultShadow="true"               
-                    CornerRadius="15"></Button>
-                <Button
-                    BackgroundColor="White"
-                    BorderColor="Black"
+                    CornerRadius="15"
+                    Padding="0">
+                        <Button
+                        BackgroundColor="White"
+                        BorderColor="Black"
+                        
+                        WidthRequest="135"
+                        HeightRequest="135"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"                                   
+                        CornerRadius="15"></Button>
+
+                    </Frame>
+                    <Frame
                     Grid.Row="0"
                     Grid.Column="1"
+                    HasShadow="True"
                     WidthRequest="135"
                     HeightRequest="135"
-                    VerticalOptions="Center"
+                     VerticalOptions="Center"
                     HorizontalOptions="Center"
-                    android:Button.UseDefaultShadow="true"               
-                    CornerRadius="15"></Button>
-                <Button
-                    BackgroundColor="White"
-                    BorderColor="Black"
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    WidthRequest="135"
-                    HeightRequest="135"
-                    VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    android:Button.UseDefaultShadow="true"               
-                    CornerRadius="15"></Button>
-                <Button
-                    BackgroundColor="White"
-                    BorderColor="Black"
+                    CornerRadius="15"
+                    Padding="0">
+                        <Button
+                        BackgroundColor="White"
+                        BorderColor="Black"
+                        
+                        WidthRequest="135"
+                        HeightRequest="135"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"                                   
+                        CornerRadius="15"></Button>
+
+                    </Frame>
+                    <Frame
                     Grid.Row="1"
                     Grid.Column="0"
+                    HasShadow="True"
                     WidthRequest="135"
                     HeightRequest="135"
-                    VerticalOptions="Center"
+                     VerticalOptions="Center"
                     HorizontalOptions="Center"
-                    android:Button.UseDefaultShadow="true"               
-                    CornerRadius="15"></Button>
+                    CornerRadius="15"
+                    Padding="0">
+                        <Button
+                        BackgroundColor="White"
+                        BorderColor="Black"
+                        
+                        WidthRequest="135"
+                        HeightRequest="135"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"                                   
+                        CornerRadius="15"></Button>
 
+                    </Frame>
+                    <Frame
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HasShadow="True"
+                    WidthRequest="135"
+                    HeightRequest="135"
+                     VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    CornerRadius="15"
+                    Padding="0">
+                        <Button
+                        BackgroundColor="White"
+                        BorderColor="Black"
+                        
+                        WidthRequest="135"
+                        HeightRequest="135"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"                                   
+                        CornerRadius="15"></Button>
 
-            </Grid>
-            
-            
-            
-            
-            
+                    </Frame>
+                </Grid>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
     
