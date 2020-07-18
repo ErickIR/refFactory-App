@@ -42,7 +42,6 @@
 
 ### ENTIDADES MUNICIPALES
 
-- `EntidadMunicipalByMunicipio/Municipio` --> Obtiene todas las entidades municipales del municipio seleccionado.
 
 - `EntidadesMunicipales/MunicipioId` --> Obtiene todos las entidades municipales del municipio.
 
