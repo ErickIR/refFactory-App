@@ -18,7 +18,8 @@ namespace CitizenApp.Views
         {
             InitializeComponent();
 
-            BindingContext = viewModel = new IncidenciasListViewModel();
+            BindingContext = viewModel = new IncidenciasListViewModel(Navigation);
+            
         }
 
         protected override void OnAppearing()
@@ -29,7 +30,6 @@ namespace CitizenApp.Views
                 viewModel.IsBusy = true;
             viewModel.LoadIncidenciasCommand.Execute(true);
         }
-
 
     }
 }

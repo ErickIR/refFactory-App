@@ -1,4 +1,5 @@
 ﻿using CitizenApp.Models;
+using CitizenApp.Views;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,18 +19,21 @@ namespace CitizenApp.ViewModels
         public Command SelectIncidenciaCommand { get; set; }
         public Command AddNewIncidenciaCommand { get; set; }
         public Command SearchIncidenciaCommand { get; set; }
-
+        public INavigation Navigation { get; set; }
         public string Search { get; set; }
 
-        public IncidenciasListViewModel()
+        public IncidenciasListViewModel(INavigation navigation)
         {
             Title = "Incidencias";
             Search = "";
             IncidenciasList = new ObservableCollection<Incidencia>();
+            Navigation = navigation;
 
             LoadIncidenciasCommand = new Command(async () => await ExecuteLoadIncidenciasCommand());
             SearchIncidenciaCommand = new Command(async () => await ExecuteSearchIncidenciasCommand());
+            AddNewIncidenciaCommand = new Command(async () => await Navigation.PushAsync(new NuevaIncidenciaPage()));
         }
+
 
         async Task ExecuteSearchIncidenciasCommand()
         {

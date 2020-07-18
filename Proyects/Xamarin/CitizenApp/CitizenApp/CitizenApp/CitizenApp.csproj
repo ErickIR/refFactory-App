@@ -16,13 +16,19 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Views\NuevaIncidenciaPage.xaml.cs">
+      <DependentUpon>NuevaIncidenciaPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
     <EmbeddedResource Update="Views\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\IncidenciasPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ListViewPage1.xaml">
+    <EmbeddedResource Update="Views\NuevaIncidenciaPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

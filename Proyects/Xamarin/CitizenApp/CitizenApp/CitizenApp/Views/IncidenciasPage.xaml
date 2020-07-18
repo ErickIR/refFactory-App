@@ -13,7 +13,8 @@
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add"
                  Order="Primary"
-                 Priority="1" />
+                 Priority="1" 
+                 Command="{Binding AddNewIncidenciaCommand}"/>
         <ToolbarItem IconImageSource="account_circle"
                  Order="Primary"
                  Priority="0" />
@@ -38,7 +39,7 @@
                 BorderColor="#C4C4C4"
                 CornerRadius="30"
                 BackgroundColor="#FFFFFF"
-                Padding="5">
+                Padding="20,5">
                 <Entry Placeholder="Buscar Incidencias..." ReturnType="Search" Text="{Binding Search}" ReturnCommand="{Binding SearchIncidenciaCommand}" />
             </Frame>
             <ScrollView>
