@@ -7,7 +7,6 @@
              mc:Ignorable="d"
              x:Class="CitizenApp.Views.HomePage"
              BackgroundColor="#D9E0E9"
-             BackgroundImageSource="MainPhoto"
              >
 
     <ContentPage.ToolbarItems>
@@ -27,10 +26,10 @@
    
     <ContentPage.Content>
         <StackLayout>
-            <!--<Image
+            <Image
                 Source="MainPhoto"
                 VerticalOptions="Start"
-                HorizontalOptions="CenterAndExpand"></Image>-->
+                HorizontalOptions="CenterAndExpand"></Image>
             <Grid
                 RowSpacing="10"
                 ColumnSpacing="-50">
