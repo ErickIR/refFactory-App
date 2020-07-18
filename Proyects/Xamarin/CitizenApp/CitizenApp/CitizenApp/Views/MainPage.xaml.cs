@@ -30,7 +30,7 @@ namespace CitizenApp.Views
                 switch (id)
                 {
                     case (int)MenuItemType.Inicio:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        MenuPages.Add(id, new NavigationPage(new HomePage()));
                         break;
                     case (int)MenuItemType.Incidencias:
                         MenuPages.Add(id, new NavigationPage(new IncidenciasPage()));

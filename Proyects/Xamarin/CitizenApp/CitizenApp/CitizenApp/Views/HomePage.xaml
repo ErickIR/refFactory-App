@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CitizenApp.Views.HomePage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+                 IconImageSource="account_circle"
+                 Order="Primary"
+                 Priority="0" />
+    </ContentPage.ToolbarItems>
+
+    <NavigationPage.TitleView>
+            <Image Source="Logo_Coopera"                   
+                   HeightRequest="55"
+               VerticalOptions="Start"
+               HorizontalOptions="Center" />
+    </NavigationPage.TitleView>
+
+   
+    <ContentPage.Content>
+        <StackLayout>
+            <Label Text="Welcome to Xamarin.Forms!"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
+    
