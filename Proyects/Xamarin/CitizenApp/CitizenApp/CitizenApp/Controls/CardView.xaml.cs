@@ -16,5 +16,14 @@ namespace CitizenApp.Controls
         {
             InitializeComponent();
         }
+
+        public string Title
+        {
+            get { return (string)GetValue(TitleProperty); }
+            set { SetValue(TitleProperty, value); }
+        }
+
+        public static readonly BindableProperty TitleProperty =
+            BindableProperty.Create(nameof(Title), typeof(string), typeof(CardView));
     }
 }

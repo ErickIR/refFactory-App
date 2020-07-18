@@ -8,13 +8,12 @@
              mc:Ignorable="d"
              x:Class="CitizenApp.Views.IncidenciasPage"
              Title="{Binding Title}"
-             BackgroundColor="#D9E0E9"
-             >
+             BackgroundColor="#D9E0E9">
 
     <ContentPage.ToolbarItems>
-        <d:ToolbarItem IconImageSource="" 
-                       Text="User"
-                       Command="{Binding AddNewIncidenciaCommand}" />
+        <ToolbarItem Text="Add"
+                 Order="Primary"
+                 Priority="1" />
         <ToolbarItem IconImageSource="account_circle"
                  Order="Primary"
                  Priority="0" />
@@ -34,7 +33,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Frame 
-                Margin="8"
+                Margin="8,8,8,0"
                 HeightRequest="40"
                 BorderColor="#C4C4C4"
                 CornerRadius="30"
@@ -55,12 +54,19 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <controls:CardView />
+                                <controls:CardView Title="{Binding Titulo}"/>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
             </ScrollView>
+            <!--<Button
+                WidthRequest="80"
+                HeightRequest="80"
+                CornerRadius="40"
+                VerticalOptions="Center"
+                HorizontalOptions="EndAndExpand"
+                BackgroundColor="#253256" />-->
         </StackLayout>
     </ContentPage.Content>
     
