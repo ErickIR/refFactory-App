@@ -40,16 +40,16 @@ namespace CitizenApp.Models
             {
                 new HomeMenuGroup("Principal")
                 {
-                    new HomeMenuItem {Id = MenuItemType.Inicio, Title="Inicio" },
-                    new HomeMenuItem {Id = MenuItemType.Incidencias, Title="Incidencias" },
-                    new HomeMenuItem {Id = MenuItemType.JuntasDeVecinos, Title="Juntas de Vecinos" },
-                    new HomeMenuItem {Id = MenuItemType.EntidadesMunicipales, Title="Entidades Municipales" },
-                    new HomeMenuItem {Id = MenuItemType.NormativasMunicipales, Title="Normativas Municipales" }
+                    new HomeMenuItem {Id = MenuItemType.Inicio, Title="Inicio", Icon = "Inicio" },
+                    new HomeMenuItem {Id = MenuItemType.Incidencias, Title="Incidencias", Icon = "Incidencias" },
+                    new HomeMenuItem {Id = MenuItemType.JuntasDeVecinos, Title="Juntas de Vecinos", Icon = "Juntas_de_Vecinos" },
+                    new HomeMenuItem {Id = MenuItemType.EntidadesMunicipales, Title="Entidades Municipales", Icon = "Entidades_Municipales"  },
+                    new HomeMenuItem {Id = MenuItemType.NormativasMunicipales, Title="Normativas Municipales", Icon = "Normativas_Municipales"  }
                 },
                 new HomeMenuGroup("Usuario")
                 {
-                    new HomeMenuItem {Id = MenuItemType.Informacion, Title="Informacion" },
-                    new HomeMenuItem {Id = MenuItemType.CerrarSesion, Title="Cerrar Sesion" }
+                    new HomeMenuItem {Id = MenuItemType.Informacion, Title="Informacion", Icon = "Informacion" },
+                    new HomeMenuItem {Id = MenuItemType.CerrarSesion, Title="Cerrar Sesion", Icon = "Cerrar_Sesion" }
                 }
             };
 

@@ -9,7 +9,7 @@
              BackgroundColor="#D9E0E9"
              BackgroundImageSource="BackGroundMain"
              >
-
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem 
                  IconImageSource="account_circle"
@@ -120,7 +120,8 @@
                     HorizontalOptions="Center"
                     CornerRadius="15"
                     Padding="0">
-                        <Button
+                        <ImageButton></ImageButton>
+                        <!--<Button
                         BackgroundColor="White"
                         BorderColor="Black"
                         
@@ -128,7 +129,7 @@
                         HeightRequest="135"
                         VerticalOptions="Center"
                         HorizontalOptions="Center"                                   
-                        CornerRadius="15"></Button>
+                        CornerRadius="15"></Button>-->
 
                     </Frame>
                 </Grid>
