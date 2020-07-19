@@ -21,6 +21,19 @@
                 <ListView x:Name="ListViewMenu" IsGroupingEnabled="True"                          
                     GroupDisplayBinding="{Binding GroupName}" SeparatorVisibility="Default"
                     HasUnevenRows="True">
+                    <ListView.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label
+                                   Margin="10"
+                                   Text="{Binding GroupName}"
+                                   TextColor="Black"
+                                   VerticalOptions="StartAndExpand"
+                                   FontFamily="{StaticResource NormalFont}" 
+                                   FontSize="Large"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.GroupHeaderTemplate>
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>

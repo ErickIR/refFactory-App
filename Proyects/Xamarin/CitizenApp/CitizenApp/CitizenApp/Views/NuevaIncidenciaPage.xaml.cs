@@ -18,9 +18,16 @@ namespace CitizenApp.Views
         NuevaIncidenciaViewModel viewModel;
         public NuevaIncidenciaPage()
         {
-            InitializeComponent();
-
             BindingContext = viewModel = new NuevaIncidenciaViewModel();
+            InitializeComponent();
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            if (viewModel.TiposDeIncidencia.Count == 0)
+                viewModel.IsBusy = true;
+            viewModel.LoadTiposDeIncidenciaCommand.Execute(true);
         }
     }
 }

@@ -27,7 +27,7 @@
                HorizontalOptions="Center"
                TextColor="White" 
                FontAttributes="Bold"
-               FontFamily="Josefin Sans" />
+               FontFamily="{StaticResource BoldFont}" />
     </NavigationPage.TitleView>
 
 
@@ -41,7 +41,7 @@
                 CornerRadius="30"
                 BackgroundColor="#FFFFFF"
                 Padding="20,5">
-                <Entry Placeholder="Buscar Incidencias..." ReturnType="Search" Text="{Binding Search}" ReturnCommand="{Binding SearchIncidenciaCommand}" />
+                <Entry Placeholder="Buscar Incidencias..." FontFamily="{StaticResource NormalFont}" ReturnType="Search" Text="{Binding Search}" ReturnCommand="{Binding SearchIncidenciaCommand}" />
             </Frame>
             <ScrollView>
                 <ListView 
@@ -56,7 +56,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <controls:CardView Title="{Binding Titulo}"/>
+                                <controls:CardView />
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
