@@ -8,11 +8,11 @@ namespace CitizenApp
 {
     public partial class App : Application
     {
-
+        public static App Instance;
         public App()
         {
             InitializeComponent();
-
+            Instance = this;
             MainPage = new MainPage();
         }
 
