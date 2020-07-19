@@ -24,41 +24,7 @@ namespace CitizenApp.Views
         {
             BindingContext = viewModel = new NuevaIncidenciaViewModel();
             InitializeComponent();
-            Device.BeginInvokeOnMainThread(async () => await AskForPermissions());
         }
-
-        private async Task<bool> AskForPermissions()
-        {
-            try
-            {
-                await CrossMedia.Current.Initialize();
-
-                var storagePermissions = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Storage);
-                var photoPermissions = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Photos);
-                if (storagePermissions != PermissionStatus.Granted || photoPermissions != PermissionStatus.Granted)
-                {
-                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Storage, Permission.Photos });
-                    storagePermissions = results[Permission.Storage];
-                    photoPermissions = results[Permission.Photos];
-                }
-
-                if (storagePermissions != PermissionStatus.Granted || photoPermissions != PermissionStatus.Granted)
-                {
-                    await DisplayAlert("Permissions Denied!", "Please go to your app settings and enable picture permissions.", "Ok");
-                    return false;
-                }
-                else
-                {
-                    return true;
-                }
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine("error. permissions not set. here is the stacktrace: \n" + ex.StackTrace);
-                return false;
-            }
-        }
-
 
         protected override void OnAppearing()
         {
@@ -68,12 +34,5 @@ namespace CitizenApp.Views
             viewModel.LoadTiposDeIncidenciaCommand.Execute(true);
         }
 
-        protected override void OnDisappearing()
-        {
-            base.OnDisappearing();
-            MessagingCenter.Unsubscribe<App, List<string>>((App)Xamarin.Forms.Application.Current, "ImagesSelectedAndroid");
-            //MessagingCenter.Unsubscribe<App, List<string>>((App)Xamarin.Forms.Application.Current, "ImagesSelectediOS");
-            GC.Collect();
-        }
     }
 }

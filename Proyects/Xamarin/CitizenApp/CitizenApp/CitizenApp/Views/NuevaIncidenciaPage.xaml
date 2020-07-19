@@ -36,11 +36,7 @@
                     <Picker Title="Seleccione un tipo..." ItemsSource="{Binding TiposDeIncidencia}" SelectedItem="{Binding TipoIncidenciaSelected}" 
                             FontFamily="{StaticResource NormalFont}" ItemDisplayBinding="{Binding Descripcion}" />
                     <StackLayout Orientation="Horizontal">
-                        <Label Text="Adjuntar imagenes..."
-                            FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="StartAndExpand" />
-                        <ImageButton Source="Add.png" BackgroundColor="#253256" 
-                            Command="{Binding SelectImagesCommand}" HeightRequest="60" WidthRequest="60" Margin="0,0,0,0" Padding="0"
-                            HorizontalOptions="End" CornerRadius="30"/>
+                        
                         <ImageButton Source="Register.png" BackgroundColor="#253256" 
                             Command="{Binding TakePictureCommand}" HeightRequest="60" WidthRequest="60" Margin="0,0,0,0" Padding="0"
                             HorizontalOptions="End" CornerRadius="30"/>

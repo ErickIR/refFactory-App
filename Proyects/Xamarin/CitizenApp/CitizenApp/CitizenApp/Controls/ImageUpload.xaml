@@ -9,41 +9,23 @@
              mc:Ignorable="d"
              x:Class="CitizenApp.Controls.ImageUpload">
 
-    <ContentView.Resources>
-        <ResourceDictionary>
-            <Style x:Key="CarouselViewStyle" TargetType="CV:CarouselViewControl">
-                <Setter Property="ShowIndicators" Value="True" />
-                <Setter Property="VerticalOptions" Value="FillAndExpand" />
-                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
-                <Setter Property="AnimateTransition" Value="False" />
-            </Style>
-        </ResourceDictionary>
-
-        <OnPlatform x:Key="cacheType" x:TypeArguments="FFImageCache:CacheType"
-                    Android="Memory"/>
-        <OnPlatform x:Key="downsampleWidth" x:TypeArguments="x:Double"
-                    Android="896"/>
-        <OnPlatform x:Key="imageHeight" x:TypeArguments="x:Double"
-                        Android="325"/>
-        <Style x:Key="CarouselViewPictureStyle" TargetType="FFImage:CachedImage">
-            <Setter Property="Source" Value="{Binding .}" />
-            <Setter Property="IsOpaque" Value="True" />
-            <Setter Property="InputTransparent" Value="False" />
-            <Setter Property="CacheType" Value="{StaticResource cacheType}" />
-            <Setter Property="Aspect" Value="AspectFill" />
-            <Setter Property="DownsampleWidth" Value="{StaticResource downsampleWidth}" />
-        </Style>
-    </ContentView.Resources>
 
     
 
     <ContentView.Content>
-        <CV:CarouselViewControl ItemsSource="{Binding Images}" Style="{StaticResource CarouselViewStyle}" HeightRequest="{StaticResource imageHeight}">
-            <CV:CarouselViewControl.ItemTemplate>
-                <DataTemplate>
-                    <FFImage:CachedImage Style="{StaticResource CarouselViewPictureStyle}"/>
-                </DataTemplate>
-            </CV:CarouselViewControl.ItemTemplate>
-        </CV:CarouselViewControl>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Adjuntar imagenes..."
+                           FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="StartAndExpand" />
+                    <ImageButton Source="Add.png" BackgroundColor="#253256" 
+                         Command="{Binding SelectImagesCommand}" HeightRequest="60" WidthRequest="60" Margin="0,0,0,0" Padding="0"
+                         HorizontalOptions="End" CornerRadius="30"/>
+                </StackLayout>
+                <Image>
+            
+                </Image>
+            </StackLayout>
+        </ScrollView>
     </ContentView.Content>
 </ContentView>
