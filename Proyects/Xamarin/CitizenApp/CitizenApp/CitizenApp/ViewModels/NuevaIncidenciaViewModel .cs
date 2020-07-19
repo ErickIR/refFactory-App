@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -13,7 +14,7 @@ namespace CitizenApp.ViewModels
         public Incidencia Incidencia { get; set; }
         public TipoIncidencia TipoIncidenciaSelected { get; set; }
 
-        public List<TipoIncidencia> TiposDeIncidencia { get; set; }
+        public ObservableCollection<TipoIncidencia> TiposDeIncidencia { get; set; }
 
         public ICommand SaveIncidenciaCommand { get; set; }
         public ICommand LoadTiposDeIncidenciaCommand { get; set; }
@@ -38,7 +39,7 @@ namespace CitizenApp.ViewModels
             Title = "Registrar Incidencia";
 
             Incidencia = new Incidencia();
-            TiposDeIncidencia = new List<TipoIncidencia>();
+            TiposDeIncidencia = new ObservableCollection<TipoIncidencia>();
             LoadTiposDeIncidenciaCommand = new Command(async () => await ExecuteLoadTiposDeIncidenciCommand());
         }
 

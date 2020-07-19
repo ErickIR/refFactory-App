@@ -32,8 +32,8 @@
                     <Label Text="Titulo de Incidencia" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
                     <Entry Text="{Binding Incidencia.Titulo}" FontSize="16" FontFamily="{StaticResource NormalFont}"/>
                     <Label Text="Tipo de Incidencia" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
-                    <Picker Title="Seleccione un tipo..." ItemsSource="{Binding TiposDeIncidencia}" FontFamily="{StaticResource NormalFont}"
-                            SelectedItem="{Binding TipoIncidenciaSelected}" ItemDisplayBinding="{Binding Descripcion}" />
+                    <Picker Title="Seleccione un tipo..." ItemsSource="{Binding TiposDeIncidencia}" SelectedItem="{Binding TipoIncidenciaSelected}" 
+                            FontFamily="{StaticResource NormalFont}" ItemDisplayBinding="{Binding Descripcion}" />
                     <Label Text="Descripcion" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
                     <Frame
                         BackgroundColor="White"

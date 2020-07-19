@@ -13,7 +13,7 @@ namespace CitizenApp
         {
             InitializeComponent();
 
-            MainPage = new MainLoginPage();
+            MainPage = new MainPage();
         }
 
         protected override void OnStart()
