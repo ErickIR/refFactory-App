@@ -41,7 +41,9 @@
                         HeightRequest="120"
                         CornerRadius="30"
                         Padding="20">
-                        <Editor Text="{Binding Incidencia.Descripcion}" FontFamily="{StaticResource NormalFont}"  FontSize="16" BackgroundColor="Transparent" HeightRequest="90" />
+                        <Editor 
+                            Text="{Binding Incidencia.Descripcion}" FontFamily="{StaticResource NormalFont}"  
+                            FontSize="16" BackgroundColor="Transparent" HeightRequest="90" />
                     </Frame>
                 </StackLayout>
                 
