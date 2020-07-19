@@ -22,14 +22,14 @@
                 <StackLayout HorizontalOptions="FillAndExpand">
                     <Label Text="{Binding Titulo}"
                        FontSize="16"
-                       FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+                       FontFamily="{StaticResource BoldFont}" HorizontalOptions="CenterAndExpand"/>
                     <BoxView Color="Gray"
                          HeightRequest="2"
                          HorizontalOptions="Fill"/>
-                    <Label Text="{Binding BarrioId}" FontSize="14" HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="{Binding BarrioId}" FontSize="14" FontFamily="{StaticResource NormalFont}" HorizontalOptions="CenterAndExpand"/>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="{Binding UsuarioId}" FontSize="14" HorizontalOptions="StartAndExpand"/>
-                        <Label Text="## han apoyado esto." FontSize="14" FontAttributes="Bold" HorizontalOptions="End"/>
+                        <Label Text="{Binding UsuarioId}" FontFamily="{StaticResource NormalFont}" FontSize="14" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="## han apoyado esto." FontSize="14" FontFamily="{StaticResource BoldFont}" HorizontalOptions="End"/>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

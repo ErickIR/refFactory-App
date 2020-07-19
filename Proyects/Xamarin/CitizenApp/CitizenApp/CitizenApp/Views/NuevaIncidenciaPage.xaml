@@ -4,16 +4,47 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="CitizenApp.Views.NuevaIncidenciaPage">
+             x:Class="CitizenApp.Views.NuevaIncidenciaPage"
+             BackgroundColor="#d9e0e9">
 
+    <NavigationPage.TitleView>
+        <Image Source="Logo_Coopera"                   
+                HeightRequest="55"
+                VerticalOptions="Start"
+                HorizontalOptions="Center" />
+    </NavigationPage.TitleView>
+    
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Save" Command="{Binding SaveIncidenciaCommand}" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <ScrollView>
-            <Frame>
-                <Label Text="Esta es la pagina de crear una nueva Incidenia." />
+            <Frame
+                Margin="10, 10, 10, 10"
+                WidthRequest="{Binding PageWidth}"
+                HeightRequest="{Binding PageHeight}"
+                BackgroundColor="White"
+                BorderColor="#c4c4c4"
+                CornerRadius="30">
+                <StackLayout Orientation="Vertical" Margin="10">
+                    <Label Text="Registro de Incidencia" FontSize="25" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Center" />
+                    <Label Text="Titulo de Incidencia" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
+                    <Entry Text="{Binding Incidencia.Titulo}" FontSize="16" FontFamily="{StaticResource NormalFont}"/>
+                    <Label Text="Tipo de Incidencia" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
+                    <Picker Title="Seleccione un tipo..." ItemsSource="{Binding TiposDeIncidencia}" FontFamily="{StaticResource NormalFont}"
+                            SelectedItem="{Binding TipoIncidenciaSelected}" ItemDisplayBinding="{Binding Descripcion}" />
+                    <Label Text="Descripcion" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
+                    <Frame
+                        BackgroundColor="White"
+                        BorderColor="#c4c4c4"
+                        HeightRequest="120"
+                        CornerRadius="30"
+                        Padding="20">
+                        <Editor Text="{Binding Incidencia.Descripcion}" FontFamily="{StaticResource NormalFont}"  FontSize="16" BackgroundColor="Transparent" HeightRequest="90" />
+                    </Frame>
+                </StackLayout>
+                
             </Frame>
         </ScrollView>
     </ContentPage.Content>

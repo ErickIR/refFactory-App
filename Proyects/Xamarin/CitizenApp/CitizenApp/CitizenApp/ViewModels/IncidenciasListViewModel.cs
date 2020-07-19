@@ -19,6 +19,7 @@ namespace CitizenApp.ViewModels
         public Command SelectIncidenciaCommand { get; set; }
         public Command AddNewIncidenciaCommand { get; set; }
         public Command SearchIncidenciaCommand { get; set; }
+
         public INavigation Navigation { get; set; }
         public string Search { get; set; }
 
