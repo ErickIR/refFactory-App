@@ -2,6 +2,10 @@
 <resources>
 
   <style name="MainTheme" parent="MainTheme.Base">
+    <item name="android:colorPressedHighlight">@color/colorAccent</item>
+    <item name="android:colorLongPressedHighlight">@color/colorAccent</item>
+    <item name="android:colorFocusedHighlight">@color/colorAccent</item>
+    <item name="android:colorActivatedHighlight">@color/colorAccent</item>
   </style>
   <!-- Base theme applied no matter what API -->
   <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
@@ -16,7 +20,7 @@
     <item name="colorPrimaryDark">#344061</item>
     <!-- colorAccent is used as the default value for colorControlActivated
          which is used to tint widgets -->
-    <item name="colorAccent">#FF4081</item>
+    <item name="colorAccent">#344061</item>
     <!-- You can also set colorControlNormal, colorControlActivated
          colorControlHighlight and colorSwitchThumbNormal. -->
     <item name="windowActionModeOverlay">true</item>
@@ -25,7 +29,7 @@
   </style>
 
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
-    <item name="colorAccent">#FF4081</item>
+    <item name="colorAccent">#344061</item>
   </style>
   
 </resources>
