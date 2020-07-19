@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CitizenApp.Models
+namespace CitizenApp.Common
 {
     public enum MenuItemType
     {

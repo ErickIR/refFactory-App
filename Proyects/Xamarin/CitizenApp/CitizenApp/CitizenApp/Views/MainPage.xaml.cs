@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-using CitizenApp.Models;
+using CitizenApp.Common;
 
 namespace CitizenApp.Views
 {
