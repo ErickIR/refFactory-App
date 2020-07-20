@@ -1,21 +1,11 @@
-﻿using System;
-
+﻿
 using Android.App;
 using Android.Content.PM;
 using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
-using Android.Content;
-using System.Collections.Generic;
-using Android.Net;
-using Xamarin.Forms;
-using Android.Database;
-using Android.Provider;
-using System.IO;
-using Plugin.CurrentActivity;
 using Plugin.Media;
 using Plugin.Permissions;
+using Plugin.CurrentActivity;
 
 namespace CitizenApp.Droid
 {
