@@ -35,15 +35,18 @@
                     <Label Text="Tipo de Incidencia" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
                     <Picker Title="Seleccione un tipo..." ItemsSource="{Binding TiposDeIncidencia}" SelectedItem="{Binding TipoIncidenciaSelected}" 
                             FontFamily="{StaticResource NormalFont}" ItemDisplayBinding="{Binding Descripcion}" />
-                    <StackLayout Orientation="Horizontal">
-                        
-                        <ImageButton Source="Register.png" BackgroundColor="#253256" 
-                            Command="{Binding TakePictureCommand}" HeightRequest="60" WidthRequest="60" Margin="0,0,0,0" Padding="0"
-                            HorizontalOptions="End" CornerRadius="30"/>
+                    
+                    <StackLayout>
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="Adjuntar imagenes..."
+                                    FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="StartAndExpand" />
+                            <Button Text="+" BackgroundColor="#253256" FontSize="20" TextColor="White" FontFamily="{StaticResource BoldFont}"
+                                        Command="{Binding TakePictureCommand}" HeightRequest="50" WidthRequest="50" Margin="0,0,0,0" Padding="0"
+                                        HorizontalOptions="End" CornerRadius="20"/>
+                        </StackLayout>
+                        <Entry Text="{Binding ImageFile.Nombre, Mode=TwoWay}" FontSize="16" FontFamily="{StaticResource NormalFont}" IsEnabled="False"/>
                     </StackLayout>
-                    <Frame>
-                        <controls:ImageUpload />
-                    </Frame>
+                    
                     <Label Text="Descripcion" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
                     <Frame
                         BackgroundColor="White"

@@ -34,5 +34,6 @@ namespace CitizenApp.Views
             viewModel.LoadTiposDeIncidenciaCommand.Execute(true);
         }
 
+
     }
 }
