@@ -1,5 +1,4 @@
-﻿using CitizenApp.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,13 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace CitizenApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegisterSecondPage : ContentPage
+    public partial class RegisterThirdPage : ContentPage
     {
-        RegisterSecondViewModel viewModel;
-        public RegisterSecondPage()
+        public RegisterThirdPage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new RegisterSecondViewModel();
         }
     }
 }

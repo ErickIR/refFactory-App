@@ -45,7 +45,7 @@
                         WidthRequest="250"
                         HeightRequest="50"
                         CornerRadius="25"
-                
+                        Command="{Binding LoginCommand}"
                         FontSize="23"
                         FontAttributes="Bold"
                         FontFamily="{StaticResource BoldFont}"

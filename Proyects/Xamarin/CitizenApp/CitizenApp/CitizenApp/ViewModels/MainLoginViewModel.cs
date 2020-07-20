@@ -11,14 +11,21 @@ namespace CitizenApp.ViewModels
     {
         public Command InvitadoCommand { get; set; }
         public Command RegisterCommand { get; set; }
-        
+
+        public Command LoginCommand { get; set; }
+
 
 
         public MainLoginViewModel()
         {
-            
+            LoginCommand = new Command(() => ExecuteLoginCommand());
             InvitadoCommand = new Command(() => ExecuteInvitadoCommand());
             RegisterCommand = new Command(() => ExecuteRegisterCommand());
+        }
+
+        async void ExecuteLoginCommand()
+        {
+            await Application.Current.MainPage.Navigation.PushModalAsync(new LoginPage());
         }
 
         async void ExecuteRegisterCommand()
