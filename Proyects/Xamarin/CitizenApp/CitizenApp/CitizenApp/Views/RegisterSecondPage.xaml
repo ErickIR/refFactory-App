@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CitizenApp.Views.RegisterSecondPage"
+             BackgroundImageSource="MainBackGround">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                Padding="40">
+                <Frame
+                    BackgroundColor="#253256"
+                    CornerRadius="30"
+                    WidthRequest="303"
+                    Opacity="0.75"
+                    VerticalOptions="Start">
+                    <Label
+                        FontFamily="{StaticResource BoldFont}"
+                        Text="Confirme su lugar de residencia:"
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        HorizontalOptions="Center"
+                        TextColor="White"
+                        FontSize="30"/>
+                </Frame>
+                <Frame               
+                    BackgroundColor="#253256"
+                    CornerRadius="30"
+                    WidthRequest="303"
+                    Margin="0,20,0,0"
+                    Opacity="0.75"
+                    VerticalOptions="Center">
+                    <StackLayout
+                        HorizontalOptions="Center">
+                        <Label
+                            FontFamily="{StaticResource BoldFont}"
+                            Text="Cedula:"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="20"></Label>
+
+                        <Label
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Margin="0,5,0,0"
+                            FontFamily="{StaticResource BoldFont}"
+                            Text="Nombres:"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="20"></Label>
+                        <Label
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Margin="0,0,0,0"
+                            FontFamily="{StaticResource NormalFont}"
+                            Text="Fernando Enmanuel"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="20"></Label>
+                        <Label
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Margin="0,10,0,0"
+                            FontFamily="{StaticResource BoldFont}"
+                            Text="Apellidos:"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="20"></Label>
+                        <Label
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Margin="0,0,0,0"
+                            FontFamily="{StaticResource NormalFont}"
+                            Text="Hernandez Perez"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="20"></Label>
+                        <Label
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Margin="0,5,0,0"
+                            FontFamily="{StaticResource BoldFont}"
+                            Text="Fecha de Nacimiento:"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="20"></Label>
+                        <Label
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Margin="0,0,0,0"
+                            FontFamily="{StaticResource NormalFont}"
+                            Text="12 de Diciembre de 1998"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="20"></Label>
+
+
+                    </StackLayout>
+                </Frame>
+                <Button
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    WidthRequest="250"
+                    HeightRequest="50"
+                    CornerRadius="25"
+                    Command="{Binding ContinuarCommand}"
+                    FontSize="23"
+                    FontAttributes="Bold"
+                    FontFamily="{StaticResource BoldFont}"
+                    Text="Continuar" ContentLayout="Right,0" Image="ContinueRegister"  
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Margin="0,20,0,0"
+                    />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

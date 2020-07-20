@@ -1,5 +1,4 @@
-﻿using CitizenApp.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,14 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace CitizenApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainLoginPage : ContentPage
+    public partial class RegisterSecondPage : ContentPage
     {
-        MainLoginViewModel viewModel;
-        public MainLoginPage()
+        public RegisterSecondPage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new MainLoginViewModel();
-
         }
     }
 }
