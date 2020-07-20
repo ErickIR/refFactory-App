@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using CitizenApp.Models;
+using CitizenApp.Services.Interfaces;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using Xamarin.Forms;
 
 namespace CitizenApp.ViewModels
@@ -15,9 +18,11 @@ namespace CitizenApp.ViewModels
         public TipoIncidencia TipoIncidenciaSelected { get; set; }
 
         public ObservableCollection<TipoIncidencia> TiposDeIncidencia { get; set; }
-
+       
         public ICommand SaveIncidenciaCommand { get; set; }
         public ICommand LoadTiposDeIncidenciaCommand { get; set; }
+        public ICommand TakePictureCommand { get; set; }
+
         public double PageWidth
         {
             get
@@ -40,8 +45,11 @@ namespace CitizenApp.ViewModels
 
             Incidencia = new Incidencia();
             TiposDeIncidencia = new ObservableCollection<TipoIncidencia>();
+            
             LoadTiposDeIncidenciaCommand = new Command(async () => await ExecuteLoadTiposDeIncidenciCommand());
+            
         }
+
 
         private async Task ExecuteLoadTiposDeIncidenciCommand()
         {

@@ -9,6 +9,10 @@ using Xamarin.Forms.Xaml;
 
 using CitizenApp.Models;
 using CitizenApp.ViewModels;
+using Plugin.Media;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
+using CitizenApp.Services.Interfaces;
 
 namespace CitizenApp.Views
 {
@@ -29,5 +33,6 @@ namespace CitizenApp.Views
                 viewModel.IsBusy = true;
             viewModel.LoadTiposDeIncidenciaCommand.Execute(true);
         }
+
     }
 }

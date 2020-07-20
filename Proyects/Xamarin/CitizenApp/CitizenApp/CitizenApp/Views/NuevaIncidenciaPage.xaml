@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:CitizenApp.Controls"
              mc:Ignorable="d"
              x:Class="CitizenApp.Views.NuevaIncidenciaPage"
              BackgroundColor="#d9e0e9">
@@ -15,7 +16,7 @@
     </NavigationPage.TitleView>
     
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Save" Command="{Binding SaveIncidenciaCommand}" />
+        <ToolbarItem Text="Guardar" Command="{Binding SaveIncidenciaCommand}" />
     </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
@@ -34,6 +35,15 @@
                     <Label Text="Tipo de Incidencia" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
                     <Picker Title="Seleccione un tipo..." ItemsSource="{Binding TiposDeIncidencia}" SelectedItem="{Binding TipoIncidenciaSelected}" 
                             FontFamily="{StaticResource NormalFont}" ItemDisplayBinding="{Binding Descripcion}" />
+                    <StackLayout Orientation="Horizontal">
+                        
+                        <ImageButton Source="Register.png" BackgroundColor="#253256" 
+                            Command="{Binding TakePictureCommand}" HeightRequest="60" WidthRequest="60" Margin="0,0,0,0" Padding="0"
+                            HorizontalOptions="End" CornerRadius="30"/>
+                    </StackLayout>
+                    <Frame>
+                        <controls:ImageUpload />
+                    </Frame>
                     <Label Text="Descripcion" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
                     <Frame
                         BackgroundColor="White"
@@ -41,6 +51,7 @@
                         HeightRequest="120"
                         CornerRadius="30"
                         Padding="20">
+                        
                         <Editor 
                             Text="{Binding Incidencia.Descripcion}" FontFamily="{StaticResource NormalFont}"  
                             FontSize="16" BackgroundColor="Transparent" HeightRequest="90" />
