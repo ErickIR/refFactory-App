@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CitizenApp.ViewModels"
+             xmlns:controls="clr-namespace:CitizenApp.Controls"
+             mc:Ignorable="d"
+             x:Class="CitizenApp.Views.IncidenciasPage"
+             Title="{Binding Title}"
+             BackgroundColor="#D9E0E9">
+
+    <ContentPage.ToolbarItems>
+        <!--<ToolbarItem Text="Add"
+                 Order="Primary"
+                 Priority="1" 
+                 Command="{Binding AddNewIncidenciaCommand}"/>-->
+        <ToolbarItem IconImageSource="account_circle"
+                 Order="Primary"
+                 Priority="0" />
+    </ContentPage.ToolbarItems>
+
+    <NavigationPage.TitleView>
+        <Label Text="{Binding Title}"
+               FontSize="30"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"
+               TextColor="White" 
+               FontAttributes="Bold"
+               FontFamily="{StaticResource BoldFont}" />
+    </NavigationPage.TitleView>
+
+
+    <ContentPage.Content>
+        <AbsoluteLayout>
+        <StackLayout>
+            <Frame 
+                Margin="8,8,8,0"
+                HeightRequest="40"
+                BorderColor="#C4C4C4"
+                CornerRadius="30"
+                BackgroundColor="#FFFFFF"
+                Padding="20,5">
+                <Entry Placeholder="Buscar Incidencias..." FontFamily="{StaticResource NormalFont}" ReturnType="Search" Text="{Binding Search}" ReturnCommand="{Binding SearchIncidenciaCommand}" />
+            </Frame>
+            <ScrollView>
+                <ListView 
+                    HasUnevenRows="True"
+                    SeparatorVisibility="Default"
+                    ItemsSource="{Binding IncidenciasList}">
+                    <ListView.RowHeight>
+                        <OnPlatform x:TypeArguments="x:Int32">
+                            <On Platform="Android" Value="120" />
+                        </OnPlatform>
+                    </ListView.RowHeight>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <controls:CardView />
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </ScrollView>
+            <!--<Button
+                WidthRequest="80"
+                HeightRequest="80"
+                CornerRadius="40"
+                VerticalOptions="Center"
+                HorizontalOptions="EndAndExpand"
+                BackgroundColor="#253256" />-->
+        </StackLayout>
+            <Frame
+                HasShadow="True"
+                AbsoluteLayout.LayoutBounds="0.95,0.95,60,60"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                BackgroundColor="#253256"
+                CornerRadius="30"
+                Padding="0"
+                HeightRequest="60"
+                BorderColor="#253256"
+                WidthRequest="560">
+            <ImageButton
+                Command="{Binding AddNewIncidenciaCommand}"
+                BackgroundColor="#253256"
+                Source="Add.png"
+             />
+            </Frame>
+        </AbsoluteLayout>
+    </ContentPage.Content>
+    
+</ContentPage>

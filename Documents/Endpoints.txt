@@ -1,0 +1,19 @@
+METODOS GET
+
+Incidencias/BarrioId --> Obtiene todas las incidencias en el barrio seleccionado
+Incidencias/IncidenciaId --> Obtiene el registro de incidencia con el Id Seleccionado.
+Incidencias/BarrioId&StatusIncidenciaId --> Obtiene todas las incidencias de ese barrio con el estado seleccionado.
+Incidencias/BarrioId&TipoIncidenciaId --> Obtiene todas las incidencias de ese barrio con el tipo seleccionado.
+Incidencias/UserId --> Obtiene las incidencias registradas por el usuario seleccionado.
+Archivos/IncidenciaId --> Obtiene todos los archivos de la incidencia seleccionada.
+IncidenciaUsuario/IncidenciaId --> Obtiene todas las interacciones de apoyo de esa incidencia.
+TiposIncidencia/ --> Obtiene todos los tipos de incidencias.
+StatusIncidencia/ --> Obtiene todos los status de las incidencias.
+JuntaDeVecinoByBarrio/BarrioId --> Obtiene la junta de vecinos registrada en ese barrio y sus integrantes.
+ArchivosByTipo/TipoArchivoId --> Obtiene todos los archivos de ese tipo
+EntidadMunicipalByMunicipio/Municipio --> Obtiene todas las entidades municipales del municipio seleccionado.
+
+METODOS POST
+
+Login/
+Registrarse/

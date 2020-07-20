@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CitizenApp.Views.HomePage"
+             BackgroundColor="#D9E0E9"
+             BackgroundImageSource="BackGroundMain"
+             >
+    
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+                 IconImageSource="account_circle"
+                 Order="Primary"
+                 Priority="0" />
+    </ContentPage.ToolbarItems>
+
+    <!--<NavigationPage.TitleView>
+            <Image Source="Logo_Coopera"                   
+                   HeightRequest="55"
+               VerticalOptions="Start"
+               HorizontalOptions="Center" />
+    </NavigationPage.TitleView>-->
+
+   
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout
+            VerticalOptions="Center"
+            Padding="0,150,0,0">
+                
+            
+            <Grid
+                
+                RowSpacing="40"
+                ColumnSpacing="-50">
+                <Grid.RowDefinitions>
+                    <RowDefinition
+                        Height="*">
+                    </RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition
+                        Width="*">
+                    </ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                    <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    HasShadow="True"
+                    WidthRequest="135"
+                    HeightRequest="135"
+                     VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    CornerRadius="15"
+                    Padding="0">
+                        <Button
+                        BackgroundColor="White"
+                        BorderColor="Black"
+                        
+                        WidthRequest="135"
+                        HeightRequest="135"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"                                   
+                        CornerRadius="15"></Button>
+
+                    </Frame>
+                    <Frame
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    HasShadow="True"
+                    WidthRequest="135"
+                    HeightRequest="135"
+                     VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    CornerRadius="15"
+                    Padding="0">
+                        <Button
+                        BackgroundColor="White"
+                        BorderColor="Black"
+                        
+                        WidthRequest="135"
+                        HeightRequest="135"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"                                   
+                        CornerRadius="15"></Button>
+
+                    </Frame>
+                    <Frame
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    HasShadow="True"
+                    WidthRequest="135"
+                    HeightRequest="135"
+                     VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    CornerRadius="15"
+                    Padding="0">
+                        <ImageButton></ImageButton>
+                        <!--<Button
+                        BackgroundColor="White"
+                        BorderColor="Black"
+                        
+                        WidthRequest="135"
+                        HeightRequest="135"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"                                   
+                        CornerRadius="15"></Button>-->
+
+                    </Frame>
+                    <Frame
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HasShadow="True"
+                    WidthRequest="135"
+                    HeightRequest="135"
+                     VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    CornerRadius="15"
+                    Padding="0">
+                        <ImageButton></ImageButton>
+                        <!--<Button
+                        BackgroundColor="White"
+                        BorderColor="Black"
+                        
+                        WidthRequest="135"
+                        HeightRequest="135"
+                        VerticalOptions="Center"
+                        HorizontalOptions="Center"                                   
+                        CornerRadius="15"></Button>-->
+
+                    </Frame>
+                </Grid>
+        </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
+    

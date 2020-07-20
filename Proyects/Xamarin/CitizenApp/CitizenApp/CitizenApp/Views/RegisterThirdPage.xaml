@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:Behaviors="clr-namespace:CitizenApp.Common"
+             x:Class="CitizenApp.Views.RegisterThirdPage"
+             BackgroundImageSource="MainBackGround">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout
+                Orientation="Vertical"
+                VerticalOptions="Center"
+                HorizontalOptions="CenterAndExpand"
+                Padding="40"
+                Margin="0,0,0,0"
+                Spacing="0">
+
+                <Frame
+                    BackgroundColor="#253256"
+                    CornerRadius="30"
+                    WidthRequest="303"
+                
+                    Opacity="0.75"
+                
+                    VerticalOptions="Start">
+                    <Image
+                        HorizontalOptions="Center"
+                        Source="Logo_Coopera"/>
+                </Frame>
+                <Frame               
+                    BackgroundColor="#253256"
+                    CornerRadius="30"
+                    WidthRequest="303"
+                    Margin="0,20,0,0"
+                    
+                    Opacity="0.75"
+                    VerticalOptions="Center">
+                    <StackLayout
+                        Padding="15"
+                        Spacing="0"
+                        HorizontalOptions="Center">
+                        <Label
+                            FontFamily="{StaticResource BoldFont}"
+                            Text="Correo Electronico:"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="20"></Label>
+                        <Entry
+                            PlaceholderColor="White"
+                            TextColor="White"
+                            FontFamily="{StaticResource NormalFont}"
+                            HorizontalTextAlignment="Center"
+                            Placeholder="Digite su correo electronico.">
+                            <Entry.Behaviors>
+                                <Behaviors:EmailValidatorBehavior/>
+                            </Entry.Behaviors>                            
+                        </Entry>
+
+                        <Label
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Margin="0,20,0,0"
+                            FontFamily="{StaticResource BoldFont}"
+                            Text="Contraseña:"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="20"></Label>
+                        
+                        <Entry
+                            PlaceholderColor="White"
+                            TextColor="White"
+                            FontFamily="{StaticResource NormalFont}"
+                            HorizontalTextAlignment="Center"
+                            Placeholder="Digite su Contraseña."
+                            IsPassword="True">
+                            <!--<Entry.Behaviors>
+                                <Behaviors:PasswordValidationBehavior/>
+                            </Entry.Behaviors>-->
+                        </Entry>
+
+                        <Label
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            Margin="0,20,0,0"
+                            FontFamily="{StaticResource BoldFont}"
+                            Text="Confirmar Contraseña:"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="20"></Label>
+                        
+                        <Entry
+                            PlaceholderColor="White"
+                            TextColor="White"
+                            FontFamily="{StaticResource NormalFont}"
+                            HorizontalTextAlignment="Center"
+                            Placeholder="Repita su Contraseña."
+                            IsPassword="True">
+                            <!--<Entry.Behaviors>
+                                <Behaviors:PasswordValidationBehavior/>
+                            </Entry.Behaviors>-->
+                        </Entry>
+                    </StackLayout>
+
+
+                </Frame>
+                <Button
+                    BackgroundColor="#828998"
+                    TextColor="White"
+                    WidthRequest="250"
+                    HeightRequest="50"
+                    CornerRadius="25"
+                    Command="{Binding ContinuarCommand}"
+                    FontSize="23"
+                    FontAttributes="Bold"
+                    FontFamily="{StaticResource BoldFont}"
+                    Text="Finalizar" ContentLayout="Right,0" Image="Listo"  
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Margin="0,20,0,0"
+                    />
+
+
+            </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

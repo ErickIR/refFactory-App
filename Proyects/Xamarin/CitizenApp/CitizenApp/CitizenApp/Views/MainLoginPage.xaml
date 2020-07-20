@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CitizenApp.Views.MainLoginPage"
+             BackgroundImageSource="LoginPageGround">
+    <ContentPage.Content>
+        <StackLayout
+            Padding="40"
+            VerticalOptions="End"
+            >
+        
+            <!--<Frame
+                    
+                    HasShadow="True"
+                    WidthRequest="250"
+                    HeightRequest="50"
+                     VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                BackgroundColor="#828998"
+                    CornerRadius="23"
+                    Padding="0">
+                <ImageButton
+                    WidthRequest="250"
+                    HeightRequest="50"
+                    BorderColor="#828998"
+                    Margin="25,0,0,0"
+                    Source="Iniciar_Sesion"></ImageButton>
+            </Frame>-->
+            <Frame
+                Grid.Row="1"
+                BackgroundColor="#253256"
+                CornerRadius="30"
+                WidthRequest="303"
+                HeightRequest="200"
+                Opacity="0.75"
+                VerticalOptions="End">
+                <StackLayout
+                    HorizontalOptions="Center">
+                    <Button
+                        BackgroundColor="#828998"
+                        TextColor="White"
+                        WidthRequest="250"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Command="{Binding LoginCommand}"
+                        FontSize="23"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource BoldFont}"
+                        Text="Iniciar Sesion" ContentLayout="Left,5" Image="Login"  HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="0,10,0,10"
+                        />
+                    <Button
+                        BackgroundColor="White"
+                        TextColor="Black"
+                        WidthRequest="250"
+                        HeightRequest="50"
+                        CornerRadius="25"
+                        Command="{Binding RegisterCommand}"
+                        FontSize="23"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource BoldFont}"
+                        Text="Registrarse" ContentLayout="Left,0" Image="Register"  HorizontalOptions="Start"
+                        VerticalOptions="Start"
+                        Margin="0,0,0,0"
+                        />
+
+                    <Button
+                        BackgroundColor="Transparent"
+                        BorderColor="Transparent"
+                        TextColor="White"
+                        WidthRequest="250"
+                        HeightRequest="70"
+                        CornerRadius="25"
+                        Command="{Binding InvitadoCommand}"
+                        FontSize="18"
+                        FontAttributes="Bold"
+                        FontFamily="{StaticResource BoldFont}"
+                        Text="Ingresar como Invitado" 
+                        Margin="0,0,0,10"
+                        />  
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

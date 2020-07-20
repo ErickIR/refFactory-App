@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:Behaviors="clr-namespace:CitizenApp.Common"
+             mc:Ignorable="d"
+             x:Class="CitizenApp.Views.RegisterFirstPage"
+             BackgroundImageSource="MainBackGround">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout
+            Orientation="Vertical"
+            VerticalOptions="Center"
+            HorizontalOptions="CenterAndExpand"
+            Padding="40"
+            Margin="0,0,0,0"
+            Spacing="0">
+            
+            <Frame
+                BackgroundColor="#253256"
+                CornerRadius="30"
+                WidthRequest="303"
+                
+                Opacity="0.75"
+                
+                VerticalOptions="Start">
+                <Image
+                    HorizontalOptions="Center"
+                    Source="Logo_Coopera"/>
+            </Frame>
+            <Frame               
+                BackgroundColor="#253256"
+                CornerRadius="30"
+                WidthRequest="303"
+                Margin="0,20,0,0"
+                Opacity="0.75"
+                VerticalOptions="Center">
+                <StackLayout
+                    HorizontalOptions="Center">
+                    <Label
+                        FontFamily="{StaticResource BoldFont}"
+                        Text="Cedula:"
+                        HorizontalOptions="Center"
+                        TextColor="White"
+                        FontSize="20"></Label>
+                    <Grid
+                        Padding="50,0,30,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition
+                                Width="*"></ColumnDefinition>
+                            <ColumnDefinition
+                                Width=".2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Entry
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            TextColor="White"                    
+                            FontFamily="{StaticResource NormalFont}"
+                            HorizontalTextAlignment="Center"
+                            PlaceholderColor="White"
+                            Keyboard="Numeric"
+                            BackgroundColor="Transparent"
+                            Placeholder="000-0000000-0"
+                            WidthRequest="250">
+                            <Entry.Behaviors>
+                                <Behaviors:MaskedBehavior Mask="XXX-XXXXXXX-X" />
+                            </Entry.Behaviors>
+                        </Entry>
+                        <ImageButton
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            BackgroundColor="Transparent"
+                            Source="Search"/>
+
+                    </Grid>
+                    <Label
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Margin="0,5,0,0"
+                        FontFamily="{StaticResource BoldFont}"
+                        Text="Nombres:"
+                        HorizontalOptions="Center"
+                        TextColor="White"
+                        FontSize="20"></Label>
+                    <Label
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Margin="0,0,0,0"
+                        FontFamily="{StaticResource NormalFont}"
+                        Text="Fernando Enmanuel"
+                        HorizontalOptions="Center"
+                        TextColor="White"
+                        FontSize="20"></Label>
+                    <Label
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                        Margin="0,10,0,0"
+                        FontFamily="{StaticResource BoldFont}"
+                        Text="Apellidos:"
+                        HorizontalOptions="Center"
+                        TextColor="White"
+                        FontSize="20"></Label>
+                    <Label
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                Margin="0,0,0,0"
+                FontFamily="{StaticResource NormalFont}"
+                Text="Hernandez Perez"
+                HorizontalOptions="Center"
+                TextColor="White"
+                FontSize="20"></Label>
+                    <Label
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                Margin="0,5,0,0"
+                FontFamily="{StaticResource BoldFont}"
+                Text="Fecha de Nacimiento:"
+                HorizontalOptions="Center"
+                TextColor="White"
+                FontSize="20"></Label>
+                    <Label
+                        VerticalTextAlignment="Center"
+                        HorizontalTextAlignment="Center"
+                Margin="0,0,0,0"
+                FontFamily="{StaticResource NormalFont}"
+                Text="12 de Diciembre de 1998"
+                HorizontalOptions="Center"
+                TextColor="White"
+                FontSize="20"></Label>
+
+
+                </StackLayout>
+
+
+            </Frame>
+                <Button
+                    BackgroundColor="White"
+                    TextColor="Black"
+                    WidthRequest="250"
+                    HeightRequest="50"
+                    CornerRadius="25"
+                    Command="{Binding ContinuarCommand}"
+                    FontSize="23"
+                    FontAttributes="Bold"
+                    FontFamily="{StaticResource BoldFont}"
+                    Text="Continuar" ContentLayout="Right,0" Image="ContinueRegister"  
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Margin="0,20,0,0"
+                    />
+            
+
+        </StackLayout>
+        </ScrollView>
+
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:FFImage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:FFImageCache="clr-namespace:FFImageLoading.Cache;assembly=FFImageLoading"
+             mc:Ignorable="d"
+             x:Class="CitizenApp.Controls.ImageUpload">
+
+    <ContentView.Content>
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Adjuntar imagenes..."
+                           FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="StartAndExpand" />
+                <ImageButton Source="Add.png" BackgroundColor="#253256" 
+                         Command="{Binding TakePictureCommand}" HeightRequest="60" WidthRequest="60" Margin="0,0,0,0" Padding="0"
+                         HorizontalOptions="End" CornerRadius="30"/>
+            </StackLayout>
+            <Label Text="{Binding ImageName}" FontSize="16" FontFamily="{StaticResource NormalFont}"/>
+        </StackLayout>
+    </ContentView.Content>
+</ContentView>

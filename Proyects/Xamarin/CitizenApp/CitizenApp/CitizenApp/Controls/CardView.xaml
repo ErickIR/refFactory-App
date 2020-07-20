@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:CitizenApp.Controls"
+             x:Class="CitizenApp.Controls.CardView">
+
+    
+    
+    <ContentView.Content>
+        <Frame 
+            Margin="20,15,20,15" 
+            HeightRequest="102"
+            BorderColor="#f2f5f7"
+            CornerRadius="30"
+            BackgroundColor="#f2f5f7"
+            Padding="15">
+            <StackLayout Orientation="Horizontal">
+                <Image Source="incidencia.png" HorizontalOptions="Start"/>
+                <StackLayout HorizontalOptions="FillAndExpand">
+                    <Label Text="{Binding Titulo}"
+                       FontSize="16"
+                       FontFamily="{StaticResource BoldFont}" HorizontalOptions="CenterAndExpand"/>
+                    <BoxView Color="Gray"
+                         HeightRequest="2"
+                         HorizontalOptions="Fill"/>
+                    <Label Text="{Binding BarrioId}" FontSize="14" FontFamily="{StaticResource NormalFont}" HorizontalOptions="CenterAndExpand"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+                        <Label Text="{Binding UsuarioId}" FontFamily="{StaticResource NormalFont}" FontSize="14" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="## han apoyado esto." FontSize="14" FontFamily="{StaticResource BoldFont}" HorizontalOptions="End"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+        </Frame>
+    </ContentView.Content>
+</ContentView>
