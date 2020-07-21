@@ -8,11 +8,13 @@ using Xamarin.Forms;
 using CitizenApp.Models;
 using CitizenApp.Services.Interfaces;
 using CitizenApp.Services.Services;
+using CitizenApp.Services.DataStores;
 
 namespace CitizenApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
+        internal LocalidadService LocalidadService = new LocalidadService();
         internal IncidenciaService IncidenciaService => DependencyService.Get<IncidenciaService>() ?? new IncidenciaService();
         internal IPageService PageService => DependencyService.Get<MasterDetailPageService>() ?? new MasterDetailPageService();
 
