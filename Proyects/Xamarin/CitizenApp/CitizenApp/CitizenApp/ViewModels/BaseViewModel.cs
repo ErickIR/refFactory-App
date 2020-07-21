@@ -8,16 +8,13 @@ using Xamarin.Forms;
 using CitizenApp.Models;
 using CitizenApp.Services.Interfaces;
 using CitizenApp.Services.Services;
-using CitizenApp.Services.DataStores;
 
 namespace CitizenApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        internal IncidenciaService IncidenciaService = new IncidenciaService();
-        internal LocalidadService LocalidadService = new LocalidadService();
-        internal IPageService PageService = new PageService();
-        internal ArchivosService ArchivosService = new ArchivosService();
+        internal IncidenciaService IncidenciaService => DependencyService.Get<IncidenciaService>() ?? new IncidenciaService();
+        internal IPageService PageService => DependencyService.Get<MasterDetailPageService>() ?? new MasterDetailPageService();
 
         bool isBusy = false;
         public bool IsBusy
