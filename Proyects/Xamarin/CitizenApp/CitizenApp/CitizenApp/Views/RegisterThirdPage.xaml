@@ -4,115 +4,110 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="CitizenApp.Views.RegisterSecondPage"
+             xmlns:Behaviors="clr-namespace:CitizenApp.Common"
+             x:Class="CitizenApp.Views.RegisterThirdPage"
              BackgroundImageSource="MainBackGround">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout
+                Orientation="Vertical"
                 VerticalOptions="Center"
-                Padding="40">
+                HorizontalOptions="CenterAndExpand"
+                Padding="40"
+                Margin="0,0,0,0"
+                Spacing="0">
+
                 <Frame
                     BackgroundColor="#253256"
                     CornerRadius="30"
                     WidthRequest="303"
+                
                     Opacity="0.75"
+                
                     VerticalOptions="Start">
-                    <Label
-                        FontFamily="{StaticResource BoldFont}"
-                        Text="Confirme su lugar de residencia:"
-                        VerticalTextAlignment="Center"
-                        HorizontalTextAlignment="Center"
+                    <Image
                         HorizontalOptions="Center"
-                        TextColor="White"
-                        FontSize="30"/>
+                        Source="Logo_Coopera"/>
                 </Frame>
                 <Frame               
                     BackgroundColor="#253256"
                     CornerRadius="30"
                     WidthRequest="303"
                     Margin="0,20,0,0"
+                    
                     Opacity="0.75"
                     VerticalOptions="Center">
                     <StackLayout
+                        Padding="15"
+                        Spacing="0"
                         HorizontalOptions="Center">
-                        
                         <Label
-                            VerticalTextAlignment="Center"
-                            HorizontalTextAlignment="Center"
-                            Margin="0,0,0,0"
                             FontFamily="{StaticResource BoldFont}"
-                            Text="Provincia:"
+                            Text="Correo Electronico:"
                             HorizontalOptions="Center"
                             TextColor="White"
                             FontSize="20"></Label>
-                        <Picker
-                            WidthRequest="250"></Picker>
-                        
-                        <Label
-                            VerticalTextAlignment="Center"
-                            HorizontalTextAlignment="Center"
-                            Margin="0,0,0,0"
-                            FontFamily="{StaticResource BoldFont}"
-                            Text="Municipio:"
-                            HorizontalOptions="Center"
+                        <Entry
+                            PlaceholderColor="White"
                             TextColor="White"
-                            FontSize="20"></Label>
-                        <Picker
-                            WidthRequest="250"></Picker>
+                            FontFamily="{StaticResource NormalFont}"
+                            HorizontalTextAlignment="Center"
+                            Placeholder="Digite su correo electronico.">
+                            <Entry.Behaviors>
+                                <Behaviors:EmailValidatorBehavior/>
+                            </Entry.Behaviors>                            
+                        </Entry>
 
                         <Label
                             VerticalTextAlignment="Center"
                             HorizontalTextAlignment="Center"
-                            Margin="0,0,0,0"
+                            Margin="0,20,0,0"
                             FontFamily="{StaticResource BoldFont}"
-                            Text="Distrito Municipal:"
+                            Text="Contraseña:"
                             HorizontalOptions="Center"
                             TextColor="White"
                             FontSize="20"></Label>
-                        <Picker
-                            WidthRequest="250"></Picker>
                         
-                        <Label
-                            VerticalTextAlignment="Center"
-                            HorizontalTextAlignment="Center"
-                            Margin="0,0,0,0"
-                            FontFamily="{StaticResource BoldFont}"
-                            Text="Seccion:"
-                            HorizontalOptions="Center"
+                        <Entry
+                            PlaceholderColor="White"
                             TextColor="White"
-                            FontSize="20"></Label>
-                        <Picker
-                            WidthRequest="250"></Picker>
+                            FontFamily="{StaticResource NormalFont}"
+                            HorizontalTextAlignment="Center"
+                            Placeholder="Digite su Contraseña."
+                            IsPassword="True">
+                            <!--<Entry.Behaviors>
+                                <Behaviors:PasswordValidationBehavior/>
+                            </Entry.Behaviors>-->
+                        </Entry>
 
                         <Label
                             VerticalTextAlignment="Center"
                             HorizontalTextAlignment="Center"
-                            Margin="0,0,0,0"
+                            Margin="0,20,0,0"
                             FontFamily="{StaticResource BoldFont}"
-                            Text="Sector:"
+                            Text="Confirmar Contraseña:"
                             HorizontalOptions="Center"
                             TextColor="White"
                             FontSize="20"></Label>
-                        <Picker
-                            WidthRequest="250"></Picker>
-
-                        <Label
-                            VerticalTextAlignment="Center"
+                        
+                        <Entry
+                            PlaceholderColor="White"
+                            TextColor="White"
+                            FontFamily="{StaticResource NormalFont}"
                             HorizontalTextAlignment="Center"
-                            Margin="0,0,0,0"
-                            FontFamily="{StaticResource BoldFont}"
-                            Text="Barrio:"
-                            HorizontalOptions="Center"
-                            TextColor="White"
-                            FontSize="20"></Label>
-                        <Picker
-                            WidthRequest="250"
-                            Margin="0,0,0,5"></Picker>
+                            Placeholder="Repita su Contraseña."
+                            IsPassword="True">
+                            <!--<Entry.Behaviors>
+                                <Behaviors:PasswordValidationBehavior/>
+                            </Entry.Behaviors>-->
+                        </Entry>
                     </StackLayout>
+
+
                 </Frame>
                 <Button
-                    BackgroundColor="White"
-                    TextColor="Black"
+                    BackgroundColor="#828998"
+                    TextColor="White"
                     WidthRequest="250"
                     HeightRequest="50"
                     CornerRadius="25"
@@ -120,12 +115,15 @@
                     FontSize="23"
                     FontAttributes="Bold"
                     FontFamily="{StaticResource BoldFont}"
-                    Text="Continuar" ContentLayout="Right,0" Image="ContinueRegister"  
+                    Text="Finalizar" ContentLayout="Right,0" Image="Listo"  
                     HorizontalOptions="Center"
                     VerticalOptions="End"
                     Margin="0,20,0,0"
                     />
+
+
             </StackLayout>
         </ScrollView>
+
     </ContentPage.Content>
 </ContentPage>

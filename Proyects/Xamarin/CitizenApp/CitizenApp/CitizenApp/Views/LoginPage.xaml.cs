@@ -11,13 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace CitizenApp.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class RegisterSecondPage : ContentPage
+    public partial class LoginPage : ContentPage
     {
-        RegisterSecondViewModel viewModel;
-        public RegisterSecondPage()
+        LoginViewModel viewModel;
+        public LoginPage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new RegisterSecondViewModel();
         }
     }
 }
