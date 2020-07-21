@@ -33,7 +33,7 @@
                     BackgroundColor="#253256"
                     CornerRadius="30"
                     WidthRequest="303"
-                    Margin="0,40,0,0"
+                    Margin="0,60,0,0"
                     
                     Opacity="0.75"
                     VerticalOptions="Center">
@@ -85,13 +85,14 @@
 
 
                 </Frame>
+                
                 <Button
                     BackgroundColor="#828998"
                     TextColor="White"
                     WidthRequest="250"
                     HeightRequest="50"
                     CornerRadius="25"
-                    Command="{Binding ContinuarCommand}"
+                    Command="{Binding SignInCommand}"
                     FontSize="23"
                     FontAttributes="Bold"
                     FontFamily="{StaticResource BoldFont}"
@@ -99,6 +100,17 @@
                     HorizontalOptions="Center"
                     VerticalOptions="End"
                     Margin="0,40,0,0"
+                    />
+                <Button
+                    BackgroundColor="Transparent"
+                    TextColor="#253256"
+                    FontSize="20"
+                    FontAttributes="Bold"
+                    FontFamily="{StaticResource BoldFont}"
+                    Text="Recuperar contraseña."  
+                    HorizontalOptions="Center"
+                    VerticalOptions="End"
+                    Margin="0,0,0,0"
                     />
 
 

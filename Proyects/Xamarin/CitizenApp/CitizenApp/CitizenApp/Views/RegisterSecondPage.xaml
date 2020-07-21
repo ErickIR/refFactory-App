@@ -46,6 +46,9 @@
                             TextColor="White"
                             FontSize="20"></Label>
                         <Picker
+                            Title="Seleccione su barrio..."
+                            FontFamily="{StaticResource NormalFont}"
+                            ItemsSource="{Binding RegionList}" SelectedItem="{Binding RegionSelected}" ItemDisplayBinding="{Binding Nombre}" 
                             WidthRequest="250"></Picker>
                         
                         <Label

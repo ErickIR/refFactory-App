@@ -143,6 +143,35 @@ namespace CitizenApp.Services.DataStores
             return await Task.FromResult(listBarrios);
         }
 
+        public async Task<IEnumerable<Region>> ObtenerRegiones()
+        {
+            return await Task.FromResult(regiones);
+        }
+        public async Task<IEnumerable<Provincia>> ObtenerProvincias()
+        {
+            return await Task.FromResult(provincias);
+        }
+        public async Task<IEnumerable<Municipio>> ObtenerMunicipios()
+        {
+            return await Task.FromResult(municipios);
+        }
+        public async Task<IEnumerable<DistritoMunicipal>> ObtenerDistritoMunicipales()
+        {
+            return await Task.FromResult(distritoMunicipales);
+        }
+        public async Task<IEnumerable<Seccion>> ObtenerSecciones()
+        {
+            return await Task.FromResult(secciones);
+        }
+        public async Task<IEnumerable<Sector>> ObtenerSectores()
+        {
+            return await Task.FromResult(sectores);
+        }
+        public async Task<IEnumerable<Barrio>> ObtenerBarrios()
+        {
+            return await Task.FromResult(barrios);
+        }
+       
 
     }
 }

@@ -55,7 +55,8 @@
                         <Entry
                             Grid.Column="0"
                             Grid.Row="0"
-                            TextColor="White"                    
+                            TextColor="White"  
+                            Text="{Binding Cedula}"
                             FontFamily="{StaticResource NormalFont}"
                             HorizontalTextAlignment="Center"
                             PlaceholderColor="White"
@@ -69,6 +70,7 @@
                         </Entry>
                         <ImageButton
                             Grid.Column="1"
+                            Command="{Binding searchCedulaCommand}"
                             Grid.Row="0"
                             BackgroundColor="Transparent"
                             Source="Search"/>
@@ -88,7 +90,7 @@
                         HorizontalTextAlignment="Center"
                         Margin="0,0,0,0"
                         FontFamily="{StaticResource NormalFont}"
-                        Text="Fernando Enmanuel"
+                        Text="{Binding Nombres}"
                         HorizontalOptions="Center"
                         TextColor="White"
                         FontSize="20"></Label>
@@ -104,30 +106,30 @@
                     <Label
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
-                Margin="0,0,0,0"
-                FontFamily="{StaticResource NormalFont}"
-                Text="Hernandez Perez"
-                HorizontalOptions="Center"
-                TextColor="White"
-                FontSize="20"></Label>
+                        Margin="0,0,0,0"
+                        FontFamily="{StaticResource NormalFont}"
+                        Text="{Binding Apellidos}"
+                        HorizontalOptions="Center"
+                        TextColor="White"
+                        FontSize="20"></Label>
                     <Label
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
-                Margin="0,5,0,0"
-                FontFamily="{StaticResource BoldFont}"
-                Text="Fecha de Nacimiento:"
-                HorizontalOptions="Center"
-                TextColor="White"
-                FontSize="20"></Label>
+                        Margin="0,5,0,0"
+                        FontFamily="{StaticResource BoldFont}"
+                        Text="Fecha de Nacimiento:"
+                        HorizontalOptions="Center"
+                        TextColor="White"
+                        FontSize="20"></Label>
                     <Label
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
-                Margin="0,0,0,0"
-                FontFamily="{StaticResource NormalFont}"
-                Text="12 de Diciembre de 1998"
-                HorizontalOptions="Center"
-                TextColor="White"
-                FontSize="20"></Label>
+                        Margin="0,0,0,0"
+                        FontFamily="{StaticResource NormalFont}"
+                        Text="{Binding Nacimiento}"
+                        HorizontalOptions="Center"
+                        TextColor="White"
+                        FontSize="20"></Label>
 
 
                 </StackLayout>

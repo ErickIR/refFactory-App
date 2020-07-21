@@ -17,6 +17,7 @@ namespace CitizenApp.Views
         public LoginPage()
         {
             InitializeComponent();
+            BindingContext = viewModel = new LoginViewModel();
         }
     }
 }

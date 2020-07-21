@@ -1,6 +1,8 @@
-﻿using CitizenApp.ViewModels;
+﻿using CitizenApp.Models;
+using CitizenApp.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,10 +16,18 @@ namespace CitizenApp.Views
     public partial class RegisterSecondPage : ContentPage
     {
         RegisterSecondViewModel viewModel;
-        public RegisterSecondPage()
+        
+
+        
+
+        public RegisterSecondPage(Persona persona)
         {
+            
             InitializeComponent();
-            BindingContext = viewModel = new RegisterSecondViewModel();
+            BindingContext = viewModel = new RegisterSecondViewModel(persona);
+            
         }
+
+        
     }
 }

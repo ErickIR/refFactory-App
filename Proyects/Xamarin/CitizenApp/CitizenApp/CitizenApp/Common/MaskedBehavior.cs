@@ -22,23 +22,27 @@ namespace CitizenApp.Common
             var entry = sender as Entry;
             var text = entry.Text;
 
-            if (!string.IsNullOrWhiteSpace(Mask))
+            if (!string.IsNullOrEmpty(text))
+            {
+                if (!string.IsNullOrWhiteSpace(Mask))
 
-                // 1. Adding the MaxLength
-                if (text.Length == _mask.Length)
-                    entry.MaxLength = _mask.Length;
+                    // 1. Adding the MaxLength
+                    if (text.Length == _mask.Length)
+                        entry.MaxLength = _mask.Length;
 
-            // 2. Evaluating if the user is removing test
-            if ((args.OldTextValue == null) || (args.OldTextValue.Length <= args.NewTextValue.Length))
+                // 2. Evaluating if the user is removing test
+                if ((args.OldTextValue == null) || (args.OldTextValue.Length <= args.NewTextValue.Length))
 
-                // 3. Evaluating mask positions
-                for (int i = Mask.Length; i >= text.Length; i--)
-                {
-                    if (Mask[(text.Length - 1)] != 'X')
+                    // 3. Evaluating mask positions
+                    for (int i = Mask.Length; i >= text.Length; i--)
                     {
-                        text = text.Insert((text.Length - 1), Mask[(text.Length - 1)].ToString());
+                        if (Mask[(text.Length - 1)] != 'X')
+                        {
+                            text = text.Insert((text.Length - 1), Mask[(text.Length - 1)].ToString());
+                        }
                     }
-                }
+            }
+           
             entry.Text = text;
         }
 
