@@ -139,6 +139,7 @@ namespace CitizenApp.ViewModels
                 {
                     _incidenciasList.Add(item);
                 }
+
             }
             catch (Exception ex)
             {

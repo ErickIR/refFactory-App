@@ -4,7 +4,7 @@ using System.Text;
 
 namespace CitizenApp.Services.Services
 {
-    public class UsuarioService
+    public class UsuarioService : BaseHttpClient
     {
         public UsuarioService()
         {

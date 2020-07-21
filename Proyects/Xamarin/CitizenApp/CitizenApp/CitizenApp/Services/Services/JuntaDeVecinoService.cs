@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CitizenApp.Services.DataStores
 {
-    class JuntaDeVecinoService
+    public class JuntaDeVecinoService : BaseHttpClient
     {
         List<JuntaDeVecinos> juntaDeVecinos;
         List<IntegranteJdV> integrantesJdVs;

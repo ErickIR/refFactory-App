@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace CitizenApp.Services.Services
 {
-    public class IncidenciaService 
+    public class IncidenciaService : BaseHttpClient
     {
         readonly List<Incidencia> Incidencias;
         readonly List<IncidenciaUsuario> Apoyos;
@@ -168,6 +168,7 @@ namespace CitizenApp.Services.Services
 
             return await Task.FromResult(incidencias);
         }
+
 
     }
 }

@@ -6,7 +6,7 @@ using CitizenApp.Models;
 
 namespace CitizenApp.Services.Services
 {
-    public class EntidadesMunicipalesService
+    public class EntidadesMunicipalesService : BaseHttpClient
     {
         List<EntidadMunicipal> EntidadesMunicipales;
 

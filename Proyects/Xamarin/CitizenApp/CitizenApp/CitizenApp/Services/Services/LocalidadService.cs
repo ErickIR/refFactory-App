@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CitizenApp.Services.DataStores
 {
-    public class LocalidadService
+    public class LocalidadService : BaseHttpClient
     {
         List<Region> regiones;
         List<Provincia> provincias;
