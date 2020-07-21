@@ -15,6 +15,7 @@ namespace CitizenApp.ViewModels
     {
         internal IncidenciaService IncidenciaService = new IncidenciaService();
         internal IPageService PageService = new PageService();
+        internal ArchivosService ArchivosService = new ArchivosService();
 
         bool isBusy = false;
         public bool IsBusy

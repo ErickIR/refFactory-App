@@ -26,9 +26,9 @@
                     <BoxView Color="Gray"
                          HeightRequest="2"
                          HorizontalOptions="Fill"/>
-                    <Label Text="{Binding BarrioId}" FontSize="14" FontFamily="{StaticResource NormalFont}" HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="{Binding Barrio.Nombre}" FontSize="14" FontFamily="{StaticResource NormalFont}" HorizontalOptions="CenterAndExpand"/>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
-                        <Label Text="{Binding UsuarioId}" FontFamily="{StaticResource NormalFont}" FontSize="14" HorizontalOptions="StartAndExpand"/>
+                        <Label Text="{Binding Usuario.NombreCompleto}" FontFamily="{StaticResource NormalFont}" FontSize="14" HorizontalOptions="StartAndExpand"/>
                         <Label Text="## han apoyado esto." FontSize="14" FontFamily="{StaticResource BoldFont}" HorizontalOptions="End"/>
                     </StackLayout>
                 </StackLayout>

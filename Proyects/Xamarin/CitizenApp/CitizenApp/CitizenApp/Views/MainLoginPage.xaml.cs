@@ -18,7 +18,6 @@ namespace CitizenApp.Views
         {
             InitializeComponent();
             BindingContext = viewModel = new MainLoginViewModel();
-
         }
     }
 }

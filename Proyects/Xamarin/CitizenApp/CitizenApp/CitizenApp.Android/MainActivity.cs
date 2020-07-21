@@ -12,7 +12,7 @@ namespace CitizenApp.Droid
     [Activity(Label = "CooperaRD", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
-        
+
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
@@ -21,7 +21,7 @@ namespace CitizenApp.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
-           
+            
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             
             LoadApplication(new App());

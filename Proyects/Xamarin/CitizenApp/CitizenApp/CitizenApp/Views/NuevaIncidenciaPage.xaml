@@ -24,29 +24,24 @@
             <Frame
                 Margin="10, 10, 10, 10"
                 WidthRequest="{Binding PageWidth}"
-                HeightRequest="{Binding PageHeight}"
                 BackgroundColor="White"
                 BorderColor="#c4c4c4"
                 CornerRadius="30">
                 <StackLayout Orientation="Vertical" Margin="10">
                     <Label Text="Registro de Incidencia" FontSize="25" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Center" />
                     <Label Text="Titulo de Incidencia" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
-                    <Entry Text="{Binding Incidencia.Titulo}" FontSize="16" FontFamily="{StaticResource NormalFont}"/>
+                    <Entry Text="{Binding Titulo}" FontSize="16" FontFamily="{StaticResource NormalFont}"/>
                     <Label Text="Tipo de Incidencia" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
                     <Picker Title="Seleccione un tipo..." ItemsSource="{Binding TiposDeIncidencia}" SelectedItem="{Binding TipoIncidenciaSelected}" 
                             FontFamily="{StaticResource NormalFont}" ItemDisplayBinding="{Binding Descripcion}" />
-                    
-                    <StackLayout>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="Adjuntar imagenes..."
+                    <Label  Text="Adjuntar imagenes..."
                                     FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="StartAndExpand" />
-                            <Button Text="+" BackgroundColor="#253256" FontSize="20" TextColor="White" FontFamily="{StaticResource BoldFont}"
-                                        Command="{Binding TakePictureCommand}" HeightRequest="50" WidthRequest="50" Margin="0,0,0,0" Padding="0"
-                                        HorizontalOptions="End" CornerRadius="20"/>
-                        </StackLayout>
-                        <Entry Text="{Binding ImageFile.Nombre, Mode=TwoWay}" FontSize="16" FontFamily="{StaticResource NormalFont}" IsEnabled="False"/>
-                    </StackLayout>
-                    
+                    <Entry Text="{Binding TituloImagen}" FontSize="16" FontFamily="{StaticResource NormalFont}" IsEnabled="False"/>
+                    <Image Source="{Binding ImageSrc}" />
+                    <Button Text="Añadir Imagen" BackgroundColor="White" FontSize="16" TextColor="Black" FontFamily="{StaticResource BoldFont}"
+                                    Command="{Binding TakePictureCommand}" Margin="0,0,0,0" Padding="0"
+                                    CornerRadius="20" BorderColor="Black"/>
+
                     <Label Text="Descripcion" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
                     <Frame
                         BackgroundColor="White"
@@ -54,13 +49,23 @@
                         HeightRequest="120"
                         CornerRadius="30"
                         Padding="20">
-                        
                         <Editor 
-                            Text="{Binding Incidencia.Descripcion}" FontFamily="{StaticResource NormalFont}"  
-                            FontSize="16" BackgroundColor="Transparent" HeightRequest="90" />
+                            Text="{Binding Descripcion}" FontFamily="{StaticResource NormalFont}"  
+                            FontSize="16" BackgroundColor="Transparent" HeightRequest="90" Keyboard="Text" />
                     </Frame>
+                    <Button
+                        BackgroundColor="#828998"
+                        BorderColor="#828998"
+                        TextColor="White"
+                        WidthRequest="220"
+                        CornerRadius="25"
+                        Command="{Binding SaveIncidenciaCommand}"
+                        FontSize="18"
+                        FontFamily="{StaticResource BoldFont}"
+                        Text="Enviar" 
+                        Margin="0,0,0,10"
+                        />
                 </StackLayout>
-                
             </Frame>
         </ScrollView>
     </ContentPage.Content>

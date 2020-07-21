@@ -9,28 +9,19 @@ namespace CitizenApp.Services.Services
 {
     public class IncidenciaService 
     {
-        List<Incidencia> Incidencias;
-        List<IncidenciaUsuario> Apoyos;
-        List<TipoIncidencia> TiposIncidencia;
-        List<StatusIncidencia> StatusIncidencias;
+        readonly List<Incidencia> Incidencias;
+        readonly List<IncidenciaUsuario> Apoyos;
+        readonly List<TipoIncidencia> TiposIncidencia;
+        readonly List<StatusIncidencia> StatusIncidencias;
         int nextIncidenciaIdx = 6;
         int nextApoyoIdx = 4;
         public IncidenciaService()
         {
-            Incidencias = new List<Incidencia>()
-            {
-                new Incidencia { IncidenciaId = 1, Titulo = "Calle Rota 1", Descripcion = "La calle ta prendiaaaaaaa", EmpleadoId = 1, UsuarioId = 1, BarrioId = 1, StatusId = 1},
-                new Incidencia { IncidenciaId = 2, Titulo = "Calle Rota 2", Descripcion = "La calle ta prendiaaaaaaa", EmpleadoId = 1, UsuarioId = 1, BarrioId = 1, StatusId = 1},
-                new Incidencia { IncidenciaId = 3, Titulo = "Calle Rota 3", Descripcion = "La calle ta prendiaaaaaaa", EmpleadoId = 1, UsuarioId = 1, BarrioId = 1, StatusId = 1},
-                new Incidencia { IncidenciaId = 4, Titulo = "Calle Rota 4", Descripcion = "La calle ta prendiaaaaaaa", EmpleadoId = 1, UsuarioId = 1, BarrioId = 1, StatusId = 1},
-                new Incidencia { IncidenciaId = 5, Titulo = "Calle Rota 5", Descripcion = "La calle ta prendiaaaaaaa", EmpleadoId = 1, UsuarioId = 1, BarrioId = 1, StatusId = 1}
-            };
-            
             Apoyos = new List<IncidenciaUsuario>()
             {
                 new IncidenciaUsuario { IncidenciaUsuarioId = 1, IncidenciaId = 1, UsuarioId = 1},
                 new IncidenciaUsuario { IncidenciaUsuarioId = 2, IncidenciaId = 3, UsuarioId = 1},
-                new IncidenciaUsuario { IncidenciaUsuarioId = 3, IncidenciaId = 5, UsuarioId = 1}
+                new IncidenciaUsuario { IncidenciaUsuarioId = 3, IncidenciaId = 1, UsuarioId = 1}
             };
 
             TiposIncidencia = new List<TipoIncidencia>()
@@ -44,6 +35,40 @@ namespace CitizenApp.Services.Services
             {
                 new StatusIncidencia { StatusIncidenciaId = 1, Descripcion = "En Proceso"},
                 new StatusIncidencia { StatusIncidenciaId = 2, Descripcion = "Completada"}
+            };
+
+            Incidencias = new List<Incidencia>()
+            {
+                new Incidencia()
+                {
+                    Titulo = "Incidencia #1",
+                    Descripcion = "Incidencia Importante.",
+                    Empleado = new Usuario() {UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
+                    Usuario = new Usuario() {UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
+                    Status = new StatusIncidencia { StatusIncidenciaId = 1, Descripcion = "En Proceso"},
+                    TipoIncidencia = new TipoIncidencia { TipoIncidenciaId = 2, Descripcion = "Mantenimiento" },
+                    Barrio = new Barrio() { BarrioId = 1, Nombre = "El Regina" }
+                },
+                new Incidencia()
+                {
+                    Titulo = "Incidencia #2",
+                    Descripcion = "Incidencia Importante.",
+                    Empleado = new Usuario() {UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
+                    Usuario = new Usuario() {UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
+                    Status = new StatusIncidencia { StatusIncidenciaId = 1, Descripcion = "En Proceso"},
+                    TipoIncidencia = new TipoIncidencia { TipoIncidenciaId = 2, Descripcion = "Mantenimiento" },
+                    Barrio = new Barrio() { BarrioId = 1, Nombre = "El Regina" }
+                },
+                new Incidencia()
+                {
+                    Titulo = "Incidencia #3",
+                    Descripcion = "Incidencia Importante.",
+                    Empleado = new Usuario() {UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
+                    Usuario = new Usuario() {UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
+                    Status = new StatusIncidencia { StatusIncidenciaId = 1, Descripcion = "En Proceso"},
+                    TipoIncidencia = new TipoIncidencia { TipoIncidenciaId = 2, Descripcion = "Mantenimiento" },
+                    Barrio = new Barrio() { BarrioId = 1, Nombre = "El Regina" }
+                }
             };
         }
 
@@ -118,14 +143,14 @@ namespace CitizenApp.Services.Services
 
         public async Task<IEnumerable<Incidencia>> ObtenerIncidenciasPorEstadoAsync(int statusId)
         {
-            var incidencias = Incidencias.FindAll(inc => inc.StatusId == statusId);
+            var incidencias = Incidencias.FindAll(inc => inc.Status.StatusIncidenciaId == statusId);
 
             return await Task.FromResult(incidencias);
         }
 
         public async Task<IEnumerable<Incidencia>> ObtenerIncidenciasPorTipoAsync(int tipoId)
         {
-            var incidencias = Incidencias.FindAll(inc => inc.TipoIncidenciaId == tipoId);
+            var incidencias = Incidencias.FindAll(inc => inc.TipoIncidencia.TipoIncidenciaId == tipoId);
 
             return await Task.FromResult(incidencias);
         }
@@ -139,9 +164,10 @@ namespace CitizenApp.Services.Services
         
         public async Task<IEnumerable<Incidencia>> ObtenerMisIncidenciasAsync(int userId)
         {
-            var incidencias = Incidencias.FindAll(inc => inc.UsuarioId == userId);
+            var incidencias = Incidencias.FindAll(inc => inc.Usuario.UsuarioId == userId);
 
             return await Task.FromResult(incidencias);
         }
+
     }
 }

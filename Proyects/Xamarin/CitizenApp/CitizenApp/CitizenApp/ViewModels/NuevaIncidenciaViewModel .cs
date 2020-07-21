@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using CitizenApp.Models;
 using CitizenApp.Services.Interfaces;
+using CitizenApp.Views;
 using Plugin.Media;
 using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
@@ -16,13 +17,45 @@ namespace CitizenApp.ViewModels
 {
     public class NuevaIncidenciaViewModel : BaseViewModel
     {
-        public Incidencia Incidencia { get; set; }
-        public TipoIncidencia TipoIncidenciaSelected { get; set; }
+        private string _titulo = string.Empty;
+        public string Titulo
+        {
+            get => _titulo;
+            set => SetProperty(ref _titulo, value);
+        }
 
-        public Archivo ImageFile { get; set; }
+        private TipoIncidencia _tipoIncidenciaSelected = new TipoIncidencia();
+        public TipoIncidencia TipoIncidenciaSelected
+        {
+            get => _tipoIncidenciaSelected;
+            set => SetProperty(ref _tipoIncidenciaSelected, value);
+        }
+
+        private byte[] _imagenArray;
+
+        private string _descripcion = string.Empty;
+        public string Descripcion
+        {
+            get => _descripcion;
+            set => SetProperty(ref _descripcion, value);
+        }
+
+        private string _tituloImagen = string.Empty;
+        public string TituloImagen
+        {
+            get => _tituloImagen;
+            set => SetProperty(ref _tituloImagen, value);
+        }
+
+        private ImageSource _imageSrc;
+        public ImageSource ImageSrc
+        {
+            get => _imageSrc;
+            set => SetProperty(ref _imageSrc, value);
+        }
 
         public ObservableCollection<TipoIncidencia> TiposDeIncidencia { get; set; }
-       
+
         public ICommand SaveIncidenciaCommand { get; set; }
         public ICommand LoadTiposDeIncidenciaCommand { get; set; }
         public ICommand TakePictureCommand { get; set; }
@@ -47,24 +80,58 @@ namespace CitizenApp.ViewModels
         {
             Title = "Registrar Incidencia";
 
-            Incidencia = new Incidencia();
             TiposDeIncidencia = new ObservableCollection<TipoIncidencia>();
-            ImageFile = new Archivo();
             LoadTiposDeIncidenciaCommand = new Command(async () => await ExecuteLoadTiposDeIncidenciCommand());
             TakePictureCommand = new Command(async () => await ExecuteTakePictureCommand());
+            SaveIncidenciaCommand = new Command(async () => await ExecuteSaveIncidenciasComman(), CanSave);
+
+            Task.Run(async () => await ExecuteLoadTiposDeIncidenciCommand());
         }
-        
-        private async Task ExecuteTakePictureCommand()
+
+        bool CanSave()
         {
+            return !string.IsNullOrWhiteSpace(Titulo) || !TipoIncidenciaSelected.Equals(null) || !string.IsNullOrWhiteSpace(Descripcion);
+        }
+
+        private async Task ExecuteSaveIncidenciasComman()
+        {
+            IsBusy = true;
             try
             {
-                if (string.IsNullOrEmpty(Incidencia.Titulo))
-                    throw new Exception("Debe asignar un titulo a la incidencia.");
+                var Incidencia = new Incidencia()
+                {
+                    Empleado = new Usuario() { UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com" },
+                    Usuario = new Usuario() { UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com" },
+                    TipoIncidencia = TipoIncidenciaSelected,
+                    Barrio = new Barrio() { BarrioId = 1, Nombre = "El Regina" },
+                    Imagen = _imagenArray,
+                    TituloImagen = TituloImagen,
+                    Titulo = Titulo,
+                    Descripcion = Descripcion
+                };
+                await IncidenciaService.RegistrarNuevaIncidenciaAsync(Incidencia);
+                Application.Current.MainPage = new MainPage();
+            }
+            catch (Exception ex)
+            {
+                await PageService.DisplayAlert("ERROR", ex.Message, "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+            }
+            
+        }
 
+        private async Task<bool> ExecuteTakePictureCommand()
+        {
+            IsBusy = true;
+            try
+            {
                 if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
                 {
                     await PageService.DisplayAlert("No Camera", "No hay camaras disponibles.", "OK");
-                    return;
+                    return false;
                 }
 
                 var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
@@ -79,48 +146,44 @@ namespace CitizenApp.ViewModels
 
                 if (cameraStatus == PermissionStatus.Granted && storageStatus == PermissionStatus.Granted)
                 {
+                    var  imageName = $"{TipoIncidenciaSelected.Descripcion}_{Guid.NewGuid().ToString()}.jpg";
                     var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
                     {
-                        Name = Incidencia.Titulo == null ? "Imagen Incidencia.jpg" : $"{Incidencia.Titulo}.jpg"
+                        Name = imageName,
+                        PhotoSize = Plugin.Media.Abstractions.PhotoSize.Medium
                     });
 
                     if (file == null)
-                        return;
+                        return false;
 
-                    
-                    
-                    await PageService.DisplayAlert("File Location: ", file.AlbumPath, "OK");
-
-                    var ImageSrc = ImageSource.FromStream(() =>
+                    ImageSrc = ImageSource.FromStream(() =>
                     {
                         var stream = file.GetStream();
-                        file.Dispose();
                         return stream;
                     });
-
 
                     using (var memoryStream = new MemoryStream())
                     {
                         file.GetStream().CopyTo(memoryStream);
                         file.Dispose();
-                        ImageFile.Fichero = memoryStream.ToArray();
+                        _imagenArray = memoryStream.ToArray();
                     }
-                    ImageFile.Nombre = Incidencia.Titulo == null ? "Imagen Incidencia.jpg" : $"{Incidencia.Titulo}.jpg";
+                    TituloImagen = imageName;
                 }
                 else
                 {
                     await PageService.DisplayAlert("Permissions Denied", "Unable to take photos.", "OK");
                 }
-
             }
             catch (Exception ex)
             {
                 await PageService.DisplayAlert("ERROR", ex.Message, "OK");
             }
-
-
-
-
+            finally
+            {
+                IsBusy = false;
+            }
+            return true;
         }
 
         private async Task ExecuteLoadTiposDeIncidenciCommand()

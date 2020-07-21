@@ -20,6 +20,7 @@ namespace CitizenApp.Views
     public partial class NuevaIncidenciaPage : ContentPage
     {
         NuevaIncidenciaViewModel viewModel;
+        
         public NuevaIncidenciaPage()
         {
             BindingContext = viewModel = new NuevaIncidenciaViewModel();
@@ -29,9 +30,7 @@ namespace CitizenApp.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            if (viewModel.TiposDeIncidencia.Count == 0)
-                viewModel.IsBusy = true;
-            viewModel.LoadTiposDeIncidenciaCommand.Execute(true);
+            
         }
 
 

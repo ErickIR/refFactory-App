@@ -12,7 +12,12 @@ namespace CitizenApp.ViewModels
 {
     public class IncidenciasListViewModel : BaseViewModel
     {
-        public ObservableCollection<Incidencia> IncidenciasList { get; set; }
+        private ObservableCollection<Incidencia> _incidenciasList = new ObservableCollection<Incidencia>();
+        public ObservableCollection<Incidencia> IncidenciasList
+        {
+            get { return _incidenciasList; }
+            set { SetProperty(ref _incidenciasList, value); }
+        }
         public Incidencia SelectedIncidencia { get; set; }
 
         public Command LoadIncidenciasCommand { get; set; }
@@ -27,7 +32,7 @@ namespace CitizenApp.ViewModels
         {
             Title = "Incidencias";
             Search = "";
-            IncidenciasList = new ObservableCollection<Incidencia>();
+            _incidenciasList = new ObservableCollection<Incidencia>();
             Navigation = navigation;
 
             LoadIncidenciasCommand = new Command(async () => await ExecuteLoadIncidenciasCommand());
@@ -42,11 +47,11 @@ namespace CitizenApp.ViewModels
 
             try
             {
-                IncidenciasList.Clear();
+                _incidenciasList.Clear();
                 var incidencias = await IncidenciaService.ObtenerIncidenciasPorPalabraAsync(this.Search);
                 foreach (var item in incidencias)
                 {
-                    IncidenciasList.Add(item);
+                    _incidenciasList.Add(item);
                 }
             }
             catch (Exception ex)
@@ -65,11 +70,11 @@ namespace CitizenApp.ViewModels
 
             try
             {
-                IncidenciasList.Clear();
+                _incidenciasList.Clear();
                 var incidencias = await IncidenciaService.ObtenerTodosRegistrosIncidenciaAsync();
                 foreach (var item in incidencias)
                 {
-                    IncidenciasList.Add(item);
+                    _incidenciasList.Add(item);
                 }
             }
             catch (Exception ex)
