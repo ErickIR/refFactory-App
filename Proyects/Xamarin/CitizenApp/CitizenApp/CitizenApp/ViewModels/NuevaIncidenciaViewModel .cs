@@ -5,6 +5,7 @@ using System.IO;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using CitizenApp.Helper;
 using CitizenApp.Models;
 using CitizenApp.Services.Interfaces;
 using CitizenApp.Views;
@@ -17,6 +18,7 @@ namespace CitizenApp.ViewModels
 {
     public class NuevaIncidenciaViewModel : BaseViewModel
     {
+        internal readonly ClickRegulator _clickRegulator = new ClickRegulator();
         private string _titulo = string.Empty;
         public string Titulo
         {
@@ -95,6 +97,9 @@ namespace CitizenApp.ViewModels
 
         private async Task ExecuteSaveIncidenciasComman()
         {
+            if (_clickRegulator.SetClicked(nameof(ExecuteSaveIncidenciasComman), true))
+                return;
+
             IsBusy = true;
             try
             {
@@ -118,20 +123,24 @@ namespace CitizenApp.ViewModels
             }
             finally
             {
+                _clickRegulator.ClickDone(nameof(ExecuteSaveIncidenciasComman));
                 IsBusy = false;
             }
             
         }
 
-        private async Task<bool> ExecuteTakePictureCommand()
+        private async Task ExecuteTakePictureCommand()
         {
+            if (_clickRegulator.SetClicked(nameof(ExecuteTakePictureCommand), true))
+                return ;
+
             IsBusy = true;
             try
             {
                 if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
                 {
                     await PageService.DisplayAlert("No Camera", "No hay camaras disponibles.", "OK");
-                    return false;
+                    return;
                 }
 
                 var cameraStatus = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
@@ -154,7 +163,7 @@ namespace CitizenApp.ViewModels
                     });
 
                     if (file == null)
-                        return false;
+                        return;
 
                     ImageSrc = ImageSource.FromStream(() =>
                     {
@@ -181,13 +190,16 @@ namespace CitizenApp.ViewModels
             }
             finally
             {
+                _clickRegulator.ClickDone(nameof(ExecuteTakePictureCommand));
                 IsBusy = false;
             }
-            return true;
         }
 
         private async Task ExecuteLoadTiposDeIncidenciCommand()
         {
+            if (_clickRegulator.SetClicked(nameof(ExecuteLoadTiposDeIncidenciCommand), true))
+                return;
+
             IsBusy = true;
 
             try
@@ -205,6 +217,7 @@ namespace CitizenApp.ViewModels
             }
             finally
             {
+                _clickRegulator.ClickDone(nameof(ExecuteLoadTiposDeIncidenciCommand));
                 IsBusy = false;
             }
         }

@@ -9,6 +9,7 @@ using CitizenApp.Models;
 using CitizenApp.Services.Interfaces;
 using CitizenApp.Services.Services;
 using CitizenApp.Services.DataStores;
+using CitizenApp.Helper;
 
 namespace CitizenApp.ViewModels
 {
@@ -17,6 +18,7 @@ namespace CitizenApp.ViewModels
         internal LocalidadService LocalidadService = new LocalidadService();
         internal IncidenciaService IncidenciaService => DependencyService.Get<IncidenciaService>() ?? new IncidenciaService();
         internal IPageService PageService => DependencyService.Get<MasterDetailPageService>() ?? new MasterDetailPageService();
+        
 
         bool isBusy = false;
         public bool IsBusy

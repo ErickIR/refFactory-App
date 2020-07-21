@@ -33,43 +33,42 @@
 
     <ContentPage.Content>
         <AbsoluteLayout>
-        <StackLayout>
-            <Frame 
-                Margin="8,8,8,0"
-                HeightRequest="40"
-                BorderColor="#C4C4C4"
-                CornerRadius="30"
-                BackgroundColor="#FFFFFF"
-                Padding="20,5">
-                <Entry Placeholder="Buscar Incidencias..." FontFamily="{StaticResource NormalFont}" ReturnType="Search" Text="{Binding Search}" ReturnCommand="{Binding SearchIncidenciaCommand}" />
-            </Frame>
-            <ScrollView>
-                <ListView 
-                    HasUnevenRows="True"
-                    SeparatorVisibility="Default"
-                    ItemsSource="{Binding IncidenciasList}">
-                    <ListView.RowHeight>
-                        <OnPlatform x:TypeArguments="x:Int32">
-                            <On Platform="Android" Value="120" />
-                        </OnPlatform>
-                    </ListView.RowHeight>
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <controls:CardView />
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </ScrollView>
-            <!--<Button
-                WidthRequest="80"
-                HeightRequest="80"
-                CornerRadius="40"
-                VerticalOptions="Center"
-                HorizontalOptions="EndAndExpand"
-                BackgroundColor="#253256" />-->
-        </StackLayout>
+            <StackLayout>
+                <Frame 
+                    Margin="8,8,8,0"
+                    HeightRequest="40"
+                    BorderColor="#C4C4C4"
+                    CornerRadius="30"
+                    BackgroundColor="#FFFFFF"
+                    Padding="20,5">
+                    <Entry Placeholder="Buscar Incidencias..." FontFamily="{StaticResource NormalFont}" ReturnType="Search" Text="{Binding Search}" ReturnCommand="{Binding SearchIncidenciaCommand}" />
+                </Frame>
+                <ScrollView>
+                    <ListView 
+                        HasUnevenRows="True"
+                        SeparatorVisibility="Default"
+                        ItemsSource="{Binding IncidenciasList}"
+                        SelectedItem="{Binding SelectedIncidencia, Mode=TwoWay}"
+                        IsPullToRefreshEnabled="True"
+                        RefreshCommand="{Binding LoadIncidenciasCommand}"
+                        IsRefreshing="{Binding IsRefreshing}"
+                        ItemSelected="ListView_ItemSelected">
+                        <ListView.RowHeight>
+                            <OnPlatform x:TypeArguments="x:Int32">
+                                <On Platform="Android" Value="120" />
+                            </OnPlatform>
+                        </ListView.RowHeight>
+
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <controls:CardView />
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </ScrollView>
+            </StackLayout>
             <Frame
                 HasShadow="True"
                 AbsoluteLayout.LayoutBounds="0.95,0.95,60,60"

@@ -31,5 +31,15 @@ namespace CitizenApp.Views
             viewModel.LoadIncidenciasCommand.Execute(true);
         }
 
+        private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            if (e.SelectedItem != null &&
+                viewModel.SelectIncidenciaCommand != null &&
+                viewModel.SelectIncidenciaCommand.CanExecute(e))
+            {
+                viewModel.SelectIncidenciaCommand.Execute(true);
+            }
+              
+        }
     }
 }
