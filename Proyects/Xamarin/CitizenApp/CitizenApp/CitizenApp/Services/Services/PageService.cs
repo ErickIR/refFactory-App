@@ -7,33 +7,33 @@ using CitizenApp.Services.Interfaces;
 
 namespace CitizenApp.Services.Services
 {
-    public class PageService : IPageService
+    public class MasterDetailPageService : IPageService
     {
-        private Page MainPage
+        private MasterDetailPage MainPage
         {
             get
             {
-                return Application.Current.MainPage;
+                return Application.Current.MainPage as MasterDetailPage;
             }
         }
         public async Task<bool> DisplayAlert(string title, string message, string ok, string cancel)
         {
-            return await MainPage.DisplayAlert(title, message, ok, cancel);
+            return await MainPage.Detail.DisplayAlert(title, message, ok, cancel);
         }
 
         public async Task DisplayAlert(string title, string message, string ok)
         {
-            await MainPage.DisplayAlert(title, message, ok);
+            await MainPage.Detail.DisplayAlert(title, message, ok);
         }
 
         public async Task<Page> PopAsync()
         {
-            return await MainPage.Navigation.PopAsync();
+            return await MainPage.Detail.Navigation.PopAsync();
         }
 
         public async Task PushAsync(Page page)
         {
-            await MainPage.Navigation.PushAsync(page);
+            await MainPage.Detail.Navigation.PushAsync(page);
         }
     }
 }

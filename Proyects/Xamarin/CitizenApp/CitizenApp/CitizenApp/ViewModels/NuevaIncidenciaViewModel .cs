@@ -110,7 +110,7 @@ namespace CitizenApp.ViewModels
                     Descripcion = Descripcion
                 };
                 await IncidenciaService.RegistrarNuevaIncidenciaAsync(Incidencia);
-                Application.Current.MainPage = new MainPage();
+                await PageService.PopAsync();
             }
             catch (Exception ex)
             {

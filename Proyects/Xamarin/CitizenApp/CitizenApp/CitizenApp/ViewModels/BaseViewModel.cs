@@ -13,9 +13,8 @@ namespace CitizenApp.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        internal IncidenciaService IncidenciaService = new IncidenciaService();
-        internal IPageService PageService = new PageService();
-        internal ArchivosService ArchivosService = new ArchivosService();
+        internal IncidenciaService IncidenciaService => DependencyService.Get<IncidenciaService>() ?? new IncidenciaService();
+        internal IPageService PageService => DependencyService.Get<MasterDetailPageService>() ?? new MasterDetailPageService();
 
         bool isBusy = false;
         public bool IsBusy

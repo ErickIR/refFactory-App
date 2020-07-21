@@ -31,8 +31,6 @@ namespace CitizenApp.ViewModels
         async void ExecuteRegisterCommand()
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new RegisterFirstPage());
-
-            
         }
 
         private void ExecuteInvitadoCommand()
