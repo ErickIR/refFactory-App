@@ -14,19 +14,14 @@
 
 - `IncidenciaUsuario/IncidenciaId` --> Obtiene todas las interacciones de apoyo de esa incidencia.
 
-### ARCHIVOS
-
-- `Archivos/IncidenciaId` --> Obtiene todos los archivos de la incidencia seleccionada.
-
-- `Archivos/TipoArchivoId` --> Obtiene el ULTIMO de los archivos de ese tipo.(OJO PREGUNTAR MENTOR)
 
 ### TIPOS INCIDENCIA
 
-- `TiposIncidencia/` --> Obtiene todos los tipos de incidencias.
+- `/api/tipo-incidencia` --> Obtiene todos los tipos de incidencias.
 
 ### STATUS INCIDENCIA
 
-- `StatusIncidencia/` --> Obtiene todos los status de las incidencias.
+- `/api/status-incidencia` --> Obtiene todos los status de las incidencias.
 
 ### JUNTA DE VECINOS
 
@@ -43,14 +38,14 @@
 
 ### LOCALIDADES
 
-- `Barrios/SectorId` --> Obtiene todos los barrios en el sector seleccionado.
+- `/api/barrio/sector/{sectorId}` --> Obtiene todos los barrios en el sector seleccionado.
 
-- `Sectores/SeccionId` --> Obtiene todos los sectores en la seccion seleccionado.
+- `/api/sector/seccion/{seccionId}` --> Obtiene todos los sectores en la seccion seleccionado.
 
-- `Secciones/DistritosMunicipalesId` --> Obtiene todos los Secciones en el distrito municipal seleccionado.
+- `/api/seccion/distrito-municipal/{distritoMunicipalId}` --> Obtiene todos los Secciones en el distrito municipal seleccionado.
 
-- `DistritosMunicipales/MunicipioId` --> Obtiene todos los distritos municipales en el municipio seleccionado.
+- `/api/distrito-municipal/municipio/{municipioId}` --> Obtiene todos los distritos municipales en el municipio seleccionado.
 
-- `Municipio/BarrioId` --> Obtiene el municipio al que pertenece el barrio seleccionado.
+- `/api/municipio/barrio/{barrioId}` --> Obtiene el municipio al que pertenece el barrio seleccionado.
 
 
