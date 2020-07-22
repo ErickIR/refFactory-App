@@ -2,15 +2,15 @@
 
 ### INCIDENCIAS
 
-- `Incidencias/BarrioId` --> Obtiene todas las incidencias en el barrio seleccionado.
+- `/api/incidencia/barrio/{barrioId}` --> Obtiene todas las incidencias en el barrio seleccionado.
 
-- `Incidencias/IncidenciaId` --> Obtiene el registro de incidencia con el Id Seleccionado.
+- `/api/incidencia/{incidenciaId}` --> Obtiene el registro de incidencia con el Id Seleccionado.
 
-- `Incidencias/BarrioId&StatusIncidenciaId` --> Obtiene todas las incidencias de ese barrio con  el estado seleccionado.
+- `/api/incidencia/barrio/{barrioId}/status-incidencia/{statusIncidenciaId}` --> Obtiene todas las incidencias de ese barrio con  el estado seleccionado.
 
-- `Incidencias/BarrioId&TipoIncidenciaId` --> Obtiene todas las incidencias de ese barrio con el tipo seleccionado.
+- `/api/incidencia/barrio/{barrioId}/tipo-incidencia/{tipoIncidenciaId}` --> Obtiene todas las incidencias de ese barrio con el tipo seleccionado.
 
-- `Incidencias/UserId` --> Obtiene las incidencias registradas por el usuario seleccionado.
+- `/api/incidencia/usuario/{usuarioId}` --> Obtiene las incidencias registradas por el usuario seleccionado.
 
 - `IncidenciaUsuario/IncidenciaId` --> Obtiene todas las interacciones de apoyo de esa incidencia.
 
