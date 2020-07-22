@@ -48,6 +48,6 @@
 
 - `/api/municipio/barrio/{barrioId}` --> Obtiene el municipio al que pertenece el barrio seleccionado.
 
-- `/?/barrio/distrito-municipal/{distritomunicipalId}` --> Obtiene todos los barrio de un distrito-municipal.
+- `/api/barrio/distrito-municipal/{distritoMunicipalId}` --> Obtiene todos los barrio de un distrito-municipal.
 
 
