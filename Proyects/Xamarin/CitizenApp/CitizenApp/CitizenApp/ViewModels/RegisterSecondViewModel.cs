@@ -28,13 +28,7 @@ namespace CitizenApp.ViewModels
         public ObservableCollection<Provincia> ProvinciaList
         {
             get { return _provinciaList; }
-            set 
-            { 
-                SetProperty(ref _provinciaList, value);
-
-
-            
-            }
+            set { SetProperty(ref _provinciaList, value); }
         }
 
         private ObservableCollection<Municipio> _municipioList = new ObservableCollection<Municipio>();
@@ -86,7 +80,7 @@ namespace CitizenApp.ViewModels
             {
                 SetProperty(ref _provinciaSelected, value);
 
-                if (!_isVisibleEditButton)
+                if (!_isVisibleEditButton )
                 {
                     _municipioList.Clear();
                     var municipiosTemp = municipios.FindAll(x => x.ProvinciaId == _provinciaSelected.ProvinciaId);
@@ -119,7 +113,7 @@ namespace CitizenApp.ViewModels
             { 
                 SetProperty(ref _municipioSelected, value);
 
-                if (!_isVisibleEditButton)
+                if (!_isVisibleEditButton && _municipioSelected != null)
                 {
                     _distritoMunicipalList.Clear();
                     var distritoMunicipalesTemp = distritoMunicipales.FindAll(x => x.MunicipioId == _municipioSelected.MunicipioId);
@@ -152,7 +146,7 @@ namespace CitizenApp.ViewModels
             { 
                 SetProperty(ref _distritoMunicipalSelected, value);
 
-                if (!_isVisibleEditButton)
+                if (!_isVisibleEditButton && _distritoMunicipalSelected != null)
                 {
                     _seccionList.Clear();
                     var seccionesTemp = secciones.FindAll(x => x.DistritoMunicipalId == _distritoMunicipalSelected.DistritoMunicipalId);
@@ -182,7 +176,7 @@ namespace CitizenApp.ViewModels
             { 
                 SetProperty(ref _seccionSelected, value);
 
-                if (!_isVisibleEditButton)
+                if (!_isVisibleEditButton && _seccionSelected != null)
                 {
                     _sectorList.Clear();
                     var sectoresTemp = sectores.FindAll(x => x.SeccionId == _seccionSelected.SeccionId);
@@ -192,7 +186,7 @@ namespace CitizenApp.ViewModels
                     }
 
                     
-                    SeccionSelected = null;
+                    
                     SectorSelected = null;
                     BarrioSelected = null;
                     isEnableSector = true;
@@ -212,7 +206,7 @@ namespace CitizenApp.ViewModels
             { 
                 SetProperty(ref _sectorSelected, value);
 
-                if (!_isVisibleEditButton)
+                if (!_isVisibleEditButton && _sectorSelected != null)
                 {
                     _barrioList.Clear();
                     var barriosTemp = barrios.FindAll(x => x.SectorId == _sectorSelected.SectorId);
@@ -222,7 +216,7 @@ namespace CitizenApp.ViewModels
                     }
 
                     
-                    SectorSelected = null;
+                    
                     BarrioSelected = null;
                     isEnableBarrio = true;
                 }
@@ -244,7 +238,26 @@ namespace CitizenApp.ViewModels
         
         async void ExecuteContinuarCommand()
         {
-            await Application.Current.MainPage.Navigation.PushModalAsync(new RegisterThirdPage());
+            if (_barrioSelected != null)
+            {
+                Usuario usuario = new Usuario()
+                {
+                    Nombres = persona.Nombres,
+                    Apellidos = persona.Apellidos,
+                    Documento = persona.Cedula,
+                    BarrioId = _barrioSelected.BarrioId,
+                    TipoDocumentoId = 1,
+                    TipoUsuarioId = 1
+                    
+                    
+                };
+                await Application.Current.MainPage.Navigation.PushModalAsync(new RegisterThirdPage(usuario));
+            }
+            else
+            {
+                MakeAlter("Error", "Debe completar todos los datos de su ubicacion.", "OK");
+            }
+            
         }
 
         public Command EditCommand { get; set; }
@@ -257,12 +270,7 @@ namespace CitizenApp.ViewModels
             SeccionSelected = null;
             SectorSelected = null;
             BarrioSelected = null;
-            isEnableProvincia = true;
-            //isEnableMunicipio = true;
-            //isEnableDistritoMunicipal = true;
-            //isEnableSeccion = true;
-            //isEnableSector = true;
-            //isEnableBarrio = true;
+            isEnableProvincia = true;            
             isVisibleEditButton = false;
             MakeAlter("Informacion", "Ingrese sus datos nuevos.", "OK");
         }
