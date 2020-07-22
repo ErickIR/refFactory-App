@@ -12,7 +12,7 @@
                 VerticalOptions="Center"
                 Padding="40">
                 <Frame
-                    BackgroundColor="#253256"
+                    BackgroundColor="White"
                     CornerRadius="30"
                     WidthRequest="303"
                     Opacity="0.75"
@@ -23,11 +23,11 @@
                         VerticalTextAlignment="Center"
                         HorizontalTextAlignment="Center"
                         HorizontalOptions="Center"
-                        TextColor="White"
+                        TextColor="#253256"
                         FontSize="30"/>
                 </Frame>
                 <Frame               
-                    BackgroundColor="#253256"
+                    BackgroundColor="White"
                     CornerRadius="30"
                     WidthRequest="303"
                     Margin="0,20,0,0"
@@ -35,7 +35,16 @@
                     VerticalOptions="Center">
                     <StackLayout
                         HorizontalOptions="Center">
-                        
+
+
+                        <Button
+                            Text="Editar"
+                            TextColor="Red"
+                            IsVisible="{Binding isVisibleEditButton}"
+                            FontFamily="{StaticResource BoldFont}"
+                            Command="{Binding EditCommand}"
+                            CornerRadius="23"
+                            Margin="0,0,0,10"/>
                         <Label
                             VerticalTextAlignment="Center"
                             HorizontalTextAlignment="Center"
@@ -43,24 +52,38 @@
                             FontFamily="{StaticResource BoldFont}"
                             Text="Provincia:"
                             HorizontalOptions="Center"
-                            TextColor="White"
+                            TextColor="#253256"
                             FontSize="20"></Label>
                         <Picker
-                            Title="Seleccione su barrio..."
+                            TextColor="#253256"
+                            TitleColor="#253256"
+                            HorizontalOptions="Center"
+                            
+                            IsEnabled="{Binding isEnableProvincia}"
+                            Title="Seleccione su provincia..."
                             FontFamily="{StaticResource NormalFont}"
-                            ItemsSource="{Binding RegionList}" SelectedItem="{Binding RegionSelected}" ItemDisplayBinding="{Binding Nombre}" 
+                            ItemsSource="{Binding ProvinciaList}" SelectedItem="{Binding ProvinciaSelected,Mode=TwoWay}" ItemDisplayBinding="{Binding Nombre}" 
                             WidthRequest="250"></Picker>
-                        
+
                         <Label
+                            
                             VerticalTextAlignment="Center"
                             HorizontalTextAlignment="Center"
                             Margin="0,0,0,0"
                             FontFamily="{StaticResource BoldFont}"
                             Text="Municipio:"
                             HorizontalOptions="Center"
-                            TextColor="White"
+                            TextColor="#253256"
                             FontSize="20"></Label>
+                        
                         <Picker
+                            TextColor="#253256"
+                            TitleColor="#253256"
+                            HorizontalOptions="Center"
+                            IsEnabled="{Binding isEnableMunicipio}"
+                            Title="Seleccione su municipio..."
+                            FontFamily="{StaticResource NormalFont}"
+                            ItemsSource="{Binding MunicipioList}" SelectedItem="{Binding MunicipioSelected}" ItemDisplayBinding="{Binding Nombre}" 
                             WidthRequest="250"></Picker>
 
                         <Label
@@ -70,11 +93,18 @@
                             FontFamily="{StaticResource BoldFont}"
                             Text="Distrito Municipal:"
                             HorizontalOptions="Center"
-                            TextColor="White"
+                            TextColor="#253256"
                             FontSize="20"></Label>
                         <Picker
+                            TextColor="#253256"
+                            TitleColor="#253256"
+                            HorizontalOptions="Center"
+                            IsEnabled="{Binding isEnableDistritoMunicipal}"
+                            Title="Seleccione su Distrito Municipal..."
+                            FontFamily="{StaticResource NormalFont}"
+                            ItemsSource="{Binding DistritoMunicipalList}" SelectedItem="{Binding DistritoMunicipalSelected}" ItemDisplayBinding="{Binding Nombre}" 
                             WidthRequest="250"></Picker>
-                        
+
                         <Label
                             VerticalTextAlignment="Center"
                             HorizontalTextAlignment="Center"
@@ -82,9 +112,16 @@
                             FontFamily="{StaticResource BoldFont}"
                             Text="Seccion:"
                             HorizontalOptions="Center"
-                            TextColor="White"
+                            TextColor="#253256"
                             FontSize="20"></Label>
                         <Picker
+                            TextColor="#253256"
+                            TitleColor="#253256"
+                            HorizontalOptions="Center"
+                            IsEnabled="{Binding isEnableSeccion}"
+                            Title="Seleccione su seccion..."
+                            FontFamily="{StaticResource NormalFont}"
+                            ItemsSource="{Binding SeccionList}" SelectedItem="{Binding SeccionSelected}" ItemDisplayBinding="{Binding Nombre}" 
                             WidthRequest="250"></Picker>
 
                         <Label
@@ -94,11 +131,17 @@
                             FontFamily="{StaticResource BoldFont}"
                             Text="Sector:"
                             HorizontalOptions="Center"
-                            TextColor="White"
+                            TextColor="#253256"
                             FontSize="20"></Label>
                         <Picker
+                            TextColor="#253256"
+                            TitleColor="#253256"
+                            HorizontalOptions="Center"
+                            IsEnabled="{Binding isEnableSector}"
+                            Title="Seleccione su sector..."
+                            FontFamily="{StaticResource NormalFont}"
+                            ItemsSource="{Binding SectorList}" SelectedItem="{Binding SectorSelected}" ItemDisplayBinding="{Binding Nombre}" 
                             WidthRequest="250"></Picker>
-
                         <Label
                             VerticalTextAlignment="Center"
                             HorizontalTextAlignment="Center"
@@ -106,16 +149,22 @@
                             FontFamily="{StaticResource BoldFont}"
                             Text="Barrio:"
                             HorizontalOptions="Center"
-                            TextColor="White"
+                            TextColor="#253256"
                             FontSize="20"></Label>
                         <Picker
-                            WidthRequest="250"
-                            Margin="0,0,0,5"></Picker>
+                            TextColor="#253256"
+                            TitleColor="#253256"
+                            HorizontalOptions="Center"
+                            IsEnabled="{Binding isEnableBarrio}"
+                            Title="Seleccione su barrio..."
+                            FontFamily="{StaticResource NormalFont}"
+                            ItemsSource="{Binding BarrioList}" SelectedItem="{Binding BarrioSelected}" ItemDisplayBinding="{Binding Nombre}" 
+                            WidthRequest="250"></Picker>
                     </StackLayout>
                 </Frame>
                 <Button
-                    BackgroundColor="White"
-                    TextColor="Black"
+                    BackgroundColor="#253256"
+                    TextColor="White"
                     WidthRequest="250"
                     HeightRequest="50"
                     CornerRadius="25"

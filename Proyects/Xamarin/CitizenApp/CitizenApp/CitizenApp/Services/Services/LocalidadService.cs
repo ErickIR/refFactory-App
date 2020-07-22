@@ -20,12 +20,14 @@ namespace CitizenApp.Services.DataStores
         {
             regiones = new List<Region>()
             {
-                new Region{RegionId=1, Nombre="Distrito Nacional"}
+                new Region{RegionId=1, Nombre="Distrito Nacional"},
+                new Region{RegionId=2, Nombre="Santiago"}
             };
 
             provincias = new List<Provincia>()
             {
-                new Provincia{ProvinciaId=1, RegionId=1, Nombre="Santo Domingo"}
+                new Provincia{ProvinciaId=1, RegionId=1, Nombre="Santo Domingo"},
+                new Provincia{ProvinciaId=2, RegionId=2, Nombre="Santiago de los Caballeros"},
             };
 
             municipios = new List<Municipio>()
