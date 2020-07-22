@@ -22,6 +22,9 @@ namespace CRD.AplicationCore.Services
         readonly IUsuarioValidationService usuarioValidationService;
         readonly IMapper mapper;
 
+
+
+
         public UsuarioService(IMasterRepository masterRepository, 
             IUsuarioValidationService usuarioValidationService, IMapper mapper)
         {
