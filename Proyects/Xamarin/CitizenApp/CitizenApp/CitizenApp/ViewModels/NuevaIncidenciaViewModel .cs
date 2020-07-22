@@ -62,21 +62,7 @@ namespace CitizenApp.ViewModels
         public ICommand LoadTiposDeIncidenciaCommand { get; set; }
         public ICommand TakePictureCommand { get; set; }
 
-        public double PageWidth
-        {
-            get
-            {
-                return Application.Current.MainPage.Width - 10;
-            }
-        }
-
-        public double PageHeight
-        {
-            get
-            {
-                return Application.Current.MainPage.Height - 10;
-            }
-        }
+        
 
         public NuevaIncidenciaViewModel()
         {

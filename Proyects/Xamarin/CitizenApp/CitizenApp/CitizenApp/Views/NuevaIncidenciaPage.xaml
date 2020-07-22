@@ -37,7 +37,13 @@
                     <Label  Text="Adjuntar imagenes..."
                                     FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="StartAndExpand" />
                     <Entry Text="{Binding TituloImagen}" FontSize="16" FontFamily="{StaticResource NormalFont}" IsEnabled="False"/>
-                    <Image Source="{Binding ImageSrc}" />
+                    <Frame 
+                        Margin="5" Padding="0"
+                        BackgroundColor="White"
+                        BorderColor="#c4c4c4"
+                        CornerRadius="30">
+                        <Image Source="{Binding ImageSrc}" Aspect="AspectFill"/>
+                    </Frame>
                     <Button Text="Añadir Imagen" BackgroundColor="White" FontSize="16" TextColor="Black" FontFamily="{StaticResource BoldFont}"
                                     Command="{Binding TakePictureCommand}" Margin="0,0,0,0" Padding="0"
                                     CornerRadius="20" BorderColor="Black"/>

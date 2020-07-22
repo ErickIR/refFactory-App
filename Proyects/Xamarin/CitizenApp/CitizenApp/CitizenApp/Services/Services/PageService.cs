@@ -16,6 +16,9 @@ namespace CitizenApp.Services.Services
                 return Application.Current.MainPage as MasterDetailPage;
             }
         }
+
+        
+
         public async Task<bool> DisplayAlert(string title, string message, string ok, string cancel)
         {
             return await MainPage.Detail.DisplayAlert(title, message, ok, cancel);

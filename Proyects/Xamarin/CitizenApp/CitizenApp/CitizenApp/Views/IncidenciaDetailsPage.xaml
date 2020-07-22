@@ -4,12 +4,47 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="CitizenApp.Views.IncidenciaDetailsPage">
+             x:Class="CitizenApp.Views.IncidenciaDetailsPage"
+             BackgroundColor="#d9e0e9">
+    
+    <NavigationPage.TitleView>
+        <Image Source="Logo_Coopera"                   
+                HeightRequest="55"
+                VerticalOptions="Start"
+                HorizontalOptions="Center" />
+    </NavigationPage.TitleView>
+    
+    
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Label Text="{Binding Title}" FontFamily="{StaticResource BoldFont}" FontSize="30"
+                TextColor="#253256" HorizontalOptions="CenterAndExpand" Padding="10"/>
+                <Frame  
+                    Margin="5,0,5,5" Padding="0"
+                    WidthRequest="{Binding PageWidth}"
+                    HeightRequest="250"
+                    BackgroundColor="White"
+                    BorderColor="Black"
+                    CornerRadius="30">
+                    <Image Source="{Binding ImageSrc}" Aspect="AspectFill" />
+                </Frame>
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Tipo: " FontFamily="{StaticResource BoldFont}" FontSize="20"
+                               TextColor="Black" HorizontalOptions="CenterAndExpand" Padding="10" />
+                        <Label Text="{Binding Incidencia.TipoIncidenia.Descripcion}" FontFamily="{StaticResource NormalFont}" FontSize="20"
+                               TextColor="Black" HorizontalOptions="CenterAndExpand" Padding="10"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
+                        <Label Text="Tipo: " FontFamily="{StaticResource BoldFont}" FontSize="20"
+                               TextColor="Black" HorizontalOptions="CenterAndExpand" Padding="10" />
+                        <Label Text="{Binding Incidencia.TipoIncidenia.Descripcion}" FontFamily="{StaticResource NormalFont}" FontSize="20"
+                               TextColor="Black" HorizontalOptions="CenterAndExpand" Padding="10"/>
+                    </StackLayout>
+                </StackLayout>
+            </StackLayout>
+            
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
