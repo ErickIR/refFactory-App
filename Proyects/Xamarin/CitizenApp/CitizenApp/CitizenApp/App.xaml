@@ -23,7 +23,14 @@
                 <On Platform="Android" Value="JosefinSans-Regular.ttf#JosefinSans-Regular" />
                   
                 </OnPlatform>
-            
+
+            <Style TargetType="Label" x:Key="ErrorTextStyle">
+                <Setter Property="TextColor" Value = "Red"   />
+                <Setter Property="FontSize" Value = "14"   />
+                <Setter Property="FontFamily" Value = "{StaticResource NormalFont}"   />
+                
+            </Style>
+
         </ResourceDictionary>
     </Application.Resources>
     

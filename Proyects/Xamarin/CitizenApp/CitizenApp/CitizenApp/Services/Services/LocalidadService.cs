@@ -27,18 +27,20 @@ namespace CitizenApp.Services.DataStores
             provincias = new List<Provincia>()
             {
                 new Provincia{ProvinciaId=1, RegionId=1, Nombre="Santo Domingo"},
-                new Provincia{ProvinciaId=2, RegionId=2, Nombre="Santiago de los Caballeros"},
+                new Provincia{ProvinciaId=2, RegionId=2, Nombre="Santiago"}
             };
 
             municipios = new List<Municipio>()
             {
-                new Municipio{MunicipioId=1, ProvinciaId=1, Nombre="Santo Domingo de Guzmán"}
+                new Municipio{MunicipioId=1, ProvinciaId=1, Nombre="Santo Domingo de Guzmán"},
+                new Municipio{MunicipioId=2, ProvinciaId=2, Nombre="Santiago de los Caballeros"}
+                
             };
 
             distritoMunicipales = new List<DistritoMunicipal>()
             {
-                new DistritoMunicipal{ DistritoMunicipalId=1,MunicipioId=1, Nombre="Santo Domingo de Guzmán"}
-
+                new DistritoMunicipal{ DistritoMunicipalId=1,MunicipioId=1, Nombre="Santo Domingo de Guzmán"},
+                new DistritoMunicipal{ DistritoMunicipalId=2,MunicipioId=2, Nombre="Santiago de los Caballeros"}
             };
 
             secciones = new List<Seccion>()
