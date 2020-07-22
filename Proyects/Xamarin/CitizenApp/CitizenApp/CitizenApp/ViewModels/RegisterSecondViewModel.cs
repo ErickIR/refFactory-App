@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace CitizenApp.ViewModels
@@ -12,21 +13,28 @@ namespace CitizenApp.ViewModels
     public class RegisterSecondViewModel : BaseViewModel
     {
         private Persona persona;
+        public List<Provincia> provincias = new List<Provincia>();
+        public List<Municipio> municipios = new List<Municipio>();
+        public List<DistritoMunicipal> distritoMunicipales = new List<DistritoMunicipal>();
+        public List<Seccion> secciones = new List<Seccion>();
+        public List<Sector> sectores = new List<Sector>();
+        public List<Barrio> barrios = new List<Barrio>();
 
 
         #region Pickers
-        private ObservableCollection<Models.Region> _regionList = new ObservableCollection<Models.Region>();
-        public ObservableCollection<Models.Region> RegionList
-        {
-            get { return _regionList; }
-            set { SetProperty(ref _regionList, value); }
-        }
+
 
         private ObservableCollection<Provincia> _provinciaList = new ObservableCollection<Provincia>();
         public ObservableCollection<Provincia> ProvinciaList
         {
             get { return _provinciaList; }
-            set { SetProperty(ref _provinciaList, value); }
+            set 
+            { 
+                SetProperty(ref _provinciaList, value);
+
+
+            
+            }
         }
 
         private ObservableCollection<Municipio> _municipioList = new ObservableCollection<Municipio>();
@@ -69,25 +77,70 @@ namespace CitizenApp.ViewModels
 
         #region SelectedItemPicker
 
-        private Models.Region _regionSelected = new Models.Region();
-        public Models.Region RegionSelected 
-        {
-            get { return _regionSelected; }
-            set { SetProperty(ref _regionSelected, value); }
-        }
-
+      
         private Provincia _provinciaSelected = new Provincia();
         public Provincia ProvinciaSelected
         {
             get { return _provinciaSelected; }
-            set { SetProperty(ref _provinciaSelected, value); }
+            set 
+            {
+                SetProperty(ref _provinciaSelected, value);
+
+                if (!_isVisibleEditButton)
+                {
+                    _municipioList.Clear();
+                    var municipiosTemp = municipios.FindAll(x => x.ProvinciaId == _provinciaSelected.ProvinciaId);
+                    foreach (var municipio in municipiosTemp)
+                    {
+                        _municipioList.Add(municipio);
+                    }
+
+                   
+                    MunicipioSelected = null;
+                    DistritoMunicipalSelected = null;
+                    SeccionSelected = null;
+                    SectorSelected = null;
+                    BarrioSelected = null;
+                    isEnableMunicipio = true;
+                    isEnableDistritoMunicipal = false;
+                    isEnableSeccion = false;
+                    isEnableSector = false;
+                    isEnableBarrio = false;
+                }
+                
+            }
         }
 
         private Municipio _municipioSelected = new Municipio();
         public Municipio MunicipioSelected
         {
             get { return _municipioSelected; }
-            set { SetProperty(ref _municipioSelected, value); }
+            set 
+            { 
+                SetProperty(ref _municipioSelected, value);
+
+                if (!_isVisibleEditButton)
+                {
+                    _distritoMunicipalList.Clear();
+                    var distritoMunicipalesTemp = distritoMunicipales.FindAll(x => x.MunicipioId == _municipioSelected.MunicipioId);
+                    foreach (var distritoMunicipal in distritoMunicipalesTemp)
+                    {
+                        _distritoMunicipalList.Add(distritoMunicipal);
+                    }
+
+                  
+                    DistritoMunicipalSelected = null;
+                    SeccionSelected = null;
+                    SectorSelected = null;
+                    BarrioSelected = null;
+                    isEnableDistritoMunicipal = true;
+                    isEnableSeccion = false;
+                    isEnableSector = false;
+                    isEnableBarrio = false;
+
+                }
+                
+            }
         }
 
 
@@ -95,14 +148,59 @@ namespace CitizenApp.ViewModels
         public DistritoMunicipal DistritoMunicipalSelected
         {
             get { return _distritoMunicipalSelected; }
-            set { SetProperty(ref _distritoMunicipalSelected, value); }
+            set 
+            { 
+                SetProperty(ref _distritoMunicipalSelected, value);
+
+                if (!_isVisibleEditButton)
+                {
+                    _seccionList.Clear();
+                    var seccionesTemp = secciones.FindAll(x => x.DistritoMunicipalId == _distritoMunicipalSelected.DistritoMunicipalId);
+                    foreach (var seccion in seccionesTemp)
+                    {
+                        _seccionList.Add(seccion);
+                    }
+
+                    
+                   
+                    SeccionSelected = null;
+                    SectorSelected = null;
+                    BarrioSelected = null;
+                    isEnableSeccion = true;
+                    isEnableSector = false;
+                    isEnableBarrio = false;
+                }
+               
+            }
         }
 
         private Seccion _seccionSelected = new Seccion();
         public Seccion SeccionSelected
         {
             get { return _seccionSelected; }
-            set { SetProperty(ref _seccionSelected, value); }
+            set 
+            { 
+                SetProperty(ref _seccionSelected, value);
+
+                if (!_isVisibleEditButton)
+                {
+                    _sectorList.Clear();
+                    var sectoresTemp = sectores.FindAll(x => x.SeccionId == _seccionSelected.SeccionId);
+                    foreach (var sector in sectoresTemp)
+                    {
+                        _sectorList.Add(sector);
+                    }
+
+                    
+                    SeccionSelected = null;
+                    SectorSelected = null;
+                    BarrioSelected = null;
+                    isEnableSector = true;
+                    isEnableBarrio = false;
+
+                }
+                
+            }
         }
 
 
@@ -110,10 +208,34 @@ namespace CitizenApp.ViewModels
         public Sector SectorSelected
         {
             get { return _sectorSelected; }
-            set { SetProperty(ref _sectorSelected, value); }
+            set 
+            { 
+                SetProperty(ref _sectorSelected, value);
+
+                if (!_isVisibleEditButton)
+                {
+                    _barrioList.Clear();
+                    var barriosTemp = barrios.FindAll(x => x.SectorId == _sectorSelected.SectorId);
+                    foreach (var barrio in barriosTemp)
+                    {
+                        _barrioList.Add(barrio);
+                    }
+
+                    
+                    SectorSelected = null;
+                    BarrioSelected = null;
+                    isEnableBarrio = true;
+                }
+                
+            }
         }
 
-
+        private Barrio _barrioSelected = new Barrio();
+        public Barrio BarrioSelected
+        {
+            get { return _barrioSelected; }
+            set { SetProperty(ref _barrioSelected, value); }
+        }
 
         #endregion
 
@@ -124,81 +246,156 @@ namespace CitizenApp.ViewModels
         {
             await Application.Current.MainPage.Navigation.PushModalAsync(new RegisterThirdPage());
         }
-        #endregion
 
+        public Command EditCommand { get; set; }
+
+        void ExecuteEditarCommand()
+        {
+            ProvinciaSelected = null;
+            MunicipioSelected = null;
+            DistritoMunicipalSelected = null;
+            SeccionSelected = null;
+            SectorSelected = null;
+            BarrioSelected = null;
+            isEnableProvincia = true;
+            //isEnableMunicipio = true;
+            //isEnableDistritoMunicipal = true;
+            //isEnableSeccion = true;
+            //isEnableSector = true;
+            //isEnableBarrio = true;
+            isVisibleEditButton = false;
+            MakeAlter("Informacion", "Ingrese sus datos nuevos.", "OK");
+        }
+        #endregion
+        public void MakeAlter(string Titulo, string Description, string buttonText)
+        {
+            Application.Current.MainPage.DisplayAlert(Titulo, Description, buttonText);
+        }
+        #region IsEnablePickers
+
+
+        private bool _isVisibleEditButton = true;
+        public bool isVisibleEditButton
+        {
+            get { return _isVisibleEditButton; }
+            set { SetProperty(ref _isVisibleEditButton, value); }
+        }
+
+        private bool _isEnableProvincia = false;
+        public bool isEnableProvincia
+        {
+            get { return _isEnableProvincia; }
+            set { SetProperty(ref _isEnableProvincia, value); }
+        }
+
+        private bool _isEnableMunicipio = false;
+        public bool isEnableMunicipio
+        {
+            get { return _isEnableMunicipio; }
+            set { SetProperty(ref _isEnableMunicipio, value); }
+        }
+
+        private bool _isEnableDistritoMunicipal = false;
+        public bool isEnableDistritoMunicipal
+        {
+            get { return _isEnableDistritoMunicipal; }
+            set { SetProperty(ref _isEnableDistritoMunicipal, value); }
+        }
+
+        private bool _isEnableSeccion = false;
+        public bool isEnableSeccion
+        {
+            get { return _isEnableSeccion; }
+            set { SetProperty(ref _isEnableSeccion, value); }
+        }
+
+        private bool _isEnableSector = false;
+        public bool isEnableSector
+        {
+            get { return _isEnableSector; }
+            set { SetProperty(ref _isEnableSector, value); }
+        }
+
+        private bool _isEnableBarrio = false;
+        public bool isEnableBarrio
+        {
+            get { return _isEnableBarrio; }
+            set { SetProperty(ref _isEnableBarrio, value); }
+        }
+
+
+
+
+        #endregion
 
         #region Constructor
         public RegisterSecondViewModel(Persona persona)
         {
-            CargarLocalidades();
-            SeleccionarLocalidades();
-            this.persona = persona;
-            ContinuarCommand = new Command(() => ExecuteContinuarCommand());
-
-        }
-
-        private async  void SeleccionarLocalidades()
-        {
+            Task.Run(async() => await CargarLocalidades());
             
+            this.persona = persona;
+
+            ContinuarCommand = new Command(() => ExecuteContinuarCommand());
+            EditCommand = new Command(() => ExecuteEditarCommand());
+
         }
+
+     
         #endregion
 
-        private async void CargarLocalidades()
+        private async Task CargarLocalidades()
         {
             try
             {
-                _regionList.Clear();
-                var regiones = await LocalidadService.ObtenerRegiones();
-                foreach (var region in regiones)
-                {
-                    _regionList.Add(region);
-                }
-                
+             
 
                 _provinciaList.Clear();
-                var provincias = await LocalidadService.ObtenerProvincias();
+                provincias = (List<Provincia>)(await LocalidadService.ObtenerProvincias());
                 foreach (var provincia in provincias)
                 {
                     _provinciaList.Add(provincia);
                 }
+                ProvinciaSelected = provincias.Find(x=> x.Nombre == persona.Provincia);
 
                 _municipioList.Clear();
-                var municipios = await LocalidadService.ObtenerMunicipios();
+                municipios = (List<Municipio>)(await LocalidadService.ObtenerMunicipios());
                 foreach (var municipio in municipios)
                 {
                     _municipioList.Add(municipio);
                 }
+                MunicipioSelected = municipios.Find(x => x.Nombre == persona.Municipio);
 
                 _distritoMunicipalList.Clear();
-                var distritoMunicipals = await LocalidadService.ObtenerDistritoMunicipales();
-                foreach (var distritoMunicipal in distritoMunicipals)
+                distritoMunicipales = (List<DistritoMunicipal>)(await LocalidadService.ObtenerDistritoMunicipales());
+                foreach (var distritoMunicipal in distritoMunicipales)
                 {
                     _distritoMunicipalList.Add(distritoMunicipal);
                 }
+                DistritoMunicipalSelected = distritoMunicipales.Find(x => x.Nombre == persona.DistritoMunicipal);
 
                 _seccionList.Clear();
-                var secciones = await LocalidadService.ObtenerSecciones();
+                secciones = (List<Seccion>)(await LocalidadService.ObtenerSecciones());
                 foreach (var seccion in secciones)
                 {
                     _seccionList.Add(seccion);
                 }
+                SeccionSelected = secciones.Find(x => x.Nombre == persona.Seccion);
 
                 _sectorList.Clear();
-                var sectores = await LocalidadService.ObtenerSectores();
+                sectores = (List<Sector>)(await LocalidadService.ObtenerSectores());
                 foreach (var sector in sectores)
                 {
                     _sectorList.Add(sector);
                 }
+                SectorSelected = sectores.Find(x => x.Nombre == persona.Sector);
 
                 _barrioList.Clear();
-                var barrios = await LocalidadService.ObtenerBarrios();
+                barrios = (List<Barrio>)(await LocalidadService.ObtenerBarrios());
                 foreach (var barrio in barrios)
                 {
                     _barrioList.Add(barrio);
                 }
-
-
-
+                BarrioSelected = barrios.Find(x => x.Nombre == persona.Barrio);
             }
             catch(Exception ex)
             {
