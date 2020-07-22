@@ -34,7 +34,7 @@
 ### ENTIDADES MUNICIPALES
 
 
-- `EntidadesMunicipales/MunicipioId` --> Obtiene todos las entidades municipales del municipio.
+- `/api/entidad-municipal/municipio/{municipioId}` --> Obtiene todos las entidades municipales del municipio.
 
 ### LOCALIDADES
 
