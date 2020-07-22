@@ -12,7 +12,7 @@
 
 - `/api/incidencia/usuario/{usuarioId}` --> Obtiene las incidencias registradas por el usuario seleccionado.
 
-- `IncidenciaUsuario/IncidenciaId` --> Obtiene todas las interacciones de apoyo de esa incidencia.
+- `/api/incidencia-usuario/incidencia/{incidenciaId}` --> Obtiene todas las interacciones de apoyo de esa incidencia.
 
 
 ### TIPOS INCIDENCIA
