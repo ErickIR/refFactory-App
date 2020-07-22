@@ -17,34 +17,71 @@
     
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout>
+            <StackLayout Margin="15">
                 <Label Text="{Binding Title}" FontFamily="{StaticResource BoldFont}" FontSize="30"
-                TextColor="#253256" HorizontalOptions="CenterAndExpand" Padding="10"/>
-                <Frame  
-                    Margin="5,0,5,5" Padding="0"
-                    WidthRequest="{Binding PageWidth}"
-                    HeightRequest="250"
-                    BackgroundColor="White"
-                    BorderColor="Black"
+                           TextColor="#253256" HorizontalOptions="CenterAndExpand" Padding="0" Margin="0,5"/>
+                <AbsoluteLayout HorizontalOptions="CenterAndExpand">
+                    <StackLayout>
+                        <Frame
+                            Padding="0"
+                            WidthRequest="390"
+                            HeightRequest="250"
+                            BackgroundColor="White"
+                            BorderColor="Black"
+                            CornerRadius="30">
+                            <Image Source="{Binding ImageSrc}" Aspect="AspectFill" />
+                        </Frame>
+                    </StackLayout>
+                    <Frame
+                        HasShadow="True"
+                        AbsoluteLayout.LayoutBounds="0.95,0.95,60,60"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        BackgroundColor="#253256"
+                        CornerRadius="30"
+                        Padding="0"
+                        HeightRequest="60"
+                        BorderColor="#253256"
+                        WidthRequest="560">
+                        <ImageButton
+                            Command="{Binding ApoyarIncidenciaCommand}"
+                            BackgroundColor="#253256"
+                            Source="Add.png"/>
+                    </Frame>
+                </AbsoluteLayout>
+                
+                <Frame   
+                    Margin="0,20,0,0"
+                    Padding="15"
+                    BackgroundColor="#ecf0f4"
+                    BorderColor="#ecf0f4"
                     CornerRadius="30">
-                    <Image Source="{Binding ImageSrc}" Aspect="AspectFill" />
+                    <StackLayout Spacing="15">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                            <Label Text="Tipo: " FontFamily="{StaticResource BoldFont}" FontSize="20"
+                            TextColor="Black" />
+                            <Label Text="{Binding Incidencia.TipoIncidencia.Descripcion}" FontFamily="{StaticResource NormalFont}" FontSize="17"
+                            TextColor="Black" />
+
+                        </StackLayout>
+                        <Label Text="{Binding Incidencia.ApoyosPhrase}" FontFamily="{StaticResource BoldFont}" FontSize="17"
+                            TextColor="Black" HorizontalOptions="CenterAndExpand" />
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Estado: " FontFamily="{StaticResource BoldFont}" FontSize="20"
+                                   TextColor="Black" HorizontalOptions="Start" />
+                            <Label Text="{Binding Incidencia.Status.Descripcion}" FontFamily="{StaticResource NormalFont}" FontSize="17"
+                                   TextColor="Black" HorizontalOptions="Start" />
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Descripción: " FontFamily="{StaticResource BoldFont}" FontSize="20"
+                               TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+                            <Label Text="{Binding Incidencia.Descripcion}" FontFamily="{StaticResource NormalFont}" FontSize="17"
+                               TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+                        </StackLayout>
+                    </StackLayout>
                 </Frame>
-                <StackLayout Orientation="Horizontal">
-                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                        <Label Text="Tipo: " FontFamily="{StaticResource BoldFont}" FontSize="20"
-                               TextColor="Black" HorizontalOptions="CenterAndExpand" Padding="10" />
-                        <Label Text="{Binding Incidencia.TipoIncidenia.Descripcion}" FontFamily="{StaticResource NormalFont}" FontSize="20"
-                               TextColor="Black" HorizontalOptions="CenterAndExpand" Padding="10"/>
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" HorizontalOptions="CenterAndExpand">
-                        <Label Text="Tipo: " FontFamily="{StaticResource BoldFont}" FontSize="20"
-                               TextColor="Black" HorizontalOptions="CenterAndExpand" Padding="10" />
-                        <Label Text="{Binding Incidencia.TipoIncidenia.Descripcion}" FontFamily="{StaticResource NormalFont}" FontSize="20"
-                               TextColor="Black" HorizontalOptions="CenterAndExpand" Padding="10"/>
-                    </StackLayout>
-                </StackLayout>
+
             </StackLayout>
-            
+
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

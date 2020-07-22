@@ -14,7 +14,6 @@ namespace CitizenApp.Services
 
         static BaseHttpClient() 
         {
-            Instance.Timeout = TimeSpan.FromSeconds(15);
             Instance.BaseAddress = new Uri(baseUrl);
         }
 
