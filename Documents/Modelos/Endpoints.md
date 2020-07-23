@@ -29,7 +29,7 @@
 
 - `/api/junta-de-vecinos/distrito-municipal/{distritoMunicipalId}` --> Obtiene las juntas de vecinos que se encuentran en los barrios del distrito municipal seleccionado.
 
-- `IntegrantesJdV/JuntaDeVecinosId` --> Obtiene los integrantes de la junta de vecinos.
+- `/api/integrante-jdv/junta-de-vecinos/{juntaDeVecinosId}` --> Obtiene los integrantes de la junta de vecinos.
 
 ### ENTIDADES MUNICIPALES
 
