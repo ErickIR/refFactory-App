@@ -32,12 +32,12 @@ namespace CitizenApp.Views
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            //if (e.SelectedItem != null &&
-            //    viewModel.SelectIncidenciaCommand != null &&
-            //    viewModel.SelectIncidenciaCommand.CanExecute(e))
-            //{
-            //    viewModel.SelectIncidenciaCommand.Execute(true);
-            //}
+            if (e.SelectedItem != null &&
+                viewModel.SelectJuntasCommand != null &&
+                viewModel.SelectJuntasCommand.CanExecute(e))
+            {
+                viewModel.SelectJuntasCommand.Execute(true);
+            }
 
         }
 

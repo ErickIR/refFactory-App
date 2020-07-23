@@ -1,4 +1,5 @@
-﻿using CitizenApp.ViewModels;
+﻿using CitizenApp.Models;
+using CitizenApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,8 @@ namespace CitizenApp.Views
     public partial class IncidenciasPage : ContentPage
     {
         IncidenciasListViewModel viewModel;
+        
+
         public IncidenciasPage()
         {
             InitializeComponent();
@@ -21,6 +24,8 @@ namespace CitizenApp.Views
             BindingContext = viewModel = new IncidenciasListViewModel(Navigation);
             
         }
+
+        
 
         protected override void OnAppearing()
         {
