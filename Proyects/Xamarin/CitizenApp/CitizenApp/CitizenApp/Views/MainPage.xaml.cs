@@ -43,7 +43,8 @@ namespace CitizenApp.Views
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                     case (int)MenuItemType.NormativasMunicipales:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        Device.OpenUri(new Uri("http://www.adn.gob.do/index.php?option=com_docman&view=list&layout=table&slug=resoluciones-municipales&Itemid=660"));
+                        MenuPages.Add(id, new NavigationPage(new HomePage()));
                         break;
                     case (int)MenuItemType.Informacion:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));

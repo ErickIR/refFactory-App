@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="CitizenApp.Views.IncidenciasFilterPage"
+             BackgroundImageSource="main_bg"
              BackgroundColor="#D9E0E9">
 
     <ContentPage.ToolbarItems>

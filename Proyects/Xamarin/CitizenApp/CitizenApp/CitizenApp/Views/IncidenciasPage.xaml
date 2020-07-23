@@ -8,7 +8,7 @@
              mc:Ignorable="d"
              x:Class="CitizenApp.Views.IncidenciasPage"
              Title="{Binding Title}"
-             BackgroundImageSource="main_bg2">
+             BackgroundImageSource="main_bg">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="account_circle"

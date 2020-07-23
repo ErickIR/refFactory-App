@@ -8,7 +8,7 @@
              mc:Ignorable="d"
              x:Class="CitizenApp.Views.HomePage"
              BackgroundColor="#D9E0E9"
-             BackgroundImageSource="BackGroundMain"
+             BackgroundImageSource="main_bg"
              NavigationPage.HasNavigationBar="true">
     
     <ContentPage.ToolbarItems>

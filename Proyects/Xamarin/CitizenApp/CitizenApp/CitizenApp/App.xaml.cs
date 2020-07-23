@@ -16,14 +16,8 @@ namespace CitizenApp
         public App()
         {
             InitializeComponent();
-            Application.Current.Resources.Add(new Xamarin.Forms.Style(typeof(Page))
-            {
-                Setters = {
-                    new Xamarin.Forms.Setter { Property = Page.BackgroundImageProperty, Value = "main_bg.png"},
-                }
-            });
             Current = this;
-            var isLoggedIn = Properties.ContainsKey("IsLoggedIn") ? (bool)Properties["IsLoggedIn"] : false;
+            var isLoggedIn = Properties.ContainsKey("IsLoggedIn") && (bool)Properties["IsLoggedIn"];
             if (isLoggedIn)
                 MainPage = new MainPage();
             else

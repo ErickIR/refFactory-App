@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="CitizenApp.Views.IncidenciaDetailsPage"
+             BackgroundImageSource="main_bg"
              BackgroundColor="#d9e0e9">
     
     <NavigationPage.TitleView>
