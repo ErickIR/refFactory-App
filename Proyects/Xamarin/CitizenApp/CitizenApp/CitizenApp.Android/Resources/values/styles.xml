@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <resources>
-
+  <style name="Theme.Splash" parent="android:Theme">
+    <item name="android:windowBackground">@drawable/SplashScreen</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowFullscreen">true</item>
+    <item name="colorPrimaryDark">#253256</item>
+  </style>
   <style name="MainTheme" parent="MainTheme.Base">
     <item name="android:colorPressedHighlight">@color/colorAccent</item>
     <item name="android:colorLongPressedHighlight">@color/colorAccent</item>

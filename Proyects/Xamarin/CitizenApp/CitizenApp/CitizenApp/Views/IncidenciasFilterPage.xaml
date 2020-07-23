@@ -9,9 +9,10 @@
              BackgroundColor="#D9E0E9">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="account_circle"
-                 Order="Primary"
-                 Priority="0" />
+        <ToolbarItem Text="Filtrar"
+                     Order="Primary"
+                     Priority="0" 
+                     Command="{Binding AplicarFiltrosCommand}"/>
     </ContentPage.ToolbarItems>
     
     <NavigationPage.TitleView>
@@ -22,8 +23,8 @@
     </NavigationPage.TitleView>
 
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
+        <Grid Margin="20" RowDefinitions="60, *">
+            <Grid Grid.Row="0">
                 <Frame 
                     Margin="8,8,8,0"
                     HeightRequest="40"
@@ -31,46 +32,46 @@
                     CornerRadius="30"
                     BackgroundColor="#FFFFFF"
                     Padding="20,5">
-                    <Grid Grid.Row="1" Grid.Column="3">
+                    <Grid Grid.Row="1" Grid.Column="2">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="25" />
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="30" />
                         </Grid.ColumnDefinitions>
                         <ImageButton Grid.Column="0" Source="Search.png" 
                                      BackgroundColor="Transparent"/>
                         <Entry Grid.Column="1"  Placeholder="Buscar Incidencias..." FontFamily="{StaticResource NormalFont}"
                                ReturnType="Search" Text="{Binding Search}"/>
-
                     </Grid>
                 </Frame>
-                <StackLayout Margin="20,5" Padding="10" Spacing="10">
-                    <Label Text="Filtrar" FontFamily="{StaticResource BoldFont}" FontSize="23" TextColor="Black"/>
-                    <Label Text="Tipo de Incidencias: " FontFamily="{StaticResource BoldFont}" FontSize="18" TextColor="Black"/>
-                    <Picker ItemsSource="{Binding TiposIncidencia}" SelectedItem="{Binding TipoIncidenciaSelected}" 
+            </Grid>
+            <Grid Grid.Row="1">
+                <ScrollView>
+                    <StackLayout Margin="20,5" Padding="10" Spacing="10">
+                        <Label Text="Filtrar" FontFamily="{StaticResource BoldFont}" FontSize="23" TextColor="Black"/>
+                        <Label Text="Tipo de Incidencias: " FontFamily="{StaticResource BoldFont}" FontSize="18" TextColor="Black"/>
+                        <Picker ItemsSource="{Binding TiposIncidencia}" SelectedItem="{Binding TipoIncidenciaSelected}" 
                             ItemDisplayBinding="{Binding Descripcion}" Title="Seleccione un tipo..."
                             FontFamily="{StaticResource NormalFont}" FontSize="15"/>
-                    <Label Text="Estados de Incidencias: " FontFamily="{StaticResource BoldFont}" FontSize="18" TextColor="Black"/>
-                    <Picker ItemsSource="{Binding StatusIncidencias}" SelectedItem="{Binding StatusIncidenciaSelected}" 
+                        <Label Text="Estados de Incidencias: " FontFamily="{StaticResource BoldFont}" FontSize="18" TextColor="Black"/>
+                        <Picker ItemsSource="{Binding StatusIncidencias}" SelectedItem="{Binding StatusIncidenciaSelected}" 
                             ItemDisplayBinding="{Binding Descripcion}" Title="Seleccione un estado..."
                             FontFamily="{StaticResource NormalFont}" FontSize="15"/>
-                    <Label Text="Filtros rapidos" FontFamily="{StaticResource BoldFont}" FontSize="23" TextColor="Black"/>
-                    <Grid Grid.Row="1" Grid.Column="2">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Text="Ver mis incidencias" BackgroundColor="#828998" 
-                            TextColor="White" FontFamily="{StaticResource BoldFont}" HeightRequest="110"
-                            FontSize="18" CornerRadius="30" Margin="10" HorizontalOptions="Start"/>
-                        <Button Grid.Column="1" Text="Ver mas votadas" BackgroundColor="#828998" 
-                            TextColor="White" FontFamily="{StaticResource BoldFont}" HeightRequest="110"
-                            FontSize="18" CornerRadius="30" Margin="10" HorizontalOptions="End"/>
-                    </Grid>
-                </StackLayout>
-                <Button BackgroundColor="#253256" Text="Aplicar" TextColor="White" FontFamily="{StaticResource BoldFont}"
-                            FontSize="30" VerticalOptions="End" CornerRadius="30" Margin="10" Command="{Binding AplicarFiltrosCommand}"/>
-            </StackLayout>
-        </ScrollView>
+                        <Label Text="Filtros rapidos" FontFamily="{StaticResource BoldFont}" FontSize="23" TextColor="Black"/>
+                        <Grid Grid.Row="1" Grid.Column="2">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Text="Ver mis incidencias" BackgroundColor="#253256" 
+                                    TextColor="White" FontFamily="{StaticResource BoldFont}" HeightRequest="110"
+                                    FontSize="18" CornerRadius="30" Margin="10" HorizontalOptions="Start"/>
+                            <Button Grid.Column="1" Text="Ver mas votadas" BackgroundColor="#253256" 
+                                    TextColor="White" FontFamily="{StaticResource BoldFont}" HeightRequest="110"
+                                    FontSize="18" CornerRadius="30" Margin="10" HorizontalOptions="End"/>
+                        </Grid>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

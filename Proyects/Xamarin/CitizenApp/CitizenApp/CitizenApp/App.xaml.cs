@@ -22,7 +22,7 @@ namespace CitizenApp
             if (isLoggedIn)
                 MainPage = new MainPage();
             else
-                MainPage = new MainPage();
+                MainPage = new MainLoginPage(this);
         }
 
         protected override void OnStart()
