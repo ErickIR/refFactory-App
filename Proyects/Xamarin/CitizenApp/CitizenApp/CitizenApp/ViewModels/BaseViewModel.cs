@@ -34,6 +34,16 @@ namespace CitizenApp.ViewModels
             set { SetProperty(ref title, value); }
         }
 
+        public double PageWidth
+        {
+            get { return Application.Current.MainPage.Width - 10; }
+        }
+
+        public double PageHeight
+        {
+            get { return Application.Current.MainPage.Height - 10; }
+        }
+
         protected bool SetProperty<T>(ref T backingStore, T value,
             [CallerMemberName]string propertyName = "",
             Action onChanged = null)

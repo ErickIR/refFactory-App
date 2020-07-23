@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace CitizenApp.Services
@@ -9,7 +10,12 @@ namespace CitizenApp.Services
     {
         private static readonly HttpClient _instance = new HttpClient();
 
-        static BaseHttpClient() { }
+        static string baseUrl = "http://192.168.0.100:44346/api/";
+
+        static BaseHttpClient() 
+        {
+            Instance.BaseAddress = new Uri(baseUrl);
+        }
 
         internal BaseHttpClient(): base() { }
 

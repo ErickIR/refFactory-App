@@ -11,7 +11,7 @@
     
     <ContentView.Content>
         <Frame 
-            Margin="20,15,20,15" 
+            Margin="10,15,10,0" 
             HeightRequest="102"
             BorderColor="#f2f5f7"
             CornerRadius="30"
@@ -29,7 +29,7 @@
                     <Label Text="{Binding Barrio.Nombre}" FontSize="14" FontFamily="{StaticResource NormalFont}" HorizontalOptions="CenterAndExpand"/>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
                         <Label Text="{Binding Usuario.NombreCompleto}" FontFamily="{StaticResource NormalFont}" FontSize="14" HorizontalOptions="StartAndExpand"/>
-                        <Label Text="## han apoyado esto." FontSize="14" FontFamily="{StaticResource BoldFont}" HorizontalOptions="End"/>
+                        <Label Text="{Binding ApoyosPhrase}" FontSize="14" FontFamily="{StaticResource BoldFont}" HorizontalOptions="End"/>
                     </StackLayout>
                 </StackLayout>
             </StackLayout>

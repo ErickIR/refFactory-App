@@ -3,17 +3,26 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using CitizenApp.Services;
 using CitizenApp.Views;
+using CitizenApp.Common;
 
 namespace CitizenApp
 {
-    public partial class App : Application
+    public partial class App : Application, ILoginManager
     {
+        static ILoginManager loginManager;
+        public static App Current;
+        public static int val;
 
         public App()
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            Current = this;
+            var isLoggedIn = Properties.ContainsKey("IsLoggedIn") ? (bool)Properties["IsLoggedIn"] : false;
+            if (isLoggedIn)
+                MainPage = new MainPage();
+            else
+                MainPage = new LoginModalPage(this);
         }
 
         protected override void OnStart()
@@ -29,6 +38,17 @@ namespace CitizenApp
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        public void ShowMainPage()
+        {
+            MainPage = new MainPage();
+        }
+
+        public void Logout()
+        {
+            Properties["IsLoggedIn"] = false;
+            MainPage = new LoginModalPage(this);
         }
     }
 }

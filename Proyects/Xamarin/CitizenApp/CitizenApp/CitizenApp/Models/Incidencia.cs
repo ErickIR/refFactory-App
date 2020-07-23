@@ -17,7 +17,7 @@ namespace CitizenApp.Models
         public string TituloImagen { get; set; }
         public string Titulo { get; set; }
         public string Descripcion { get; set; }
-
+        public int CantidadApoyos { get; set; }
         public Usuario Empleado { get; set; }
         public Usuario Usuario { get; set; }
         public StatusIncidencia Status { get; set; }
@@ -25,5 +25,7 @@ namespace CitizenApp.Models
         public Barrio Barrio { get; set; }
 
         public IEnumerable<IncidenciaUsuario> Apoyos { get; set; }
+
+        public string ApoyosPhrase { get => $"{10} Han apoyado esto."; }
     }
 }

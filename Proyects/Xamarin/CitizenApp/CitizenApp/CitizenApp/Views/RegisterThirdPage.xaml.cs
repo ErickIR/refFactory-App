@@ -1,4 +1,6 @@
-﻿using System;
+﻿using CitizenApp.Models;
+using CitizenApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +14,15 @@ namespace CitizenApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegisterThirdPage : ContentPage
     {
-        public RegisterThirdPage()
+        
+        RegisterThirdViewModel viewModel;
+
+       
+        public RegisterThirdPage(Usuario usuario)
         {
             InitializeComponent();
+            
+            BindingContext = viewModel = new RegisterThirdViewModel(usuario);
         }
     }
 }

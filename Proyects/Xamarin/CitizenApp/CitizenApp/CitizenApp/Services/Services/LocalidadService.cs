@@ -9,7 +9,7 @@ namespace CitizenApp.Services.DataStores
 {
     public class LocalidadService : BaseHttpClient
     {
-        List<Region> regiones;
+       
         List<Provincia> provincias;
         List<Municipio> municipios;
         List<DistritoMunicipal> distritoMunicipales;
@@ -18,25 +18,24 @@ namespace CitizenApp.Services.DataStores
         List<Barrio> barrios;
         public LocalidadService()
         {
-            regiones = new List<Region>()
-            {
-                new Region{RegionId=1, Nombre="Distrito Nacional"}
-            };
-
+            
             provincias = new List<Provincia>()
             {
-                new Provincia{ProvinciaId=1, RegionId=1, Nombre="Santo Domingo"}
+                new Provincia{ProvinciaId=1, RegionId=1, Nombre="Santo Domingo"},
+                new Provincia{ProvinciaId=2, RegionId=2, Nombre="Santiago"}
             };
 
             municipios = new List<Municipio>()
             {
-                new Municipio{MunicipioId=1, ProvinciaId=1, Nombre="Santo Domingo de Guzmán"}
+                new Municipio{MunicipioId=1, ProvinciaId=1, Nombre="Santo Domingo de Guzmán"},
+                new Municipio{MunicipioId=2, ProvinciaId=2, Nombre="Santiago de los Caballeros"}
+                
             };
 
             distritoMunicipales = new List<DistritoMunicipal>()
             {
-                new DistritoMunicipal{ DistritoMunicipalId=1,MunicipioId=1, Nombre="Santo Domingo de Guzmán"}
-
+                new DistritoMunicipal{ DistritoMunicipalId=1,MunicipioId=1, Nombre="Santo Domingo de Guzmán"},
+                new DistritoMunicipal{ DistritoMunicipalId=2,MunicipioId=2, Nombre="Santiago de los Caballeros"}
             };
 
             secciones = new List<Seccion>()
@@ -116,12 +115,6 @@ namespace CitizenApp.Services.DataStores
             return await Task.FromResult(provinciasResult);
         }
 
-        public async Task<List<Region>> ObtenerRegionesAsync()
-        {
-
-            return await Task.FromResult(regiones);
-        }
-
         public async Task<List<Barrio>> ObtenerBarriosPorDistritosMunicipalesIDAsync(int distritosMunicipalesId)
         {
             var listaSecciones = await ObtenerSeccionesPorDistritoMunicipalesIDAsync(distritosMunicipalesId);
@@ -143,10 +136,7 @@ namespace CitizenApp.Services.DataStores
             return await Task.FromResult(listBarrios);
         }
 
-        public async Task<IEnumerable<Region>> ObtenerRegiones()
-        {
-            return await Task.FromResult(regiones);
-        }
+       
         public async Task<IEnumerable<Provincia>> ObtenerProvincias()
         {
             return await Task.FromResult(provincias);

@@ -2,17 +2,17 @@
 
 ### INCIDENCIAS
 
-- `Incidencias/BarrioId` --> Obtiene todas las incidencias en el barrio seleccionado.
+- `/api/incidencia/barrio/{barrioId}` --> Obtiene todas las incidencias en el barrio seleccionado.
 
-- `Incidencias/IncidenciaId` --> Obtiene el registro de incidencia con el Id Seleccionado.
+- `/api/incidencia/{incidenciaId}` --> Obtiene el registro de incidencia con el Id Seleccionado.
 
-- `Incidencias/BarrioId&StatusIncidenciaId` --> Obtiene todas las incidencias de ese barrio con  el estado seleccionado.
+- `/api/incidencia/barrio/{barrioId}/status-incidencia/{statusIncidenciaId}` --> Obtiene todas las incidencias de ese barrio con  el estado seleccionado.
 
-- `Incidencias/BarrioId&TipoIncidenciaId` --> Obtiene todas las incidencias de ese barrio con el tipo seleccionado.
+- `/api/incidencia/barrio/{barrioId}/tipo-incidencia/{tipoIncidenciaId}` --> Obtiene todas las incidencias de ese barrio con el tipo seleccionado.
 
-- `Incidencias/UserId` --> Obtiene las incidencias registradas por el usuario seleccionado.
+- `/api/incidencia/usuario/{usuarioId}` --> Obtiene las incidencias registradas por el usuario seleccionado.
 
-- `IncidenciaUsuario/IncidenciaId` --> Obtiene todas las interacciones de apoyo de esa incidencia.
+- `/api/incidencia-usuario/incidencia/{incidenciaId}` --> Obtiene todas las interacciones de apoyo de esa incidencia.
 
 
 ### TIPOS INCIDENCIA
@@ -25,16 +25,16 @@
 
 ### JUNTA DE VECINOS
 
-- `JuntaDeVecinoByBarrio/BarrioId` --> Obtiene la junta de vecinos registrada en ese barrio y sus integrantes.
+- `/api/junta-de-vecinos/barrio/{barrioId}` --> Obtiene las juntas de vecinos registradas en ese barrio.
 
-- `JuntaDeVecinos/DistritoMunicipalId` --> Obtiene las juntas de vecinos que se encuentran en los barrios del distrito municipal seleccionado.
+- `/api/junta-de-vecinos/distrito-municipal/{distritoMunicipalId}` --> Obtiene las juntas de vecinos que se encuentran en los barrios del distrito municipal seleccionado.
 
-- `IntegrantesJdV/JuntaDeVecinosId` --> Obtiene los integrantes de la junta de vecinos.
+- `/api/integrante-jdv/junta-de-vecinos/{juntaDeVecinosId}` --> Obtiene los integrantes de la junta de vecinos.
 
 ### ENTIDADES MUNICIPALES
 
 
-- `EntidadesMunicipales/MunicipioId` --> Obtiene todos las entidades municipales del municipio.
+- `/api/entidad-municipal/municipio/{municipioId}` --> Obtiene todos las entidades municipales del municipio.
 
 ### LOCALIDADES
 
@@ -47,5 +47,7 @@
 - `/api/distrito-municipal/municipio/{municipioId}` --> Obtiene todos los distritos municipales en el municipio seleccionado.
 
 - `/api/municipio/barrio/{barrioId}` --> Obtiene el municipio al que pertenece el barrio seleccionado.
+
+- `/api/barrio/distrito-municipal/{distritoMunicipalId}` --> Obtiene todos los barrio de un distrito-municipal.
 
 

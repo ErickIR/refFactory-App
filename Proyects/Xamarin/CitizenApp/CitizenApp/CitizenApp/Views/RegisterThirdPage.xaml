@@ -1,22 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d"
-             xmlns:Behaviors="clr-namespace:CitizenApp.Common"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"            
+             xmlns:behaviour="clr-namespace:CitizenApp.Common.Helpers.Behaviours"
+             xmlns:converter="clr-namespace:CitizenApp.Common.Helpers.Converters"
              x:Class="CitizenApp.Views.RegisterThirdPage"
-             BackgroundImageSource="MainBackGround">
+             BackgroundImageSource="MainBackGround"
+             Visual="Material">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converter:InverseBoolConverter x:Key="InverseBoolConverter"/>
+            <converter:FirstValidationErrorConverter x:Key="FirstValidationErrorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout
-                Orientation="Vertical"
-                VerticalOptions="Center"
+            <StackLayout               
+                VerticalOptions="CenterAndExpand"
                 HorizontalOptions="CenterAndExpand"
-                Padding="40"
-                Margin="0,0,0,0"
-                Spacing="0">
-
+                Padding="40">
                 <Frame
                     BackgroundColor="#253256"
                     CornerRadius="30"
@@ -50,18 +51,56 @@
                         <Entry
                             PlaceholderColor="White"
                             TextColor="White"
+                            Text="{Binding Email.Item1.Value}"
+                            FontFamily="{StaticResource NormalFont}"
+                            HorizontalTextAlignment="Center"
+                            Placeholder="Digite su correo electronico.">
+                            
+                            <Entry.Behaviors>
+                                <behaviour:EntryLineValidationBehaviour IsValid="{Binding Email.Item1.IsValid}"/>
+                            </Entry.Behaviors>
+
+                        </Entry>
+                       
+                        <Label
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding Email.Item1.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                            IsVisible="{Binding Email.Item1.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                            Style="{StaticResource ErrorTextStyle}"/>
+                        
+                        
+                        <Label
+                            FontFamily="{StaticResource BoldFont}"
+                            Text="Confirmar Correo Electronico:"
+                            VerticalTextAlignment="Center"
+                            HorizontalTextAlignment="Center"
+                            HorizontalOptions="Center"
+                            TextColor="White"
+                            FontSize="20"></Label>
+                        <Entry
+                            PlaceholderColor="White"
+                            Text="{Binding Email.Item2.Value}"
+                            TextColor="White"
                             FontFamily="{StaticResource NormalFont}"
                             HorizontalTextAlignment="Center"
                             Placeholder="Digite su correo electronico.">
                             <Entry.Behaviors>
-                                <Behaviors:EmailValidatorBehavior/>
-                            </Entry.Behaviors>                            
+                                <behaviour:EntryLineValidationBehaviour IsValid="{Binding Email.Item2.IsValid}"/>
+                            </Entry.Behaviors>
+
                         </Entry>
+                        <Label
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding Email.Item2.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                            IsVisible="{Binding Email.Item2.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                            Style="{StaticResource ErrorTextStyle}"/>
+                        
+                        
 
                         <Label
                             VerticalTextAlignment="Center"
                             HorizontalTextAlignment="Center"
-                            Margin="0,20,0,0"
+                            Margin="0,10,0,0"
                             FontFamily="{StaticResource BoldFont}"
                             Text="Contraseña:"
                             HorizontalOptions="Center"
@@ -74,16 +113,23 @@
                             FontFamily="{StaticResource NormalFont}"
                             HorizontalTextAlignment="Center"
                             Placeholder="Digite su Contraseña."
+                            Text="{Binding Password.Item1.Value}"
                             IsPassword="True">
-                            <!--<Entry.Behaviors>
-                                <Behaviors:PasswordValidationBehavior/>
-                            </Entry.Behaviors>-->
+                            <Entry.Behaviors>
+                                <behaviour:EntryLineValidationBehaviour IsValid="{Binding Password.Item1.IsValid}"/>
+                            </Entry.Behaviors>
+                            
                         </Entry>
+                        <Label
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding Password.Item1.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                            IsVisible="{Binding Password.Item1.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                            Style="{StaticResource ErrorTextStyle}"/>
 
                         <Label
                             VerticalTextAlignment="Center"
                             HorizontalTextAlignment="Center"
-                            Margin="0,20,0,0"
+                            Margin="0,0,0,0"
                             FontFamily="{StaticResource BoldFont}"
                             Text="Confirmar Contraseña:"
                             HorizontalOptions="Center"
@@ -95,16 +141,24 @@
                             TextColor="White"
                             FontFamily="{StaticResource NormalFont}"
                             HorizontalTextAlignment="Center"
+                            Text="{Binding Password.Item2.Value}"
                             Placeholder="Repita su Contraseña."
                             IsPassword="True">
-                            <!--<Entry.Behaviors>
-                                <Behaviors:PasswordValidationBehavior/>
-                            </Entry.Behaviors>-->
+                            <Entry.Behaviors>
+                                <behaviour:EntryLineValidationBehaviour IsValid="{Binding Password.Item2.IsValid}"/>
+                            </Entry.Behaviors>
+                            
                         </Entry>
+                        <Label 
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding Password.Item2.Errors, Converter={StaticResource FirstValidationErrorConverter}}"
+                            IsVisible="{Binding Password.Item2.IsValid, Converter={StaticResource InverseBoolConverter}}"
+                            Style="{StaticResource ErrorTextStyle}"/>
                     </StackLayout>
 
 
                 </Frame>
+                
                 <Button
                     BackgroundColor="#828998"
                     TextColor="White"
@@ -124,6 +178,11 @@
 
             </StackLayout>
         </ScrollView>
+
+
+
+
+
 
     </ContentPage.Content>
 </ContentPage>

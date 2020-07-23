@@ -9,10 +9,10 @@ namespace CitizenApp.Services.Services
 {
     public class IncidenciaService : BaseHttpClient
     {
-        readonly List<Incidencia> Incidencias;
-        readonly List<IncidenciaUsuario> Apoyos;
-        readonly List<TipoIncidencia> TiposIncidencia;
-        readonly List<StatusIncidencia> StatusIncidencias;
+        private List<Incidencia> Incidencias;
+        private List<IncidenciaUsuario> Apoyos;
+        private List<TipoIncidencia> TiposIncidencia;
+        private List<StatusIncidencia> StatusIncidencias;
         int nextIncidenciaIdx = 6;
         int nextApoyoIdx = 4;
         public IncidenciaService()

@@ -1,4 +1,5 @@
-﻿using CitizenApp.ViewModels;
+﻿using CitizenApp.Common;
+using CitizenApp.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,10 +15,15 @@ namespace CitizenApp.Views
     public partial class MainLoginPage : ContentPage
     {
         MainLoginViewModel viewModel;
-        public MainLoginPage()
+       
+
+        public MainLoginPage(ILoginManager ilm)
         {
+           
             InitializeComponent();
-            BindingContext = viewModel = new MainLoginViewModel();
+            BindingContext = viewModel = new MainLoginViewModel(ilm);
         }
+
+       
     }
 }
