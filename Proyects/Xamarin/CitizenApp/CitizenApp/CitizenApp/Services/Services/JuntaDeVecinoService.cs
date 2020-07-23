@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace CitizenApp.Services.DataStores
 {
@@ -17,10 +18,10 @@ namespace CitizenApp.Services.DataStores
             juntaDeVecinos = new List<JuntaDeVecinos>()
             {
                 new JuntaDeVecinos { JuntaDeVecinosId = 1,  BarrioId = 1, Latitud = 41.40338, Longitud = 2.17403, Nombre = "Jose Contreras"  },
-                new JuntaDeVecinos { JuntaDeVecinosId = 2,  BarrioId = 1, Latitud = 51.40338, Longitud = 2.17403, Nombre = "Miguel Contreras"  },
-                new JuntaDeVecinos { JuntaDeVecinosId = 3,  BarrioId = 1, Latitud = 61.40338, Longitud = 2.17403, Nombre = "Fernando Contreras"  },
+                new JuntaDeVecinos { JuntaDeVecinosId = 2,  BarrioId = 1, Latitud = 51.40338, Longitud = 2.17403, Nombre = "Miguel Contreras"},
+                new JuntaDeVecinos { JuntaDeVecinosId = 3,  BarrioId = 1, Latitud = 61.40338, Longitud = 2.17403, Nombre = "Fernando Contreras" },
                 new JuntaDeVecinos { JuntaDeVecinosId = 4,  BarrioId = 1, Latitud = 31.40338, Longitud = 2.17403, Nombre = "Juelia Contreras"  },
-                new JuntaDeVecinos { JuntaDeVecinosId = 5,  BarrioId = 1, Latitud = 21.40338, Longitud = 2.17403, Nombre = "Maria Contreras"  },
+                new JuntaDeVecinos { JuntaDeVecinosId = 5,  BarrioId = 1, Latitud = 21.40338, Longitud = 2.17403, Nombre = "Maria Contreras" },
             };
             roles = new List<Rol>()
             {
@@ -34,6 +35,12 @@ namespace CitizenApp.Services.DataStores
             {
                 new IntegranteJdV {IntegranteId = 1, JuntaDeVecinosId = 1, UsuarioId = 1, RoldId = 1}
             };
+        }
+
+        public async Task<IEnumerable<JuntaDeVecinos>> ObtenerJuntaDeVecinos()
+        {
+           
+            return await Task.FromResult(juntaDeVecinos);
         }
         public async Task<JuntaDeVecinos> ObtenerJuntaDeVecinoPorBarrioID(int barrioId)
         {

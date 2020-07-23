@@ -50,12 +50,11 @@
                         <Entry
                             PlaceholderColor="White"
                             TextColor="White"
+                            Text="{Binding emailEntry}"
                             FontFamily="{StaticResource NormalFont}"
                             HorizontalTextAlignment="Center"
                             Placeholder="Digite su correo electronico.">
-                            <Entry.Behaviors>
-                                <Behaviors:EmailValidatorBehavior/>
-                            </Entry.Behaviors>
+                          
                         </Entry>
 
                         <Label
@@ -71,14 +70,18 @@
                         <Entry
                             PlaceholderColor="White"
                             TextColor="White"
+                            Text="{Binding passEntry}"
                             FontFamily="{StaticResource NormalFont}"
                             HorizontalTextAlignment="Center"
                             Placeholder="Digite su Contraseña."
                             IsPassword="True">
-                            <!--<Entry.Behaviors>
-                                <Behaviors:PasswordValidationBehavior/>
-                            </Entry.Behaviors>-->
+                          
                         </Entry>
+                        <Label 
+                            IsVisible="{Binding errorisVisible}"
+                            HorizontalTextAlignment="Center"
+                            Text="{Binding errorMessage}"
+                            Style="{StaticResource ErrorTextStyle}"/>
 
                         
                     </StackLayout>

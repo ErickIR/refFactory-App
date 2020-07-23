@@ -9,7 +9,7 @@ namespace CitizenApp.Services.DataStores
 {
     public class LocalidadService : BaseHttpClient
     {
-        List<Region> regiones;
+       
         List<Provincia> provincias;
         List<Municipio> municipios;
         List<DistritoMunicipal> distritoMunicipales;
@@ -18,12 +18,7 @@ namespace CitizenApp.Services.DataStores
         List<Barrio> barrios;
         public LocalidadService()
         {
-            regiones = new List<Region>()
-            {
-                new Region{RegionId=1, Nombre="Distrito Nacional"},
-                new Region{RegionId=2, Nombre="Santiago"}
-            };
-
+            
             provincias = new List<Provincia>()
             {
                 new Provincia{ProvinciaId=1, RegionId=1, Nombre="Santo Domingo"},
@@ -120,12 +115,6 @@ namespace CitizenApp.Services.DataStores
             return await Task.FromResult(provinciasResult);
         }
 
-        public async Task<List<Region>> ObtenerRegionesAsync()
-        {
-
-            return await Task.FromResult(regiones);
-        }
-
         public async Task<List<Barrio>> ObtenerBarriosPorDistritosMunicipalesIDAsync(int distritosMunicipalesId)
         {
             var listaSecciones = await ObtenerSeccionesPorDistritoMunicipalesIDAsync(distritosMunicipalesId);
@@ -147,10 +136,7 @@ namespace CitizenApp.Services.DataStores
             return await Task.FromResult(listBarrios);
         }
 
-        public async Task<IEnumerable<Region>> ObtenerRegiones()
-        {
-            return await Task.FromResult(regiones);
-        }
+       
         public async Task<IEnumerable<Provincia>> ObtenerProvincias()
         {
             return await Task.FromResult(provincias);
