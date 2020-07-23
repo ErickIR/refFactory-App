@@ -44,7 +44,7 @@ namespace CRD.Api
             });
 
             services.AddDbContext<CooperaDBContext>(confi =>
-            confi.UseSqlServer(Configuration.GetConnectionString("ErickConnection")));
+            confi.UseSqlServer(Configuration.GetConnectionString("CooperaRDData")));
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
@@ -100,6 +100,20 @@ namespace CRD.Api
             services.AddScoped<IUsuarioService, UsuarioService>();
             services.AddScoped<IUsuarioValidationService, UsuarioValidationService>();
 
+            services.AddScoped<IIncidenciaService, IncidenciaService>();
+            services.AddScoped<IIncidenciaValidationService, IncidenciaValidationService>();
+
+            services.AddScoped<IIncidenciaUsuarioService, IncidenciaUsuarioService>();
+            services.AddScoped<IIncidenciaUsuarioValidationService, IncidenciaUsuarioValidationService>();
+
+            services.AddScoped<IRolService, RolService>();
+            services.AddScoped<IRolValidationService, RolValidationService>();
+
+            services.AddScoped<IJuntaDeVecinosService, JuntaDeVecinosService>();
+            services.AddScoped<IJuntaDeVecinosValidationService, JuntaDeVecinosValidationService>();
+
+            services.AddScoped<IIntegranteJdVService, IntegranteJdVService>();
+            services.AddScoped<IIntegranteJdVValidationService, IntegranteJdVValidationService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
