@@ -15,10 +15,11 @@ namespace CitizenApp.Views
     public partial class MainPage : MasterDetailPage
     {
         Dictionary<int, NavigationPage> MenuPages = new Dictionary<int, NavigationPage>();
+        bool session;
         public MainPage()
         {
             InitializeComponent();
-
+            session = true;
             MasterBehavior = MasterBehavior.Popover;
             MenuPages.Add((int)MenuItemType.Inicio, (NavigationPage)Detail);
         }
@@ -36,7 +37,7 @@ namespace CitizenApp.Views
                         MenuPages.Add(id, new NavigationPage(new IncidenciasPage()));
                         break;
                     case (int)MenuItemType.JuntasDeVecinos:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        MenuPages.Add(id, new NavigationPage(new JuntaDeVecinosPage()));
                         break;
                     case (int)MenuItemType.EntidadesMunicipales:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
@@ -48,21 +49,27 @@ namespace CitizenApp.Views
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                     case (int)MenuItemType.CerrarSesion:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        MasterBehavior = MasterBehavior.Popover;
+                        App.Current.Logout();
+                        session = false;
+                        //MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                 }
             }
 
-            var newPage = MenuPages[id];
-
-            if (newPage != null && Detail != newPage)
+            if (session)
             {
-                Detail = newPage;
+                var newPage = MenuPages[id];
 
-                if (Device.RuntimePlatform == Device.Android)
-                    await Task.Delay(100);
+                if (newPage != null && Detail != newPage)
+                {
+                    Detail = newPage;
 
-                IsPresented = false;
+                    if (Device.RuntimePlatform == Device.Android)
+                        await Task.Delay(100);
+
+                    IsPresented = false;
+                } 
             }
         }
     }
