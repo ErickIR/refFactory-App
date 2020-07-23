@@ -44,7 +44,7 @@ namespace CRD.Api
             });
 
             services.AddDbContext<CooperaDBContext>(confi =>
-            confi.UseSqlServer(Configuration.GetConnectionString("ErickConnection")));
+            confi.UseSqlServer(Configuration.GetConnectionString("CooperaRDData")));
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
