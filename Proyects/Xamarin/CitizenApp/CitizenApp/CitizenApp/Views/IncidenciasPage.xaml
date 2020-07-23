@@ -11,10 +11,6 @@
              BackgroundColor="#D9E0E9">
 
     <ContentPage.ToolbarItems>
-        <!--<ToolbarItem Text="Add"
-                 Order="Primary"
-                 Priority="1" 
-                 Command="{Binding AddNewIncidenciaCommand}"/>-->
         <ToolbarItem IconImageSource="account_circle"
                  Order="Primary"
                  Priority="0" />
@@ -41,7 +37,20 @@
                     CornerRadius="30"
                     BackgroundColor="#FFFFFF"
                     Padding="20,5">
-                    <Entry Placeholder="Buscar Incidencias..." FontFamily="{StaticResource NormalFont}" ReturnType="Search" Text="{Binding Search}" ReturnCommand="{Binding SearchIncidenciaCommand}" />
+                    <Grid Grid.Row="1" Grid.Column="3">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="25" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="30" />
+                        </Grid.ColumnDefinitions>
+                        <ImageButton Grid.Column="0" Source="Search.png" 
+                                     BackgroundColor="Transparent" Command="{Binding GoToFiltersCommand}"/>
+                        <Entry Grid.Column="1"  Placeholder="Buscar Incidencias..." FontFamily="{StaticResource NormalFont}"
+                               ReturnType="Search" Text="{Binding Search}" ReturnCommand="{Binding SearchIncidenciaCommand}"/>
+                        <ImageButton Grid.Column="2" Source="refresh.png" HorizontalOptions="End" 
+                                     BackgroundColor="Transparent" Command="{Binding LoadIncidenciasCommand}"/>
+                    </Grid>
+                    
                 </Frame>
                 <ScrollView>
                     <ListView 
@@ -62,7 +71,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <controls:CardView />
+                                    <controls:CardView Margin="5"/>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>

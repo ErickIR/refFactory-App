@@ -26,9 +26,11 @@ namespace CitizenApp.Views
         {
             base.OnAppearing();
 
-            if (viewModel.IncidenciasList.Count == 0)
+            if (viewModel.IncidenciasList.Count == 0 && !viewModel.IsFiltered)
+            {
                 viewModel.IsBusy = true;
-            viewModel.LoadIncidenciasCommand.Execute(true);
+                viewModel.LoadIncidenciasCommand.Execute(true);
+            }
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

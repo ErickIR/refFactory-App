@@ -8,6 +8,13 @@
              x:Class="CitizenApp.Views.NuevaIncidenciaPage"
              BackgroundColor="#d9e0e9">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="account_circle"
+                 Order="Primary"
+                 Priority="0" />
+    </ContentPage.ToolbarItems>
+    
+    
     <NavigationPage.TitleView>
         <Image Source="Logo_Coopera"                   
                 HeightRequest="55"
@@ -15,9 +22,6 @@
                 HorizontalOptions="Center" />
     </NavigationPage.TitleView>
     
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Guardar" Command="{Binding SaveIncidenciaCommand}" />
-    </ContentPage.ToolbarItems>
 
     <ContentPage.Content>
         <ScrollView>
@@ -26,8 +30,9 @@
                 BackgroundColor="Transparent"
                 BorderColor="Transparent"
                 CornerRadius="30">
-                <StackLayout Orientation="Vertical" Margin="0,10,10,20">
-                    <Label Text="Registro de Incidencia" FontSize="25" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Center" />
+                <StackLayout Orientation="Vertical" Margin="20">
+                    <Label Text="Registro de Incidencia" FontSize="25" VerticalOptions="Start"
+                           TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Center" />
                     <Label Text="Titulo de Incidencia" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
                     <Entry Text="{Binding Titulo}" FontSize="16" FontFamily="{StaticResource NormalFont}"/>
                     <Label Text="Tipo de Incidencia" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
@@ -43,8 +48,8 @@
                         CornerRadius="30">
                         <Image Source="{Binding ImageSrc}" Aspect="AspectFill"/>
                     </Frame>
-                    <Button Text="Añadir Imagen" BackgroundColor="White" FontSize="16" TextColor="Black" FontFamily="{StaticResource BoldFont}"
-                            Command="{Binding TakePictureCommand}" Margin="0,0,0,0" Padding="0" WidthRequest="150"
+                    <Button Text="Añadir Imagen" BackgroundColor="#828998" FontSize="16" TextColor="White" FontFamily="{StaticResource BoldFont}"
+                            Command="{Binding TakePictureCommand}" Margin="30, 10" Padding="0" WidthRequest="150"
                             CornerRadius="20" BorderColor="Black"/>
 
                     <Label Text="Descripcion" FontSize="20" TextColor="Black" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Start" />
@@ -52,8 +57,8 @@
                             Text="{Binding Descripcion}" FontFamily="{StaticResource NormalFont}"  
                             FontSize="16" BackgroundColor="Transparent" HeightRequest="90" Keyboard="Text" />
                     <Button
-                        BackgroundColor="#828998"
-                        BorderColor="#828998"
+                        BackgroundColor="#253256"
+                        BorderColor="#253256"
                         TextColor="White"
                         WidthRequest="220"
                         CornerRadius="25"
