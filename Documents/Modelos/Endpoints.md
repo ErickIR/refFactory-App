@@ -25,9 +25,9 @@
 
 ### JUNTA DE VECINOS
 
-- `JuntaDeVecinoByBarrio/BarrioId` --> Obtiene la junta de vecinos registrada en ese barrio y sus integrantes.
+- `/api/junta-de-vecinos/barrio/{barrioId}` --> Obtiene las juntas de vecinos registradas en ese barrio.
 
-- `JuntaDeVecinos/DistritoMunicipalId` --> Obtiene las juntas de vecinos que se encuentran en los barrios del distrito municipal seleccionado.
+- `/api/junta-de-vecinos/distrito-municipal/{distritoMunicipalId}` --> Obtiene las juntas de vecinos que se encuentran en los barrios del distrito municipal seleccionado.
 
 - `IntegrantesJdV/JuntaDeVecinosId` --> Obtiene los integrantes de la junta de vecinos.
 
