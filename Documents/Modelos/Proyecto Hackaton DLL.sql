@@ -1,13 +1,6 @@
 
-
-create table Region(
-	RegionId	int	not null primary key identity(1,1),
-	Nombre		varchar(20) not null
-);
-
 create table Provincia(
 	ProvinciaId int	not null primary key identity(1,1),
-	RegionId	int not null references Region(RegionId),
 	Nombre		varchar(20) not null
 );
 
