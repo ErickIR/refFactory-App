@@ -10,8 +10,7 @@
              BackgroundColor="#d9e0e9">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem IconImageSource="Add"
-                     Text="Enviar"
+        <ToolbarItem Text="Enviar"
                      Order="Primary"
                      Priority="0" 
                      Command="{Binding SaveIncidenciaCommand}" />
@@ -27,7 +26,7 @@
     
 
     <ContentPage.Content>
-        <Grid Margin="20">
+        <Grid Margin="20,0,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="60" />
                 <RowDefinition Height="*" />
@@ -37,11 +36,10 @@
                        TextColor="White" FontFamily="{StaticResource BoldFont}" HorizontalOptions="Center" />
             </Grid>
 
-            <Grid Grid.Row="1" >
+            <Grid Grid.Row="1">
                 <Frame
                     WidthRequest="{Binding PageWidth}"
-                    BackgroundColor="Transparent"
-                    BorderColor="Transparent"
+                    BackgroundColor="White"
                     CornerRadius="30">
                     <ScrollView>
                         <StackLayout Orientation="Vertical" Margin="10">
@@ -72,6 +70,7 @@
 
                     </ScrollView>
                 </Frame>
+                <BoxView BackgroundColor="White" VerticalOptions="EndAndExpand" />
             </Grid>
         </Grid>
         

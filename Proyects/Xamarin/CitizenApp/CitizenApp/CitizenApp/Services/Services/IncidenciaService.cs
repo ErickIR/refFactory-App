@@ -4,6 +4,9 @@ using System.Text;
 using System.Threading.Tasks;
 using CitizenApp.Models;
 using System.Linq;
+using System.Net.Http;
+using CitizenApp.Common;
+using Newtonsoft.Json;
 
 namespace CitizenApp.Services.Services
 {
@@ -123,7 +126,7 @@ namespace CitizenApp.Services.Services
         {
             return await Task.FromResult(Incidencias);
         }
-
+         
         public async Task<Incidencia> ObtenerRegistroIncidenciaPorIdAsync(int itemId)
         {
             var incidencia = Incidencias.Find(cur => cur.IncidenciaId == itemId);

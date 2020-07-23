@@ -40,7 +40,7 @@ namespace CitizenApp.Common
             {
                 new HomeMenuGroup("Principal")
                 {
-                    new HomeMenuItem {Id = MenuItemType.Inicio, Title="Inicio", Icon = "Inicio" },
+                    //new HomeMenuItem {Id = MenuItemType.Inicio, Title="Inicio", Icon = "Inicio" },
                     new HomeMenuItem {Id = MenuItemType.Incidencias, Title="Incidencias", Icon = "Incidencias" },
                     new HomeMenuItem {Id = MenuItemType.JuntasDeVecinos, Title="Juntas de Vecinos", Icon = "Juntas_de_Vecinos" },
                     new HomeMenuItem {Id = MenuItemType.EntidadesMunicipales, Title="Entidades Municipales", Icon = "Entidades_Municipales"  },

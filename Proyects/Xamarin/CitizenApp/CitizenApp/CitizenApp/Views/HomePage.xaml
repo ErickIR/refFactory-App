@@ -20,7 +20,7 @@
  
     <!--<NavigationPage.TitleView>
             <Image Source="Logo_Coopera"                   
-                   HeightRequest="55"
+                   HeightRequest="100"
                VerticalOptions="Start"
                HorizontalOptions="Center" />
     </NavigationPage.TitleView>-->
@@ -28,6 +28,64 @@
    
     <ContentPage.Content>
         <StackLayout>
+            <Image Source="Logo_Coopera"                   
+                   HeightRequest="100"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center" />
+            <Grid Margin="20, 40" RowDefinitions="*, *" ColumnDefinitions="*, *">
+                <Frame Grid.Row="0" Grid.Column="0" HasShadow="True"
+                       HeightRequest="135" WidthRequest="135" BackgroundColor="#253256"
+                       VerticalOptions="Center" HorizontalOptions="Center"
+                       CornerRadius="20" Margin="10">
+                    <StackLayout>
+                        <ImageButton Source="incidencias_btn" Padding="0" Margin="0" BackgroundColor="#253256"
+                                     VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Incidencias" TextColor="White" FontSize="18"
+                               HorizontalOptions="Center" VerticalOptions="Center" 
+                               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="1" HasShadow="True"
+                       HeightRequest="135" WidthRequest="135" BackgroundColor="#253256"
+                       VerticalOptions="Center" HorizontalOptions="Center"
+                       CornerRadius="20" Margin="10">
+                    <StackLayout>
+                        <ImageButton Source="jdv_btn" Padding="0" Margin="0" BackgroundColor="#253256"
+                                     VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Juntas de Vecinos" TextColor="White" FontSize="18"
+                               HorizontalOptions="Center" VerticalOptions="Center" 
+                               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="0" HasShadow="True"
+                       HeightRequest="135" WidthRequest="135" BackgroundColor="#253256"
+                       VerticalOptions="Center" HorizontalOptions="Center"
+                       CornerRadius="20" Margin="10">
+                    <StackLayout>
+                        <ImageButton Source="entidades_btn" Padding="0" Margin="0" BackgroundColor="#253256"
+                                     VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Entidades Municipales" TextColor="White" FontSize="18"
+                               HorizontalOptions="Center" VerticalOptions="Center" 
+                               VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1" HasShadow="True"
+                       HeightRequest="135" WidthRequest="135" BackgroundColor="#253256"
+                       VerticalOptions="Center" HorizontalOptions="Center"
+                       CornerRadius="20" Margin="10">
+                    <StackLayout>
+                        <ImageButton Source="normativas_btn" Padding="0" Margin="0" BackgroundColor="#253256"
+                                     VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Normativas" TextColor="White" FontSize="18"
+                               HorizontalOptions="Center" VerticalOptions="Center"
+                               VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
+
+        </StackLayout>
+        
+        <!--<StackLayout>
             <ScrollView>
                 <StackLayout
                     VerticalOptions="Center"
@@ -97,7 +155,7 @@
                         CornerRadius="15"
                         Padding="0">
                                 <ImageButton></ImageButton>
-                                <!--<Button
+                                --><!--<Button
                             BackgroundColor="White"
                             BorderColor="Black"
                         
@@ -105,7 +163,7 @@
                             HeightRequest="135"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"                                   
-                            CornerRadius="15"></Button>-->
+                            CornerRadius="15"></Button>--><!--
 
                             </Frame>
                             <Frame
@@ -119,7 +177,7 @@
                         CornerRadius="15"
                         Padding="0">
                                 <ImageButton></ImageButton>
-                                <!--<Button
+                                --><!--<Button
                             BackgroundColor="White"
                             BorderColor="Black"
                         
@@ -127,13 +185,13 @@
                             HeightRequest="135"
                             VerticalOptions="Center"
                             HorizontalOptions="Center"                                   
-                            CornerRadius="15"></Button>-->
+                            CornerRadius="15"></Button>--><!--
 
                             </Frame>
                     </Grid>
                 </StackLayout>
             </ScrollView>
-        </StackLayout>
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>
     

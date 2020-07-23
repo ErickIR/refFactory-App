@@ -32,5 +32,6 @@ namespace CitizenApp.Common
         public const string TipoIncidencia = "tipo-incidencia/";
         public const string TipoUsuario = "tipo-usuario/";
         public const string Usuario = "usuario/";
+        public const string Incidencia = "incidencia/barrio/";
     }
 }

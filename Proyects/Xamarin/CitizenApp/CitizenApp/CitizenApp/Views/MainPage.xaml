@@ -16,7 +16,7 @@
         
         <NavigationPage>
             <x:Arguments>
-                <views:HomePage />
+                <views:IncidenciasPage />
             </x:Arguments>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
