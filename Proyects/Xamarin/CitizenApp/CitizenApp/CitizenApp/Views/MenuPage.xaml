@@ -6,6 +6,7 @@
              mc:Ignorable="d"
              x:Class="CitizenApp.Views.MenuPage"
              Title="Menu">
+    
     <ContentPage.Content>
         <Grid BackgroundColor="Transparent">
             <Grid.RowDefinitions>
@@ -43,7 +44,6 @@
                                         Margin="0,0,10,0" />
                                     <Label
                                         Text="{Binding Title}" d:Text="{Binding .}" 
-                                        FontFamily="{StaticResource BoldFont}"
                                         FontSize="Medium" VerticalOptions="Center" TextColor="Black"  />
                                 </StackLayout>
                             </ViewCell>
