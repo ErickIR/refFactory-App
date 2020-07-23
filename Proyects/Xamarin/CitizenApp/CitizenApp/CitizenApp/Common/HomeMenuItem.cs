@@ -48,7 +48,7 @@ namespace CitizenApp.Common
                 },
                 new HomeMenuGroup("Usuario")
                 {
-                    new HomeMenuItem {Id = MenuItemType.Informacion, Title="Informacion", Icon = "Informacion" },
+                    new HomeMenuItem {Id = MenuItemType.Informacion, Title="Informacion", Icon = "about" },
                     new HomeMenuItem {Id = MenuItemType.CerrarSesion, Title="Cerrar Sesion", Icon = "Cerrar_Sesion" }
                 }
             };

@@ -16,6 +16,7 @@ namespace CitizenApp
         public App()
         {
             InitializeComponent();
+            Device.SetFlags(new[] { "SwipeView_Experimental" });
             Current = this;
             var isLoggedIn = Properties.ContainsKey("IsLoggedIn") && (bool)Properties["IsLoggedIn"];
             if (isLoggedIn)

@@ -28,6 +28,7 @@ namespace CitizenApp.Views
                 if (e.SelectedItem == null)
                     return;
 
+               
                 var id = (int)((HomeMenuItem)e.SelectedItem).Id;
                 await RootPage.NavigateFromMenu(id);
             };

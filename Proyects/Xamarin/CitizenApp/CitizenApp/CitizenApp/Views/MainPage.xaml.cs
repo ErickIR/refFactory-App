@@ -6,6 +6,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 using CitizenApp.Common;
+using Xamarin.Essentials;
+using Android.Content;
 
 namespace CitizenApp.Views
 {
@@ -22,6 +24,12 @@ namespace CitizenApp.Views
             session = true;
             MasterBehavior = MasterBehavior.Popover;
             MenuPages.Add((int)MenuItemType.Inicio, (NavigationPage)Detail);
+        }
+
+        private async Task OpenNormativasMunicipalesWebPage()
+        {
+            Uri uri = new Uri("http://www.adn.gob.do/index.php?option=com_docman&view=list&layout=table&slug=resoluciones-municipales&Itemid=660");
+            await Browser.OpenAsync(uri, BrowserLaunchMode.SystemPreferred);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -43,10 +51,10 @@ namespace CitizenApp.Views
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                     case (int)MenuItemType.NormativasMunicipales:
-                        Device.OpenUri(new Uri("http://www.adn.gob.do/index.php?option=com_docman&view=list&layout=table&slug=resoluciones-municipales&Itemid=660"));
                         MenuPages.Add(id, new NavigationPage(new HomePage()));
                         break;
                     case (int)MenuItemType.Informacion:
+                        await OpenNormativasMunicipalesWebPage();
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
                     case (int)MenuItemType.CerrarSesion:
@@ -70,7 +78,10 @@ namespace CitizenApp.Views
                         await Task.Delay(100);
 
                     IsPresented = false;
-                } 
+                }
+
+                if (id == (int)MenuItemType.NormativasMunicipales)
+                    await OpenNormativasMunicipalesWebPage();
             }
         }
     }
