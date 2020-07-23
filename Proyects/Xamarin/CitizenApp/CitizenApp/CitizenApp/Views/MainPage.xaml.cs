@@ -48,7 +48,7 @@ namespace CitizenApp.Views
                         MenuPages.Add(id, new NavigationPage(new JuntaDeVecinosPage()));
                         break;
                     case (int)MenuItemType.EntidadesMunicipales:
-                        MenuPages.Add(id, new NavigationPage(new AboutPage()));
+                        MenuPages.Add(id, new NavigationPage(new EntidadesMunicipalesPage()));
                         break;
                     case (int)MenuItemType.NormativasMunicipales:
                         MenuPages.Add(id, new NavigationPage(new HomePage()));
