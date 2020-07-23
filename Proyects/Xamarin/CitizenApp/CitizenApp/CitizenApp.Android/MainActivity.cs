@@ -6,6 +6,7 @@ using Android.OS;
 using Plugin.Media;
 using Plugin.Permissions;
 using Plugin.CurrentActivity;
+using Android.Views;
 
 namespace CitizenApp.Droid
 {
@@ -23,7 +24,6 @@ namespace CitizenApp.Droid
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(

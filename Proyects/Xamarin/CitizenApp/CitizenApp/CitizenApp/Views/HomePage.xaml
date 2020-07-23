@@ -4,11 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:CitizenApp.Controls"
              mc:Ignorable="d"
              x:Class="CitizenApp.Views.HomePage"
              BackgroundColor="#D9E0E9"
              BackgroundImageSource="BackGroundMain"
-             >
+             NavigationPage.HasNavigationBar="true">
     
     <ContentPage.ToolbarItems>
         <ToolbarItem 
@@ -16,7 +17,7 @@
                  Order="Primary"
                  Priority="0" />
     </ContentPage.ToolbarItems>
-
+ 
     <!--<NavigationPage.TitleView>
             <Image Source="Logo_Coopera"                   
                    HeightRequest="55"
@@ -26,116 +27,113 @@
 
    
     <ContentPage.Content>
-        <ScrollView>
-        <StackLayout
-            VerticalOptions="Center"
-            Padding="0,150,0,0">
-                
-            
-            <Grid
-                
-                RowSpacing="40"
-                ColumnSpacing="-50">
-                <Grid.RowDefinitions>
-                    <RowDefinition
-                        Height="*">
-                    </RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition
-                        Width="*">
-                    </ColumnDefinition>
-                </Grid.ColumnDefinitions>
+        <StackLayout>
+            <ScrollView>
+                <StackLayout
+                    VerticalOptions="Center"
+                    Padding="0,150,0,0">
+                    <Grid
+                        RowSpacing="40"
+                        ColumnSpacing="-50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*">
+                                </RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                        </Grid.ColumnDefinitions>
 
-                    <Frame
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    HasShadow="True"
-                    WidthRequest="135"
-                    HeightRequest="135"
-                     VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    CornerRadius="15"
-                    Padding="0">
-                        <Button
-                        BackgroundColor="White"
-                        BorderColor="Black"
-                        
+                            <Frame
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HasShadow="True"
                         WidthRequest="135"
                         HeightRequest="135"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"                                   
-                        CornerRadius="15"></Button>
-
-                    </Frame>
-                    <Frame
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    HasShadow="True"
-                    WidthRequest="135"
-                    HeightRequest="135"
-                     VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    CornerRadius="15"
-                    Padding="0">
-                        <Button
-                        BackgroundColor="White"
-                        BorderColor="Black"
+                         VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        CornerRadius="15"
+                        Padding="0">
+                                <Button
+                            BackgroundColor="White"
+                            BorderColor="Black"
                         
+                            WidthRequest="135"
+                            HeightRequest="135"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"                                   
+                            CornerRadius="15"></Button>
+
+                            </Frame>
+                            <Frame
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HasShadow="True"
                         WidthRequest="135"
                         HeightRequest="135"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"                                   
-                        CornerRadius="15"></Button>
-
-                    </Frame>
-                    <Frame
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    HasShadow="True"
-                    WidthRequest="135"
-                    HeightRequest="135"
-                     VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    CornerRadius="15"
-                    Padding="0">
-                        <ImageButton></ImageButton>
-                        <!--<Button
-                        BackgroundColor="White"
-                        BorderColor="Black"
+                         VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        CornerRadius="15"
+                        Padding="0">
+                                <Button
+                            BackgroundColor="White"
+                            BorderColor="Black"
                         
+                            WidthRequest="135"
+                            HeightRequest="135"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"                                   
+                            CornerRadius="15"></Button>
+
+                            </Frame>
+                            <Frame
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HasShadow="True"
                         WidthRequest="135"
                         HeightRequest="135"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"                                   
-                        CornerRadius="15"></Button>-->
-
-                    </Frame>
-                    <Frame
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    HasShadow="True"
-                    WidthRequest="135"
-                    HeightRequest="135"
-                     VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    CornerRadius="15"
-                    Padding="0">
-                        <ImageButton></ImageButton>
-                        <!--<Button
-                        BackgroundColor="White"
-                        BorderColor="Black"
+                         VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        CornerRadius="15"
+                        Padding="0">
+                                <ImageButton></ImageButton>
+                                <!--<Button
+                            BackgroundColor="White"
+                            BorderColor="Black"
                         
+                            WidthRequest="135"
+                            HeightRequest="135"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"                                   
+                            CornerRadius="15"></Button>-->
+
+                            </Frame>
+                            <Frame
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HasShadow="True"
                         WidthRequest="135"
                         HeightRequest="135"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"                                   
-                        CornerRadius="15"></Button>-->
+                         VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        CornerRadius="15"
+                        Padding="0">
+                                <ImageButton></ImageButton>
+                                <!--<Button
+                            BackgroundColor="White"
+                            BorderColor="Black"
+                        
+                            WidthRequest="135"
+                            HeightRequest="135"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"                                   
+                            CornerRadius="15"></Button>-->
 
-                    </Frame>
-                </Grid>
+                            </Frame>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
-        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
     

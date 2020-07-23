@@ -22,6 +22,13 @@ namespace CitizenApp.ViewModels
             set { SetProperty(ref _incidenciasList, value); }
         }
 
+        private bool _isFiltered = false;
+        public bool IsFiltered
+        {
+            get { return _isFiltered; }
+            set { SetProperty(ref _isFiltered, value); }
+        }
+
         private bool _isRefreshing = false;
         public bool IsRefreshing
         {
@@ -41,6 +48,7 @@ namespace CitizenApp.ViewModels
         public ICommand SelectIncidenciaCommand { get; }
         public ICommand AddNewIncidenciaCommand { get; }
         public ICommand SearchIncidenciaCommand { get; }
+        public ICommand GoToFiltersCommand { get; }
 
         public INavigation Navigation { get; set; }
         public string Search { get; set; }
@@ -56,6 +64,28 @@ namespace CitizenApp.ViewModels
             SearchIncidenciaCommand = new Command(async () => await ExecuteSearchIncidenciasCommand());
             AddNewIncidenciaCommand = new Command(async () => await ExecuteAddNewIncidenciaCommand());
             SelectIncidenciaCommand = new Command(async () => await ExecuteSelectIncidenciaCommand());
+            GoToFiltersCommand = new Command(async () => await ExecuteGoToFiltersCommand());
+        }
+
+        async Task ExecuteGoToFiltersCommand()
+        {
+            if (_clickRegulator.SetClicked(nameof(ExecuteGoToFiltersCommand), true))
+                return;
+
+            IsBusy = true;
+            try
+            {
+                await PageService.PushAsync(new IncidenciasFilterPage(this));
+            }
+            catch(Exception ex)
+            {
+                await PageService.DisplayAlert("ERROR", ex.Message, "OK");
+            }
+            finally
+            {
+                _clickRegulator.ClickDone(nameof(ExecuteGoToFiltersCommand));
+                IsBusy = false;
+            }
         }
 
         async Task ExecuteSelectIncidenciaCommand()

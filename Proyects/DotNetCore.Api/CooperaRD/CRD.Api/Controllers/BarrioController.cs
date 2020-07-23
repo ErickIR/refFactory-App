@@ -37,5 +37,13 @@ namespace CRD.Api.Controllers
 
             return Ok(result);
         }
+
+        [HttpGet("distrito-municipal/{distritoMunicipalId}")]
+        public IActionResult GetAllBarriosByDistritoMunicipalId(int distritoMunicipalId)
+        {
+            var result = barrioService.GetAllBarriosByDistritoMunicipalId(distritoMunicipalId);
+
+            return Ok(result);
+        }
     }
 }

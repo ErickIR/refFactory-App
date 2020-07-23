@@ -17,7 +17,10 @@ namespace CitizenApp.Services.Services
             }
         }
 
-        
+        public async Task PushModalAsync(Page page)
+        {
+            await MainPage.Detail.Navigation.PushModalAsync(page);
+        }
 
         public async Task<bool> DisplayAlert(string title, string message, string ok, string cancel)
         {

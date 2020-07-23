@@ -16,13 +16,18 @@ namespace CitizenApp
         public App()
         {
             InitializeComponent();
-
+            Application.Current.Resources.Add(new Xamarin.Forms.Style(typeof(Page))
+            {
+                Setters = {
+                    new Xamarin.Forms.Setter { Property = Page.BackgroundImageProperty, Value = "main_bg.png"},
+                }
+            });
             Current = this;
             var isLoggedIn = Properties.ContainsKey("IsLoggedIn") ? (bool)Properties["IsLoggedIn"] : false;
             if (isLoggedIn)
                 MainPage = new MainPage();
             else
-                MainPage = new LoginModalPage(this);
+                MainPage = new MainPage();
         }
 
         protected override void OnStart()
