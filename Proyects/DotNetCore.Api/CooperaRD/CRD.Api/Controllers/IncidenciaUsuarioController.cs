@@ -1,4 +1,5 @@
 ﻿using CRD.AplicationCore.Interfaces;
+using CRD.Common.DTOs.DtoIn;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CRD.Api.Controllers
@@ -12,6 +13,14 @@ namespace CRD.Api.Controllers
         public IncidenciaUsuarioController(IIncidenciaUsuarioService incidenciaUsuarioService)
         {
             this.incidenciaUsuarioService = incidenciaUsuarioService;
+        }
+
+        [HttpPost]
+        public IActionResult CreateIncidenciaUsuario(IncidenciaUsuarioDtoIn incidenciaUsuarioDto)
+        {
+            var result = incidenciaUsuarioService.CreateIncidenciaUsuario(incidenciaUsuarioDto);
+
+            return Ok(result);
         }
 
         [HttpGet]

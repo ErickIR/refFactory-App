@@ -1,4 +1,5 @@
-﻿using CRD.Common.DTOs.DtoOut;
+﻿using CRD.Common.DTOs.DtoIn;
+using CRD.Common.DTOs.DtoOut;
 using CRD.Common.Models;
 using System.Collections.Generic;
 
@@ -9,5 +10,6 @@ namespace CRD.AplicationCore.Interfaces
         ServiceResult<IEnumerable<IncidenciaUsuarioDtoOut>> GetAllIncidenciasUsuarios();
         ServiceResult<IncidenciaUsuarioDtoOut> GetIncidenciaUsuarioByIncidenciaUsuarioId(int incidenciaUsuarioId);
         ServiceResult<IEnumerable<IncidenciaUsuarioDtoOut>> GetAllIncidenciasUsuariosByIncidenciaId(int incidenciaId);
+        ServiceResult<bool> CreateIncidenciaUsuario(IncidenciaUsuarioDtoIn incidenciaUsuarioDto);
     }
 }

@@ -19,5 +19,13 @@ namespace CRD.AplicationCore.Validations
 
             return isExisting;
         }
+
+        public bool IsExisingApoyo(int incidenciaId, int usuarioId)
+        {
+            var isExisting = masterRepository.IncidenciaUsuario.GetAll().Any(i =>
+                i.IncidenciaId == incidenciaId && i.UsuarioId == usuarioId);
+
+            return isExisting;
+        }
     }
 }

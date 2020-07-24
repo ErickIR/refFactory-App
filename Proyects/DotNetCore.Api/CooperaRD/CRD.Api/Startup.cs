@@ -114,6 +114,9 @@ namespace CRD.Api
 
             services.AddScoped<IIntegranteJdVService, IntegranteJdVService>();
             services.AddScoped<IIntegranteJdVValidationService, IntegranteJdVValidationService>();
+
+            services.AddScoped<ILoginService, LoginService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

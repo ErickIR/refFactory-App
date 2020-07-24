@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using CRD.Common.DTOs.DtoIn;
 using CRD.Common.DTOs.DtoOut;
 using CRD.Domain.Models;
 
@@ -8,7 +9,8 @@ namespace CRD.AplicationCore.Profiles
     {
         public IncidenciaProfile()
         {
-            CreateMap<Incidencia,IncidenciaDtoOut>();
+            CreateMap<Incidencia,IncidenciaDtoOut>(); 
+            CreateMap<IncidenciaDtoIn, Incidencia>(); 
         }
     }
 }

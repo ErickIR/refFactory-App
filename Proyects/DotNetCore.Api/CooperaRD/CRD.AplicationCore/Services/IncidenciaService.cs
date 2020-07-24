@@ -2,6 +2,7 @@
 using CRD.AplicationCore.Constants;
 using CRD.AplicationCore.Interfaces;
 using CRD.AplicationCore.Interfaces.Validations;
+using CRD.Common.DTOs.DtoIn;
 using CRD.Common.DTOs.DtoOut;
 using CRD.Common.Enums;
 using CRD.Common.Models;
@@ -23,12 +24,14 @@ namespace CRD.AplicationCore.Services
         readonly IUsuarioValidationService usuarioValidationService;
         readonly IStatusIncidenciaValidationService statusIncidenciaValidationService;
         readonly ITipoIncidenciaValidationService tipoIncidenciaValidationService;
+        readonly IGeneralValidationService generalValidationService;
         readonly IMapper mapper;
 
         public IncidenciaService(IMasterRepository masterRepository, IIncidenciaValidationService incidenciaValidationService, 
             IBarrioValidationService barrioValidationService, IUsuarioValidationService usuarioValidationService, 
             IStatusIncidenciaValidationService statusIncidenciaValidationService, 
-            ITipoIncidenciaValidationService tipoIncidenciaValidationService, IMapper mapper)
+            ITipoIncidenciaValidationService tipoIncidenciaValidationService, IMapper mapper,
+            IGeneralValidationService generalValidationService)
         {
             this.masterRepository = masterRepository;
             this.incidenciaValidationService = incidenciaValidationService;
@@ -36,6 +39,7 @@ namespace CRD.AplicationCore.Services
             this.usuarioValidationService = usuarioValidationService;
             this.statusIncidenciaValidationService = statusIncidenciaValidationService;
             this.tipoIncidenciaValidationService = tipoIncidenciaValidationService;
+            this.generalValidationService = generalValidationService;
             this.mapper = mapper;
         }
 
@@ -62,6 +66,51 @@ namespace CRD.AplicationCore.Services
                 i.IncidenciaId == incidencia.IncidenciaId).Count();
 
             return incidenciaDto;
+        }
+
+        public ServiceResult<bool> CreateIncidencia(IncidenciaDtoIn incidenciaDto)
+        {
+            try
+            {
+                if (!usuarioValidationService.IsExistingUsuarioId(incidenciaDto.EmpleadoId))
+                    throw new ValidationException(UsuarioMessageConstants.NotExistingUsuarioId);
+
+                if (!usuarioValidationService.IsExistingUsuarioId(incidenciaDto.UsuarioId))
+                    throw new ValidationException(UsuarioMessageConstants.NotExistingUsuarioId);
+
+                if (!statusIncidenciaValidationService.IsExistingStatusIncidenciaId(incidenciaDto.StatusId))
+                    throw new ValidationException(StatusIncidenciaMessageConstants.NotExistingStatusIncidenciaId);
+
+                if (!barrioValidationService.IsExistingBarrioId(incidenciaDto.BarrioId))
+                    throw new ValidationException(BarrioMessageConstants.NotExistingBarrioId);
+
+                if (!tipoIncidenciaValidationService.IsExistingTipoIncidenciaId(incidenciaDto.TipoId))
+                    throw new ValidationException(TipoIncidenciaMessageConstants.NotExistingTipoIncidenciaId);
+
+                if(generalValidationService.IsEmptyText(incidenciaDto.Titulo))
+                    throw new ValidationException(IncidenciaUsuarioMessageConstants.EmptyIncidenciaUsuarioTitulo);
+
+                if (generalValidationService.IsEmptyText(incidenciaDto.Descripccion))
+                    throw new ValidationException(IncidenciaUsuarioMessageConstants.EmptyIncidenciaUsuarioDescripcion);
+
+                incidenciaDto.Titulo = generalValidationService.GetRewrittenTextFirstCapitalLetter(incidenciaDto.Titulo);
+                incidenciaDto.Descripccion = generalValidationService.GetRewrittenTextFirstCapitalLetter(incidenciaDto.Descripccion);
+
+                var incidencia = mapper.Map<Incidencia>(incidenciaDto);
+
+                masterRepository.Incidencia.Create(incidencia);
+                masterRepository.Save();
+
+                return ServiceResult<bool>.ResultOk(true);
+            }
+            catch (ValidationException e)
+            {
+                return ServiceResult<bool>.ResultFailed(ResponseCode.Warning, e.Message);
+            }
+            catch (Exception e)
+            {
+                return ServiceResult<bool>.ResultFailed(ResponseCode.Error, e.Message);
+            }
         }
 
         public ServiceResult<IEnumerable<IncidenciaDtoOut>> GetAllIncidencias()
