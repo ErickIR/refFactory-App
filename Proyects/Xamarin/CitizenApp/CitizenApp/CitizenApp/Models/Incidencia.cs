@@ -25,7 +25,24 @@ namespace CitizenApp.Models
         public Barrio Barrio { get; set; }
 
         public IEnumerable<IncidenciaUsuario> Apoyos { get; set; }
-
+        public string statusColor
+        {
+            get
+            {
+                if (Status.StatusIncidenciaId == 1)
+                {
+                    return "Red";
+                }
+                else if (Status.StatusIncidenciaId == 2)
+                {
+                    return "Blue";
+                }
+                else
+                {
+                    return "Green";
+                }
+            } 
+        }
         public string ApoyosPhrase { get => $"{10} Han apoyado esto."; }
     }
 }

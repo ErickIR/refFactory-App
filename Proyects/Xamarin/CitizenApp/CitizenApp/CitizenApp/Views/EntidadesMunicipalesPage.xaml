@@ -29,6 +29,7 @@
     </NavigationPage.TitleView>
     <ContentPage.Content>
         <StackLayout>
+            
             <Frame 
                     Margin="8,8,8,0"
                     HeightRequest="40"
