@@ -40,7 +40,7 @@ namespace CitizenApp.ViewModels
             //using(var stream = new MemoryStream(incidencia.Imagen))
             //    ImageSrc = ImageSource.FromStream(() => stream);
 
-            ImageSrc = ImageSource.FromUri(new Uri("https://picsum.photos/300"));
+            ImageSrc = incidencia.ImageSrc;
             ApoyarIncidenciaCommand = new Command(async () => await ExecuteApoyarIncidenciaCommand());
         }
 

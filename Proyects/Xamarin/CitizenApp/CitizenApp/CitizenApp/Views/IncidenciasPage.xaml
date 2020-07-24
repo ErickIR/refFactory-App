@@ -82,7 +82,7 @@
                                                     <RowDefinition Height="*" />
                                                     <RowDefinition Height="100" />
                                                 </Grid.RowDefinitions>
-                                                <Image Source="incidenciaEj" Aspect="AspectFill" Grid.RowSpan="2" />
+                                                <Image Source="{Binding ImageSrc}" Aspect="AspectFill" Grid.RowSpan="2" />
                                                 <sharpnado:MaterialFrame Grid.Row="1" CornerRadius="0" MaterialBlurStyle="Dark" MaterialTheme="AcrylicBlur" />
                                                 <StackLayout
                                                  Grid.Row="1"

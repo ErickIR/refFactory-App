@@ -1,8 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using Android.Media;
+using FFImageLoading.Work;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using Xamarin.Forms;
 
 namespace CitizenApp.Models
 {
@@ -28,6 +32,24 @@ namespace CitizenApp.Models
         public Barrio Barrio { get; set; }
         public DateTime? FechaCreado { get; set; }
 
+
+        public Xamarin.Forms.ImageSource ImageSrc
+        {
+            get
+            {
+                if(Imagen == null || Imagen.Length == 0)
+                {
+                    return Xamarin.Forms.ImageSource.FromFile("incidenciaEj");
+                }
+                else
+                {
+                    return Xamarin.Forms.ImageSource.FromStream(() =>
+                    {
+                        return new MemoryStream(Imagen);
+                    });
+                }
+            }
+        }
         public int Apoyos { get; set; }
         public string statusColor
         {
