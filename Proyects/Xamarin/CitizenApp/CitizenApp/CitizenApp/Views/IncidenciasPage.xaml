@@ -29,7 +29,7 @@
 
 
     <ContentPage.Content>
-        <AbsoluteLayout>
+        
             <StackLayout>
                 <Frame 
                     Margin="8,8,8,0"
@@ -110,23 +110,7 @@
                     </ListView>
                 </ScrollView>
             </StackLayout>
-            <Frame
-                HasShadow="True"
-                AbsoluteLayout.LayoutBounds="0.95,0.95,60,60"
-                AbsoluteLayout.LayoutFlags="PositionProportional"
-                BackgroundColor="#253256"
-                CornerRadius="30"
-                Padding="0"
-                HeightRequest="60"
-                BorderColor="#253256"
-                WidthRequest="560">
-            <ImageButton
-                Command="{Binding AddNewIncidenciaCommand}"
-                BackgroundColor="#253256"
-                Source="Add.png"
-             />
-            </Frame>
-        </AbsoluteLayout>
+            
     </ContentPage.Content>
     
 </ContentPage>
