@@ -46,13 +46,13 @@
                                         <yummy:PancakeView.Shadow>
                                             <yummy:DropShadow Color="#000000" Opacity="0.3" Offset="10,10" BlurRadius="10" />
                                         </yummy:PancakeView.Shadow>
-                                        <Grid HeightRequest="250"
+                                        <Grid HeightRequest="450"
                                               >
                                             <Grid.RowDefinitions>
                                                 <RowDefinition Height="*" />
                                                 <RowDefinition Height="80" />
                                             </Grid.RowDefinitions>
-                                            <Image Source="PersonaInt" Aspect="AspectFill" Grid.RowSpan="2" />
+                                            <Image Source="{Binding usuario.Nombres}" Aspect="AspectFill" Grid.RowSpan="2" />
                                             <sharpnado:MaterialFrame Grid.Row="1" CornerRadius="0" MaterialBlurStyle="Dark" MaterialTheme="AcrylicBlur" />
                                             <StackLayout
                                                  Grid.Row="1"
