@@ -62,10 +62,10 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <Button Grid.Column="0" Text="Ver mis incidencias" BackgroundColor="#253256" 
+                            <Button Grid.Column="0" Text="Ver mis incidencias" BackgroundColor="#253256" Command="{Binding ObtenerMisIncidenciasCommand}"
                                     TextColor="White" FontFamily="{StaticResource BoldFont}" HeightRequest="110"
                                     FontSize="18" CornerRadius="30" Margin="10" HorizontalOptions="Start"/>
-                            <Button Grid.Column="1" Text="Ver mas votadas" BackgroundColor="#253256" 
+                            <Button Grid.Column="1" Text="Ver mas votadas" BackgroundColor="#253256" Command="{Binding OrdenarMasVotadasCommand}"
                                     TextColor="White" FontFamily="{StaticResource BoldFont}" HeightRequest="110"
                                     FontSize="18" CornerRadius="30" Margin="10" HorizontalOptions="End"/>
                         </Grid>

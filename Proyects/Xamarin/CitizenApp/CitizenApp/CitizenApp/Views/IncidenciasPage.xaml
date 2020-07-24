@@ -72,19 +72,17 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    
                                     <StackLayout Padding="16,10">
                                         <yummy:PancakeView CornerRadius="20">
                                             <yummy:PancakeView.Shadow>
                                                 <yummy:DropShadow Color="#000000" Opacity="0.3" Offset="10,10" BlurRadius="10" />
                                             </yummy:PancakeView.Shadow>
-                                            <Grid HeightRequest="250"
-                                              >
+                                            <Grid>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="*" />
                                                     <RowDefinition Height="100" />
                                                 </Grid.RowDefinitions>
-                                                <Image Source="incidenciaEj" Aspect="AspectFill" Grid.RowSpan="2" />
+                                                <Image Source="{Binding ImageSrc}" Aspect="AspectFill" Grid.RowSpan="2" />
                                                 <sharpnado:MaterialFrame Grid.Row="1" CornerRadius="0" MaterialBlurStyle="Dark" MaterialTheme="AcrylicBlur" />
                                                 <StackLayout
                                                  Grid.Row="1"

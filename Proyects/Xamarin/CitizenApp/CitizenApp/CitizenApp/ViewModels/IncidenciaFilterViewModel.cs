@@ -55,6 +55,9 @@ namespace CitizenApp.ViewModels
         public ICommand LoadTiposIndenciaCommand { get; }
         public ICommand LoadStatusDeIncidenciasCommand { get; }
         public ICommand AplicarFiltrosCommand { get; }
+        public ICommand ObtenerMisIncidenciasCommand { get; }
+        public ICommand OrdenarMasVotadasCommand { get; }
+
 
         public IncidenciaFilterViewModel(IncidenciasListViewModel parentVm)
         {
@@ -64,12 +67,71 @@ namespace CitizenApp.ViewModels
             LoadTiposIndenciaCommand = new Command(async () => await ExecuteLoadTiposIncidenciasCommand());
             LoadStatusDeIncidenciasCommand = new Command(async () => await ExecuteLoadStatusDeIncidenciasCommand());
             AplicarFiltrosCommand = new Command(async () => await ExecuteAplicarFiltrosCommand(), CanExecuteAplicarFiltrosCommand);
+            ObtenerMisIncidenciasCommand = new Command(async () => await ExecuteObtenerMisIncidenciasCommand());
+            OrdenarMasVotadasCommand = new Command(async () => await ExecuteOrdenarMasVotadasCommand());
+        }
+
+        async Task ExecuteOrdenarMasVotadasCommand()
+        {
+            if (_clickRegulator.SetClicked(nameof(ExecuteOrdenarMasVotadasCommand), true))
+                return;
+
+            IsBusy = true;
+            try
+            {
+                ParentViewModel.IncidenciasList.Clear();
+                var incidencias = await IncidenciaService.OrdenarMasVotadas();
+
+                foreach (var item in incidencias)
+                    ParentViewModel.IncidenciasList.Add(item);
+
+                ParentViewModel.IsFiltered = true;
+                await PageService.PopAsync();
+            }
+            catch (Exception ex)
+            {
+                await PageService.DisplayAlert("ERROR", ex.Message, "OK");
+            }
+            finally
+            {
+                _clickRegulator.ClickDone(nameof(ExecuteOrdenarMasVotadasCommand));
+                IsBusy = false;
+            }
         }
 
         bool CanExecuteAplicarFiltrosCommand()
         {
             return true;
             //return !string.IsNullOrWhiteSpace(Search) || TipoIncidenciaSelected != null || StatusIncidenciaSelected != null;
+        }
+
+        async Task ExecuteObtenerMisIncidenciasCommand()
+        {
+            if (_clickRegulator.SetClicked(nameof(ExecuteObtenerMisIncidenciasCommand), true))
+                return;
+
+            IsBusy = true;
+            try
+            {
+                ParentViewModel.IncidenciasList.Clear();
+                var incidencias = await IncidenciaService.ObtenerMisIncidenciasAsync(2);
+
+                foreach (var item in incidencias)
+                    ParentViewModel.IncidenciasList.Add(item);
+
+                ParentViewModel.IsFiltered = true;
+                await PageService.PopAsync();
+            }
+            catch (Exception ex)
+            {
+                await PageService.DisplayAlert("ERROR", ex.Message, "OK");
+            }
+            finally
+            {
+                _clickRegulator.ClickDone(nameof(ExecuteObtenerMisIncidenciasCommand));
+                IsBusy = false;
+            }
+
         }
 
         async Task ExecuteAplicarFiltrosCommand()

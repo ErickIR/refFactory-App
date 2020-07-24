@@ -8,61 +8,114 @@ using System.Net.Http;
 using CitizenApp.Common;
 using Newtonsoft.Json;
 using Org.Apache.Http.Protocol;
+using Android.Media;
+using RestSharp;
 
 namespace CitizenApp.Services.Services
 {
     public class IncidenciaService : BaseHttpClient
     {
         private List<Incidencia> Incidencias;
-        private List<IncidenciaUsuario> Apoyos;
         private List<TipoIncidencia> TiposIncidencia;
         private List<StatusIncidencia> StatusIncidencias;
         public IncidenciaService()
         {
 
-            TiposIncidencia = new List<TipoIncidencia>()
-            {
-                new TipoIncidencia() {TipoIncidenciaId= 1, Descripcion="Rechazado"}
-            };
-            StatusIncidencias = new List<StatusIncidencia>()
-            {
-                new StatusIncidencia() {StatusIncidenciaId=1, Descripcion="Salubridad"}
-            };
+            TiposIncidencia = new List<TipoIncidencia>();
+
+            StatusIncidencias = new List<StatusIncidencia>();
 
             Incidencias = new List<Incidencia>();
         }
 
-        public async Task RegistrarNuevaIncidenciaAsync(Incidencia incidencia)
+        public void PostTowardUrl( IncidenciaPost obj)
         {
-
+            var client = new RestClient("http://192.168.0.100:44346/api/incidencia/post-incidencia");
+            var request = new RestRequest(Method.POST);
+            request.AddHeader("content-type", "application/json; charset=utf-8");
+            request.AddHeader("server", "Microsoft-IIS/10.0");
+            request.AddJsonBody(obj);
+            IRestResponse response = client.Execute(request);
         }
 
-        public async Task<bool> EliminarIncidenciaUsuarioAsync(int incidenciaUsuarioId)
+        public async Task<bool> RegistrarNuevaIncidenciaAsync(IncidenciaPost incidencia)
         {
-            Apoyos.RemoveAll(Incidencia => Incidencia.IncidenciaId == incidenciaUsuarioId);
-
-            return await Task.FromResult(true);
-        }
-
-        public async Task<IncidenciaUsuario> RegistrarNuevoApoyoIncidenciaAsync(Incidencia incidencia, Usuario user)
-        {
-            var newApoyo = new IncidenciaUsuario()
+            try
             {
-                IncidenciaId = incidencia.IncidenciaId,
-                UsuarioId = user.UsuarioId
-            };
-
-            Apoyos.Add(newApoyo);
-
-            return await Task.FromResult(newApoyo);
+                var json = JsonConvert.SerializeObject(incidencia);
+                var stringContent = new StringContent(
+                    json,
+                    System.Text.Encoding.UTF8,
+                    "application/json"
+                );
+                var response = await Instance.PostAsync("incidencia/post-incidencia", stringContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var httpResult = JsonConvert.DeserializeObject<HttpResult<bool>>(content);
+                    if (httpResult.ErrorCode == ResponseCode.Ok)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        throw new Exception(httpResult.ErrorMessage);
+                    }
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
 
-        public async Task<IEnumerable<IncidenciaUsuario>> ObtenerRegistrosApoyoIncidencia(int incidenciaId)
+        //public async Task<bool> EliminarIncidenciaUsuarioAsync(int incidenciaUsuarioId)
+        //{
+        //    Apoyos.RemoveAll(Incidencia => Incidencia.IncidenciaId == incidenciaUsuarioId);
+
+        //    return await Task.FromResult(true);
+        //}
+
+        public async Task<bool> RegistrarNuevoApoyoIncidenciaAsync(IncidenciaUsuario apoyo)
         {
-            var apoyosAIncidencia = Apoyos.FindAll(apoyo => apoyo.IncidenciaId == incidenciaId);
-
-            return await Task.FromResult(apoyosAIncidencia);
+            try
+            {
+                var json = JsonConvert.SerializeObject(apoyo);
+                var stringContent = new StringContent(
+                    json,
+                    System.Text.Encoding.UTF8,
+                    "application/json"
+                );
+                var response = await Instance.PostAsync("incidencia-usuario/post-apoyo", stringContent);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var httpResult = JsonConvert.DeserializeObject<HttpResult<bool>>(content);
+                    if (httpResult.ErrorCode == ResponseCode.Ok)
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        throw new Exception(httpResult.ErrorMessage);
+                    }
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
         }
+
+
 
         public async Task<bool> EditarRegistroIncidenciaAsync(Incidencia item)
         {
@@ -75,6 +128,7 @@ namespace CitizenApp.Services.Services
 
         public async Task<IEnumerable<Incidencia>> ObtenerTodosRegistrosIncidenciaAsync()
         {
+            Incidencias.Clear();
             try
             {
                 var response = await Instance.GetAsync($"{ApiUrls.IncidenciaBarrio}/4");
@@ -86,6 +140,10 @@ namespace CitizenApp.Services.Services
                     {
                         foreach (var item in httpResult.Result)
                             Incidencias.Add(item);
+                    }
+                    else
+                    {
+                        throw new Exception(httpResult.ErrorMessage);
                     }
                 }
                 else
@@ -102,13 +160,38 @@ namespace CitizenApp.Services.Services
          
         public async Task<Incidencia> ObtenerRegistroIncidenciaPorIdAsync(int itemId)
         {
-            var incidencia = Incidencias.Find(cur => cur.IncidenciaId == itemId);
-
-            return await Task.FromResult(incidencia);
+            var incidencia = new Incidencia();
+            try
+            {
+                var response = await Instance.GetAsync($"incidencia/{itemId}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var httpResult = JsonConvert.DeserializeObject<HttpResult<Incidencia>>(content);
+                    if (httpResult.ErrorCode == ResponseCode.Ok)
+                    {
+                        incidencia = httpResult.Result;
+                    }
+                    else
+                    {
+                        throw new Exception(httpResult.ErrorMessage);
+                    }
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            return incidencia;
         }
 
         public async Task<IEnumerable<TipoIncidencia>> ObtenerTiposDeIncidencia()
         {
+            TiposIncidencia.Clear();
             try
             {
                 var response = await Instance.GetAsync($"tipo-incidencia/");
@@ -120,6 +203,10 @@ namespace CitizenApp.Services.Services
                     {
                         foreach (var item in httpResult.Result)
                             TiposIncidencia.Add(item);
+                    }
+                    else
+                    {
+                        throw new Exception(httpResult.ErrorMessage);
                     }
                 }
                 else
@@ -136,6 +223,7 @@ namespace CitizenApp.Services.Services
 
         public async Task<IEnumerable<StatusIncidencia>> ObtenerEstadosDeIncidencia()
         {
+            StatusIncidencias.Clear();
             try
             {
                 var response = await Instance.GetAsync($"status-incidencia/");
@@ -147,6 +235,10 @@ namespace CitizenApp.Services.Services
                     {
                         foreach (var item in httpResult.Result)
                             StatusIncidencias.Add(item);
+                    }
+                    else
+                    {
+                        throw new Exception(httpResult.ErrorMessage);
                     }
                 }
                 else
@@ -189,6 +281,10 @@ namespace CitizenApp.Services.Services
             return await Task.FromResult(incidencias);
         }
 
-
+        public async Task<IEnumerable<Incidencia>> OrdenarMasVotadas()
+        {
+            var incidencias = Incidencias.OrderBy(inc => inc.Apoyos);
+            return await Task.FromResult(incidencias);
+        }
     }
 }

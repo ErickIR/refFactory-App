@@ -28,6 +28,8 @@ namespace CitizenApp.ViewModels
             set { SetProperty(ref _imageSrc, value); }
         }
         
+
+
         public ICommand ApoyarIncidenciaCommand { get; }
 
         public IncidenciaDetailsViewModel(Incidencia incidencia)
@@ -38,7 +40,7 @@ namespace CitizenApp.ViewModels
             //using(var stream = new MemoryStream(incidencia.Imagen))
             //    ImageSrc = ImageSource.FromStream(() => stream);
 
-            ImageSrc = ImageSource.FromUri(new Uri("https://picsum.photos/300"));
+            ImageSrc = incidencia.ImageSrc;
             ApoyarIncidenciaCommand = new Command(async () => await ExecuteApoyarIncidenciaCommand());
         }
 
@@ -52,8 +54,7 @@ namespace CitizenApp.ViewModels
             try
             {
                 await IncidenciaService.RegistrarNuevoApoyoIncidenciaAsync(
-                    Incidencia,
-                    new Usuario() { UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com" }
+                    new IncidenciaUsuario { IncidenciaId = Incidencia.IncidenciaId, UsuarioId = 2}
                 );
                 Incidencia = await IncidenciaService.ObtenerRegistroIncidenciaPorIdAsync(Incidencia.IncidenciaId);
             }
