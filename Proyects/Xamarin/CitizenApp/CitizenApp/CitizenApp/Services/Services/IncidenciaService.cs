@@ -7,6 +7,7 @@ using System.Linq;
 using System.Net.Http;
 using CitizenApp.Common;
 using Newtonsoft.Json;
+using Org.Apache.Http.Protocol;
 
 namespace CitizenApp.Services.Services
 {
@@ -16,73 +17,24 @@ namespace CitizenApp.Services.Services
         private List<IncidenciaUsuario> Apoyos;
         private List<TipoIncidencia> TiposIncidencia;
         private List<StatusIncidencia> StatusIncidencias;
-        int nextIncidenciaIdx = 6;
-        int nextApoyoIdx = 4;
         public IncidenciaService()
         {
-            Apoyos = new List<IncidenciaUsuario>()
-            {
-                new IncidenciaUsuario { IncidenciaUsuarioId = 1, IncidenciaId = 1, UsuarioId = 1},
-                new IncidenciaUsuario { IncidenciaUsuarioId = 2, IncidenciaId = 3, UsuarioId = 1},
-                new IncidenciaUsuario { IncidenciaUsuarioId = 3, IncidenciaId = 1, UsuarioId = 1}
-            };
 
             TiposIncidencia = new List<TipoIncidencia>()
             {
-                new TipoIncidencia { TipoIncidenciaId = 1, Descripcion = "Salubridad" },
-                new TipoIncidencia { TipoIncidenciaId = 2, Descripcion = "Mantenimiento" },
-                new TipoIncidencia { TipoIncidenciaId = 3, Descripcion = "Comunicacion"}
+                new TipoIncidencia() {TipoIncidenciaId= 1, Descripcion="Rechazado"}
             };
-
             StatusIncidencias = new List<StatusIncidencia>()
             {
-                new StatusIncidencia { StatusIncidenciaId = 1, Descripcion = "En Proceso"},
-                new StatusIncidencia { StatusIncidenciaId = 2, Descripcion = "Completada"}
+                new StatusIncidencia() {StatusIncidenciaId=1, Descripcion="Salubridad"}
             };
 
-            Incidencias = new List<Incidencia>()
-            {
-                new Incidencia()
-                {
-                    Titulo = "Problema en las Calles",
-                    Descripcion = "Incidencia Importante.",
-                    Empleado = new Usuario() {UsuarioId = 1, Nombres = "Autor de Incidencia: Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
-                    Usuario = new Usuario() {UsuarioId = 1, Nombres = "Autor de Incidencia: Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
-                    Status = new StatusIncidencia { StatusIncidenciaId = 1, Descripcion = "Pendiente"},
-                    TipoIncidencia = new TipoIncidencia { TipoIncidenciaId = 2, Descripcion = "Mantenimiento" },
-                    Barrio = new Barrio() { BarrioId = 1, Nombre = "Barrio: El Regina" }
-                },
-                new Incidencia()
-                {
-                    Titulo = "Problema en las Calles",
-                    Descripcion = "Incidencia Importante.",
-                    Empleado = new Usuario() {UsuarioId = 1, Nombres = "Autor de Incidencia: Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
-                    Usuario = new Usuario() {UsuarioId = 1, Nombres = "Autor de Incidencia: Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
-                    Status = new StatusIncidencia { StatusIncidenciaId = 2, Descripcion = "En Proceso"},
-                    TipoIncidencia = new TipoIncidencia { TipoIncidenciaId = 2, Descripcion = "Mantenimiento" },
-                    Barrio = new Barrio() { BarrioId = 1, Nombre = "Barrio: El Regina" }
-                },
-                new Incidencia()
-                {
-                    Titulo = "Problema en las Calles",
-                    Descripcion = "Incidencia Importante.",
-                    Empleado = new Usuario() {UsuarioId = 1, Nombres = "Autor de Incidencia: Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
-                    Usuario = new Usuario() {UsuarioId = 1, Nombres = "Autor de Incidencia: Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
-                    Status = new StatusIncidencia { StatusIncidenciaId = 3, Descripcion = "Completada"},
-                    TipoIncidencia = new TipoIncidencia { TipoIncidenciaId = 2, Descripcion = "Mantenimiento" },
-                    Barrio = new Barrio() { BarrioId = 1, Nombre = "Barrio: El Regina" }
-                }
-            };
+            Incidencias = new List<Incidencia>();
         }
 
-        public async Task<Incidencia> RegistrarNuevaIncidenciaAsync(Incidencia item)
+        public async Task RegistrarNuevaIncidenciaAsync(Incidencia incidencia)
         {
-            item.IncidenciaId = nextIncidenciaIdx;
 
-            Incidencias.Add(item);
-            nextIncidenciaIdx++;
-
-            return await Task.FromResult(item);
         }
 
         public async Task<bool> EliminarIncidenciaUsuarioAsync(int incidenciaUsuarioId)
@@ -96,7 +48,6 @@ namespace CitizenApp.Services.Services
         {
             var newApoyo = new IncidenciaUsuario()
             {
-                IncidenciaUsuarioId = nextApoyoIdx++,
                 IncidenciaId = incidencia.IncidenciaId,
                 UsuarioId = user.UsuarioId
             };
@@ -124,7 +75,29 @@ namespace CitizenApp.Services.Services
 
         public async Task<IEnumerable<Incidencia>> ObtenerTodosRegistrosIncidenciaAsync()
         {
-            return await Task.FromResult(Incidencias);
+            try
+            {
+                var response = await Instance.GetAsync($"{ApiUrls.IncidenciaBarrio}/4");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var httpResult = JsonConvert.DeserializeObject<HttpResult<IEnumerable<Incidencia>>>(content);
+                    if(httpResult.ErrorCode == ResponseCode.Ok)
+                    {
+                        foreach (var item in httpResult.Result)
+                            Incidencias.Add(item);
+                    }
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+            catch(Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            return Incidencias;
         }
          
         public async Task<Incidencia> ObtenerRegistroIncidenciaPorIdAsync(int itemId)
@@ -136,12 +109,56 @@ namespace CitizenApp.Services.Services
 
         public async Task<IEnumerable<TipoIncidencia>> ObtenerTiposDeIncidencia()
         {
-            return await Task.FromResult(TiposIncidencia);
+            try
+            {
+                var response = await Instance.GetAsync($"tipo-incidencia/");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var httpResult = JsonConvert.DeserializeObject<HttpResult<IEnumerable<TipoIncidencia>>>(content);
+                    if (httpResult.ErrorCode == ResponseCode.Ok)
+                    {
+                        foreach (var item in httpResult.Result)
+                            TiposIncidencia.Add(item);
+                    }
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            return TiposIncidencia;
         }
 
         public async Task<IEnumerable<StatusIncidencia>> ObtenerEstadosDeIncidencia()
         {
-            return await Task.FromResult(StatusIncidencias);
+            try
+            {
+                var response = await Instance.GetAsync($"status-incidencia/");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var httpResult = JsonConvert.DeserializeObject<HttpResult<IEnumerable<StatusIncidencia>>>(content);
+                    if (httpResult.ErrorCode == ResponseCode.Ok)
+                    {
+                        foreach (var item in httpResult.Result)
+                            StatusIncidencias.Add(item);
+                    }
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            return StatusIncidencias;
         }
 
         public async Task<IEnumerable<Incidencia>> ObtenerIncidenciasPorEstadoAsync(int statusId)

@@ -24,7 +24,7 @@ namespace CitizenApp.Models
         public TipoIncidencia TipoIncidencia { get; set; }
         public Barrio Barrio { get; set; }
 
-        public IEnumerable<IncidenciaUsuario> Apoyos { get; set; }
+        public int Apoyos { get; set; }
         public string statusColor
         {
             get
@@ -43,6 +43,6 @@ namespace CitizenApp.Models
                 }
             } 
         }
-        public string ApoyosPhrase { get => $"{10} Han apoyado esto."; }
+        public string ApoyosPhrase { get => $"{Apoyos} Han apoyado esto."; }
     }
 }
