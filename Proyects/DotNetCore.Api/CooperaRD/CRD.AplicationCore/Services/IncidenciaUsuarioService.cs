@@ -2,10 +2,12 @@
 using CRD.AplicationCore.Constants;
 using CRD.AplicationCore.Interfaces;
 using CRD.AplicationCore.Interfaces.Validations;
+using CRD.Common.DTOs.DtoIn;
 using CRD.Common.DTOs.DtoOut;
 using CRD.Common.Enums;
 using CRD.Common.Models;
 using CRD.Domain.Interfaces;
+using CRD.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,20 +17,52 @@ namespace CRD.AplicationCore.Services
 {
     public class IncidenciaUsuarioService: IIncidenciaUsuarioService
     {
-        //Clase e interfaz de validacion , interfaz de esta clase, DTOs,  mapper, mensajes constantes, dependecy intejection en startup
+        
         readonly IMasterRepository masterRepository;
         readonly IIncidenciaUsuarioValidationService incidenciaUsuarioValidationService;
         readonly IIncidenciaValidationService incidenciaValidationService;
+        readonly IUsuarioValidationService usuarioValidationService;
         readonly IMapper mapper;
 
         public IncidenciaUsuarioService(IMasterRepository masterRepository, IIncidenciaUsuarioValidationService incidenciaUsuarioValidationService,
-            IIncidenciaValidationService incidenciaValidationService, IMapper mapper)
+            IIncidenciaValidationService incidenciaValidationService, IUsuarioValidationService usuarioValidationService , IMapper mapper)
         {
             this.masterRepository = masterRepository;
             this.incidenciaUsuarioValidationService = incidenciaUsuarioValidationService;
             this.incidenciaValidationService = incidenciaValidationService;
+            this.usuarioValidationService = usuarioValidationService;
             this.mapper = mapper;
         }
+
+        public ServiceResult<bool> CreateIncidenciaUsuario(IncidenciaUsuarioDtoIn incidenciaUsuarioDto)
+        {
+            try
+            {
+                if (!incidenciaValidationService.IsExistingIncidenciaId(incidenciaUsuarioDto.IncidenciaId))
+                    throw new ValidationException(IncidenciaMessageConstants.NotExistingIncidenciaId);
+
+                if (!usuarioValidationService.IsExistingUsuarioId(incidenciaUsuarioDto.UsuarioId))
+                    throw new ValidationException(UsuarioMessageConstants.NotExistingUsuarioId);
+
+                if (incidenciaUsuarioValidationService.IsExisingApoyo(incidenciaUsuarioDto.IncidenciaId, incidenciaUsuarioDto.UsuarioId))
+                    throw new ValidationException(IncidenciaUsuarioMessageConstants.ExistingApoyo);
+
+                var incidenciaUsuario = mapper.Map<IncidenciaUsuario>(incidenciaUsuarioDto);
+
+                masterRepository.IncidenciaUsuario.Create(incidenciaUsuario);
+                masterRepository.Save();
+
+                return ServiceResult<bool>.ResultOk(true);
+            }
+            catch (ValidationException e)
+            {
+                return ServiceResult<bool>.ResultFailed(ResponseCode.Warning, e.Message);
+            }
+            catch (Exception e)
+            {
+                return ServiceResult<bool>.ResultFailed(ResponseCode.Error, e.Message);
+            }
+        } 
 
         public ServiceResult<IEnumerable<IncidenciaUsuarioDtoOut>> GetAllIncidenciasUsuarios()
         {

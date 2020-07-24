@@ -13,6 +13,7 @@ namespace CRD.Common.DTOs.DtoOut
         public string Titulo { get; set; }
         public string Descripccion { get; set; }
         public byte[] Imagen { get; set; }
+        public string Comentario { get; set; }
         public DateTime? FechaCreado { get; set; }
         public int Apoyos { get; set; }
     }

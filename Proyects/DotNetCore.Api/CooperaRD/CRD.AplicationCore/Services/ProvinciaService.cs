@@ -20,17 +20,14 @@ namespace CRD.AplicationCore.Services
         readonly IMasterRepository masterRepository;
         readonly IGeneralValidationService generalValidationService;
         readonly IProvinciaValidationService provinciaValidationService;
-        readonly IRegionValidationService regionValidationService;
         readonly IMapper mapper;
 
         public ProvinciaService(IMasterRepository masterRepository, IGeneralValidationService generalValidationService,
-            IProvinciaValidationService provinciaValidationService, IRegionValidationService regionValidationService,
-            IMapper mapper)
+            IProvinciaValidationService provinciaValidationService, IMapper mapper)
         {
             this.masterRepository = masterRepository;
             this.generalValidationService = generalValidationService;
             this.provinciaValidationService = provinciaValidationService;
-            this.regionValidationService = regionValidationService;
             this.mapper = mapper;
         }
 
@@ -44,8 +41,6 @@ namespace CRD.AplicationCore.Services
                 if (provinciaValidationService.IsExistingProvinciaName(provinciaDto.Nombre))
                     throw new ValidationException(ProvinciaMessageConstants.ExistingProvinciaName);
 
-                if (!regionValidationService.IsExistingRegionId(provinciaDto.RegionId))
-                    throw new ValidationException(RegionMessageConstants.NotExistingRegionId);
 
                 provinciaDto.Nombre = generalValidationService.GetRewrittenTextFirstCapitalLetter(provinciaDto.Nombre);
 
@@ -129,8 +124,6 @@ namespace CRD.AplicationCore.Services
                 if (provinciaValidationService.IsExistingProvinciaName(provinciaDto.Nombre))
                     throw new ValidationException(ProvinciaMessageConstants.ExistingProvinciaName);
 
-                if (!regionValidationService.IsExistingRegionId(provinciaDto.RegionId))
-                    throw new ValidationException(RegionMessageConstants.NotExistingRegionId);
 
                 var provincia = mapper.Map<Provincia>(provinciaDto);
                 provincia.ProvinciaId = provinciaId;

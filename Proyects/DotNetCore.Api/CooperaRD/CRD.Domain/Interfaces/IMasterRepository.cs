@@ -13,7 +13,6 @@ namespace CRD.Domain.Interfaces
         IJuntaDeVecinosRepository JuntaDeVecinos { get; }
         IMunicipioRepository Municipio { get; }
         IProvinciaRepository Provincia { get; }
-        IRegionRepository Region { get; }
         IRolRepository Rol { get; }
         ISeccionRepository Seccion { get; }
         ISectorRepository Sector { get; }

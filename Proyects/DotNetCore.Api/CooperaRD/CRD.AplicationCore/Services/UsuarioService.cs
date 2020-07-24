@@ -2,7 +2,7 @@
 using CRD.AplicationCore.Constants;
 using CRD.AplicationCore.Interfaces;
 using CRD.AplicationCore.Interfaces.Validations;
-using CRD.AplicationCore.Validations;
+using CRD.Common.DTOs.DtoIn;
 using CRD.Common.DTOs.DtoOut;
 using CRD.Common.Enums;
 using CRD.Common.Models;
@@ -17,19 +17,24 @@ namespace CRD.AplicationCore.Services
 {
     public class UsuarioService: IUsuarioService
     {
-        //Clase e interfaz de validacion , interfaz de esta clase, DTOs,  mapper, mensajes constantes, dependecy intejection en startup
         readonly IMasterRepository masterRepository;
         readonly IUsuarioValidationService usuarioValidationService;
+        readonly ITipoDocumentoValidationService tipoDocumentoValidationService;
+        readonly IBarrioValidationService barrioValidationService;
+        readonly ITipoUsuarioValidationService tipoUsuarioValidationService;
+        readonly IGeneralValidationService generalValidationService;
         readonly IMapper mapper;
 
-
-
-
-        public UsuarioService(IMasterRepository masterRepository, 
-            IUsuarioValidationService usuarioValidationService, IMapper mapper)
+        public UsuarioService(IMasterRepository masterRepository, IUsuarioValidationService usuarioValidationService, 
+            ITipoDocumentoValidationService tipoDocumentoValidationService, IBarrioValidationService barrioValidationService, 
+            ITipoUsuarioValidationService tipoUsuarioValidationService, IMapper mapper, IGeneralValidationService generalValidationService)
         {
             this.masterRepository = masterRepository;
             this.usuarioValidationService = usuarioValidationService;
+            this.tipoDocumentoValidationService = tipoDocumentoValidationService;
+            this.barrioValidationService = barrioValidationService;
+            this.tipoUsuarioValidationService = tipoUsuarioValidationService;
+            this.generalValidationService = generalValidationService;
             this.mapper = mapper;
         }
 
@@ -48,6 +53,67 @@ namespace CRD.AplicationCore.Services
 
             return usuarioDto;
         }
+
+        public ServiceResult<bool> CreateUsuario(UsuarioDtoIn usuarioDto)
+        {
+            try
+            {
+                if (!tipoUsuarioValidationService.IsExistingTipoUsuarioId(usuarioDto.TipoUsuarioId))
+                    throw new ValidationException(TipoUsuarioMessageConstants.NotExistingTipoUsuarioId);
+
+                if (!tipoDocumentoValidationService.IsExistingTipoDocumentoId(usuarioDto.TipoDocumentoId))
+                    throw new ValidationException(TipoDocumentoMessageConstants.NotExistingTipoDocumentoId);
+
+                if (!barrioValidationService.IsExistingBarrioId(usuarioDto.BarrioId))
+                    throw new ValidationException(BarrioMessageConstants.NotExistingBarrioId);
+
+                if (generalValidationService.IsEmptyText(usuarioDto.Nombres))
+                    throw new ValidationException(UsuarioMessageConstants.EmptyUsuarioNombres);
+
+                if (generalValidationService.IsEmptyText(usuarioDto.Apellidos))
+                    throw new ValidationException(UsuarioMessageConstants.EmptyUsuarioApellidos);
+
+                if (generalValidationService.IsEmptyText(usuarioDto.Documento))
+                    throw new ValidationException(UsuarioMessageConstants.EmptyUsuarioDocumento);
+
+                if (generalValidationService.IsEmptyText(usuarioDto.Email))
+                    throw new ValidationException(UsuarioMessageConstants.EmptyUsuarioEmail);
+
+                if (generalValidationService.IsEmptyText(usuarioDto.HashPassword))
+                    throw new ValidationException(UsuarioMessageConstants.EmptyUsuarioPassword);
+
+                if (usuarioValidationService.IsExistingDocumento(usuarioDto.TipoDocumentoId, usuarioDto.Documento))
+                    throw new ValidationException(UsuarioMessageConstants.IsExistingDocumento);
+
+                if (!usuarioValidationService.IsValidEmail(usuarioDto.Email))
+                    throw new ValidationException(UsuarioMessageConstants.IsInvalidEmail);
+
+                if (usuarioValidationService.IsExistingEmail(usuarioDto.Email))
+                    throw new ValidationException(UsuarioMessageConstants.IsExistingEmail);
+                
+                usuarioDto.Nombres = generalValidationService.GetRewrittenTextFirstCapitalLetter(usuarioDto.Nombres);
+                usuarioDto.Apellidos = generalValidationService.GetRewrittenTextFirstCapitalLetter(usuarioDto.Apellidos);
+                usuarioDto.Email = usuarioDto.Email.ToLower();
+
+                usuarioDto.HashPassword = Encrypt.GetSHA256(usuarioDto.HashPassword);
+
+                var usuario = mapper.Map<Usuario>(usuarioDto);
+
+                masterRepository.Usuario.Create(usuario);
+                masterRepository.Save();
+
+                return ServiceResult<bool>.ResultOk(true);
+            }
+            catch (ValidationException e)
+            {
+
+                return ServiceResult<bool>.ResultFailed(ResponseCode.Warning, e.Message);
+            }
+            catch (Exception e)
+            {
+                return ServiceResult<bool>.ResultFailed(ResponseCode.Error, e.Message);
+            }
+        } 
 
         public ServiceResult<IEnumerable<UsuarioDtoOut>> GetAllUsuarios()
         {

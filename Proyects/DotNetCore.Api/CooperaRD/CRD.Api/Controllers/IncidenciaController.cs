@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using CRD.AplicationCore.Interfaces;
-using Microsoft.AspNetCore.Http;
+﻿using CRD.AplicationCore.Interfaces;
+using CRD.Common.DTOs.DtoIn;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CRD.Api.Controllers
@@ -17,6 +13,14 @@ namespace CRD.Api.Controllers
         public IncidenciaController(IIncidenciaService incidenciaService)
         {
             this.incidenciaService = incidenciaService;
+        }
+
+        [HttpPost]
+        public IActionResult CreateIncidencia(IncidenciaDtoIn incidenciaDto)
+        {
+            var result = incidenciaService.CreateIncidencia(incidenciaDto);
+
+            return Ok(result);
         }
 
         [HttpGet]

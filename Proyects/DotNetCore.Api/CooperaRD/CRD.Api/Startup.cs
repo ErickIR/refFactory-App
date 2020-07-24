@@ -58,9 +58,6 @@ namespace CRD.Api
 
             services.AddScoped<IGeneralValidationService, GeneralValidationService>();
 
-            services.AddScoped<IRegionValidationService, RegionValidationService>();
-            services.AddScoped<IRegionService, RegionService>();
-
             services.AddScoped<IProvinciaService, ProvinciaService>();
             services.AddScoped<IProvinciaValidationService, ProvinciaValidationService>();
 
@@ -114,6 +111,9 @@ namespace CRD.Api
 
             services.AddScoped<IIntegranteJdVService, IntegranteJdVService>();
             services.AddScoped<IIntegranteJdVValidationService, IntegranteJdVValidationService>();
+
+            services.AddScoped<ILoginService, LoginService>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

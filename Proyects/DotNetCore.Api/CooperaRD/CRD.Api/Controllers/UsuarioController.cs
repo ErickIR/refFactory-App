@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CRD.AplicationCore.Interfaces;
+using CRD.Common.DTOs.DtoIn;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,6 +18,14 @@ namespace CRD.Api.Controllers
         public UsuarioController(IUsuarioService usuarioService)
         {
             this.usuarioService = usuarioService;
+        }
+
+        [HttpPost]
+        public IActionResult CreateUsuario(UsuarioDtoIn usuarioDto)
+        {
+            var result = usuarioService.CreateUsuario(usuarioDto);
+
+            return Ok(result);
         }
 
         [HttpGet]
