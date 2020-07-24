@@ -16,6 +16,13 @@
                 HorizontalOptions="Center" />
     </NavigationPage.TitleView>
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Votar"
+                     Order="Primary"
+                     Priority="0" 
+                     Command="{Binding ApoyarIncidenciaCommand}"/>
+    </ContentPage.ToolbarItems>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
@@ -31,7 +38,7 @@
         
 
         <yummy:PancakeView CornerRadius="20" HeightRequest="312" VerticalOptions="EndAndExpand"
-                           Grid.RowSpan="2" BackgroundColor="White" Grid.ColumnSpan="2" Margin="20,20,20,40">
+                           Grid.RowSpan="2" BackgroundColor="White" Grid.ColumnSpan="2" Margin="0">
             <yummy:PancakeView.Shadow>
                 <yummy:DropShadow Color="#000000" Opacity="0.1" Offset="10,10" BlurRadius="30" />
             </yummy:PancakeView.Shadow>
@@ -49,37 +56,32 @@
                 <Label  Margin="24,8" FontSize="15"
                        TextColor="#253256" FontFamily="Dosis-Regular" Text="{Binding Description}" />
 
-           
 
-                <StackLayout Spacing="15"
+                    <StackLayout Spacing="15"
                              Grid.Row="1">
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
-                        <Label Text="Tipo: " FontFamily=".SFUIText-Bold" FontSize="20"
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" >
+                            <Label Text="Tipo: " FontFamily=".SFUIText-Bold" FontSize="20"
                             TextColor="Black" />
-                        <Label Text="{Binding Incidencia.TipoIncidencia.Descripcion}" FontFamily="Dosis-Regular" FontSize="17"
+                            <Label Text="{Binding Incidencia.TipoIncidencia.Descripcion}" FontFamily="Dosis-Regular" FontSize="17"
                             TextColor="Black" />
 
-                    </StackLayout>
-                    <Label Text="{Binding Incidencia.ApoyosPhrase}" FontFamily=".SFUIText-Bold" FontSize="17"
+                        </StackLayout>
+                        <Label Text="{Binding Incidencia.ApoyosPhrase}" FontFamily=".SFUIText-Bold" FontSize="17"
                             TextColor="Green" HorizontalOptions="CenterAndExpand" />
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                        <Label Text="Estado: " FontFamily=".SFUIText-Bold" FontSize="20"
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Estado: " FontFamily=".SFUIText-Bold" FontSize="20"
                                    TextColor="Black" HorizontalOptions="Center" />
-                        <Label Text="{Binding Incidencia.Status.Descripcion}" FontFamily="Dosis-Regular" FontSize="17"
+                            <Label Text="{Binding Incidencia.Status.Descripcion}" FontFamily="Dosis-Regular" FontSize="17"
                                    TextColor="Black" HorizontalOptions="Center" />
-                    </StackLayout>
-                    <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
-                        <Label Text="Descripción: " FontFamily=".SFUIText-Bold" FontSize="20"
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand" HorizontalOptions="CenterAndExpand">
+                            <Label Text="Descripción: " FontFamily=".SFUIText-Bold" FontSize="20"
                                TextColor="Black" HorizontalOptions="CenterAndExpand"/>
-                        <Label Text="{Binding Incidencia.Descripcion}" FontFamily="Dosis-Regular" FontSize="17"
-                               TextColor="Black" HorizontalOptions="CenterAndExpand"/>
+                            <Label Text="{Binding Incidencia.Descripcion}" FontFamily="Dosis-Regular" FontSize="17"
+                               TextColor="Black" HorizontalOptions="CenterAndExpand" HorizontalTextAlignment="Center" VerticalTextAlignment="Center"/>
+                        </StackLayout>
                     </StackLayout>
-                </StackLayout>
-                
-
-                <Button Grid.Row="2" HeightRequest="56" FontSize="19" FontFamily="Dosis-Bold"
-                        BackgroundColor="#253256" TextColor="White"
-                        VerticalOptions="End" Text="Votar por Incidencia" />
+               
             </Grid>
         </yummy:PancakeView>
 

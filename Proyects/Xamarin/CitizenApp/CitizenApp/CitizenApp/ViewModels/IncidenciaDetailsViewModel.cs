@@ -28,6 +28,8 @@ namespace CitizenApp.ViewModels
             set { SetProperty(ref _imageSrc, value); }
         }
         
+
+
         public ICommand ApoyarIncidenciaCommand { get; }
 
         public IncidenciaDetailsViewModel(Incidencia incidencia)
@@ -52,8 +54,7 @@ namespace CitizenApp.ViewModels
             try
             {
                 await IncidenciaService.RegistrarNuevoApoyoIncidenciaAsync(
-                    Incidencia,
-                    new Usuario() { UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com" }
+                    new IncidenciaUsuario { IncidenciaId = Incidencia.IncidenciaId, UsuarioId = 2}
                 );
                 Incidencia = await IncidenciaService.ObtenerRegistroIncidenciaPorIdAsync(Incidencia.IncidenciaId);
             }

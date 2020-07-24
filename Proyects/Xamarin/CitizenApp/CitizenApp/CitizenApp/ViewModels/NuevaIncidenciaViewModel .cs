@@ -87,20 +87,22 @@ namespace CitizenApp.ViewModels
                 return;
 
             IsBusy = true;
+
             try
             {
-                var Incidencia = new Incidencia()
+                var Incidencia = new IncidenciaPost()
                 {
-                    Empleado = new Usuario() { UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com" },
-                    Usuario = new Usuario() { UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com" },
-                    TipoIncidencia = TipoIncidenciaSelected,
-                    Barrio = new Barrio() { BarrioId = 1, Nombre = "El Regina" },
+                    EmpleadoId = 7,
+                    UsuarioId = 2,
+                    StatusId = 1,
+                    TipoId = TipoIncidenciaSelected.TipoIncidenciaId,
+                    BarrioId = 4,
                     Imagen = _imagenArray,
-                    TituloImagen = TituloImagen,
                     Titulo = Titulo,
-                    Descripcion = Descripcion
+                    Descripccion = Descripcion
                 };
                 await IncidenciaService.RegistrarNuevaIncidenciaAsync(Incidencia);
+                await PageService.DisplayAlert("INFO", "Incidencia enviada con exito.", "OK");
                 await PageService.PopAsync();
             }
             catch (Exception ex)

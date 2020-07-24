@@ -72,14 +72,12 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    
                                     <StackLayout Padding="16,10">
                                         <yummy:PancakeView CornerRadius="20">
                                             <yummy:PancakeView.Shadow>
                                                 <yummy:DropShadow Color="#000000" Opacity="0.3" Offset="10,10" BlurRadius="10" />
                                             </yummy:PancakeView.Shadow>
-                                            <Grid HeightRequest="250"
-                                              >
+                                            <Grid>
                                                 <Grid.RowDefinitions>
                                                     <RowDefinition Height="*" />
                                                     <RowDefinition Height="100" />

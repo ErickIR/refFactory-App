@@ -15,7 +15,7 @@ namespace CRD.Api.Controllers
             this.incidenciaUsuarioService = incidenciaUsuarioService;
         }
 
-        [HttpPost]
+        [HttpPost("post-apoyo")]
         public IActionResult CreateIncidenciaUsuario(IncidenciaUsuarioDtoIn incidenciaUsuarioDto)
         {
             var result = incidenciaUsuarioService.CreateIncidenciaUsuario(incidenciaUsuarioDto);

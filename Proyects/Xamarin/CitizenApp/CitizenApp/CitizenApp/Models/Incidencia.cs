@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,13 +17,16 @@ namespace CitizenApp.Models
         public byte[] Imagen { get; set; }
         public string TituloImagen { get; set; }
         public string Titulo { get; set; }
+        [JsonProperty("Descripccion")]
         public string Descripcion { get; set; }
         public int CantidadApoyos { get; set; }
         public Usuario Empleado { get; set; }
         public Usuario Usuario { get; set; }
         public StatusIncidencia Status { get; set; }
+        [JsonProperty("Tipo")]
         public TipoIncidencia TipoIncidencia { get; set; }
         public Barrio Barrio { get; set; }
+        public DateTime? FechaCreado { get; set; }
 
         public int Apoyos { get; set; }
         public string statusColor

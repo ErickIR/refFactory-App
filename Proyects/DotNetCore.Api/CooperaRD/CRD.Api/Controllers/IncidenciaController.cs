@@ -15,7 +15,7 @@ namespace CRD.Api.Controllers
             this.incidenciaService = incidenciaService;
         }
 
-        [HttpPost]
+        [HttpPost("post-incidencia")]
         public IActionResult CreateIncidencia(IncidenciaDtoIn incidenciaDto)
         {
             var result = incidenciaService.CreateIncidencia(incidenciaDto);

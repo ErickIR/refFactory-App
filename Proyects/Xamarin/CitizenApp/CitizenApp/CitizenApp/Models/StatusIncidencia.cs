@@ -9,7 +9,7 @@ namespace CitizenApp.Models
     {
         [JsonProperty("statusIncidenciaId")]
         public int StatusIncidenciaId { get; set; }
-        [JsonProperty("descripcion")]
+        [JsonProperty("descripccion")]
         public string Descripcion { get; set; }
     }
 }
