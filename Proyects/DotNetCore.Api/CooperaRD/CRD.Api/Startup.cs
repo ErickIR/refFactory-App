@@ -58,9 +58,6 @@ namespace CRD.Api
 
             services.AddScoped<IGeneralValidationService, GeneralValidationService>();
 
-            services.AddScoped<IRegionValidationService, RegionValidationService>();
-            services.AddScoped<IRegionService, RegionService>();
-
             services.AddScoped<IProvinciaService, ProvinciaService>();
             services.AddScoped<IProvinciaValidationService, ProvinciaValidationService>();
 

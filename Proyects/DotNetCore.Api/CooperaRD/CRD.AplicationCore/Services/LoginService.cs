@@ -29,6 +29,23 @@ namespace CRD.AplicationCore.Services
             this.mapper = mapper;
         }
 
+        private UsuarioDtoOut MapToDto(Usuario usuario)
+        {
+            var usuarioDto = mapper.Map<UsuarioDtoOut>(usuario);
+
+            usuarioDto.Barrio = mapper.Map<BarrioDtoOut>(masterRepository.Barrio.
+                FindByCondition(b => b.BarrioId == usuario.BarrioId).FirstOrDefault());
+
+            usuarioDto.TipoDocumento = mapper.Map<TipoDocumentoDtoOut>(masterRepository.TipoDocumento.
+                FindByCondition(t => t.TipoDocumentoId == usuario.TipoDocumentoId).FirstOrDefault());
+
+            usuarioDto.TipoUsuario = mapper.Map<TipoUsuarioDtoOut>(masterRepository.TipoUsuario.
+                FindByCondition(t => t.TipoUsuarioId == usuario.TipoUsuarioId).FirstOrDefault());
+
+            return usuarioDto;
+        }
+
+
         public ServiceResult<UsuarioDtoOut> ValidateLogin(LoginDto loginDto)
         {
             try
@@ -54,7 +71,7 @@ namespace CRD.AplicationCore.Services
                 if (usuario == null)
                     throw new ValidationException(LoginMessageConstants.CredentialsWrong);
 
-                var usuarioDto = mapper.Map<UsuarioDtoOut>(usuario);
+                var usuarioDto = MapToDto(usuario);
 
                 return ServiceResult<UsuarioDtoOut>.ResultOk(usuarioDto);
             }

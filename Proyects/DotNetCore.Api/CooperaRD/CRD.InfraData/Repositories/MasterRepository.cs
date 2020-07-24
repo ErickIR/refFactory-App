@@ -16,7 +16,6 @@ namespace CRD.InfraData.Repositories
         private IJuntaDeVecinosRepository juntaDeVecinosRepository;
         private IMunicipioRepository municipioRepository;
         private IProvinciaRepository provinciaRepository;
-        private IRegionRepository regionRepository;
         private IRolRepository rolRepository;
         private ISeccionRepository seccionRepository;
         private ISectorRepository sectorRepository;
@@ -138,17 +137,6 @@ namespace CRD.InfraData.Repositories
                     provinciaRepository = new ProvinciaRepository(context);
 
                 return provinciaRepository;
-            }
-        }
-
-        public IRegionRepository Region 
-        {
-            get
-            {
-                if (regionRepository == null)
-                    regionRepository = new RegionRepository(context);
-
-                return regionRepository;
             }
         }
 
