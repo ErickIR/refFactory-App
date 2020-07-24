@@ -46,6 +46,10 @@
                         FontSize="20"></Label>
                     <Grid
                         Padding="50,0,30,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+                                    Height="50"/>
+                            </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition
                                 Width="*"></ColumnDefinition>
