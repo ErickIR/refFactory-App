@@ -1,4 +1,6 @@
-﻿using CitizenApp.Models;
+﻿using CitizenApp.Common;
+using CitizenApp.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,35 +19,8 @@ namespace CitizenApp.Services.DataStores
       
         public JuntaDeVecinoService()
         {
-            juntaDeVecinos = new List<JuntaDeVecinos>()
-            {
-                new JuntaDeVecinos { JuntaDeVecinosId = 1,  BarrioId = 1, Latitud = 41.40338, Longitud = 2.17403, Nombre = "Jose Contreras"  },
-                new JuntaDeVecinos { JuntaDeVecinosId = 2,  BarrioId = 1, Latitud = 51.40338, Longitud = 2.17403, Nombre = "Miguel Contreras"},
-                new JuntaDeVecinos { JuntaDeVecinosId = 3,  BarrioId = 1, Latitud = 61.40338, Longitud = 2.17403, Nombre = "Fernando Contreras" },
-                new JuntaDeVecinos { JuntaDeVecinosId = 4,  BarrioId = 1, Latitud = 31.40338, Longitud = 2.17403, Nombre = "Juelia Contreras"  },
-                new JuntaDeVecinos { JuntaDeVecinosId = 5,  BarrioId = 1, Latitud = 21.40338, Longitud = 2.17403, Nombre = "Maria Contreras" },
-            };
-            roles = new List<Rol>()
-            {
-                new Rol { RolId = 1, Descripcion = "Presidente"},
-                new Rol { RolId = 2, Descripcion = "Administrador"},
-                new Rol { RolId = 3, Descripcion = "Tesorero"},
-                new Rol { RolId = 4, Descripcion = "Asistente"}
-
-            };
-            integrantesJdVs = new List<IntegranteJdV>()
-            {
-                new IntegranteJdV {IntegranteId = 1, JuntaDeVecinosId = 1, UsuarioId = 1, RoldId = 1},
-                new IntegranteJdV {IntegranteId = 2, JuntaDeVecinosId = 1, UsuarioId = 1, RoldId = 2},
-                new IntegranteJdV {IntegranteId = 3, JuntaDeVecinosId = 1, UsuarioId = 1, RoldId = 3},
-                new IntegranteJdV {IntegranteId = 4, JuntaDeVecinosId = 1, UsuarioId = 1, RoldId = 4},
-                new IntegranteJdV {IntegranteId = 5, JuntaDeVecinosId = 2, UsuarioId = 1, RoldId = 1},
-                new IntegranteJdV {IntegranteId = 6, JuntaDeVecinosId = 2, UsuarioId = 1, RoldId = 2},
-                new IntegranteJdV {IntegranteId = 7, JuntaDeVecinosId = 2, UsuarioId = 1, RoldId = 3},
-                new IntegranteJdV {IntegranteId = 8, JuntaDeVecinosId = 2, UsuarioId = 1, RoldId = 4},
-                new IntegranteJdV {IntegranteId = 8, JuntaDeVecinosId = 3, UsuarioId = 1, RoldId = 1}
-
-            };
+            juntaDeVecinos = new List<JuntaDeVecinos>();
+            roles = new List<Rol>();
 
             usuarios = new List<Usuario>()
             {
@@ -64,30 +39,66 @@ namespace CitizenApp.Services.DataStores
 
         public async Task<IEnumerable<JuntaDeVecinos>> ObtenerJuntaDeVecinos()
         {
-           
-            return await Task.FromResult(juntaDeVecinos);
+            juntaDeVecinos.Clear();
+            try
+            {
+                var response = await Instance.GetAsync($"junta-de-vecinos/barrio/4");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var httpResult = JsonConvert.DeserializeObject<HttpResult<IEnumerable<JuntaDeVecinos>>>(content);
+                    if (httpResult.ErrorCode == ResponseCode.Ok)
+                    {
+                        foreach (var item in httpResult.Result)
+                            juntaDeVecinos.Add(item);
+                    }
+                    else
+                    {
+                        throw new Exception(httpResult.ErrorMessage);
+                    }
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            return juntaDeVecinos;
         }
 
         public async Task<IEnumerable<IntegranteJdV>> ObtenerIntegrantesporJuntaDeVecinoID(int juntaDeVecinoID)
         {
             List<IntegranteJdV> listaIntegrantes = new List<IntegranteJdV>();
-
-            var integrantesJDVList = integrantesJdVs.FindAll(x => x.JuntaDeVecinosId == juntaDeVecinoID);
-            foreach (var item in integrantesJDVList)
+            try
             {
-                IntegranteJdV integranteJdV = new IntegranteJdV();
-
-                integranteJdV.JuntaDeVecinosId = item.JuntaDeVecinosId;
-                integranteJdV.IntegranteId = item.IntegranteId;
-                integranteJdV.UsuarioId = item.UsuarioId;
-                integranteJdV.RoldId = item.RoldId;
-                integranteJdV.rol = ObtenerRoldeUsuarioPorRolId(item.RoldId);
-                integranteJdV.usuario = ObtenerUsuarioPorUserId(item.IntegranteId);
-                listaIntegrantes.Add(integranteJdV);
-                integranteJdV = null;
-
+                var response = await Instance.GetAsync($"/api/integrante-jdv/junta-de-vecinos/{juntaDeVecinoID}");
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    var httpResult = JsonConvert.DeserializeObject<HttpResult<IEnumerable<IntegranteJdV>>>(content);
+                    if (httpResult.ErrorCode == ResponseCode.Ok)
+                    {
+                        foreach (var item in httpResult.Result)
+                            listaIntegrantes.Add(item);
+                    }
+                    else
+                    {
+                        throw new Exception(httpResult.ErrorMessage);
+                    }
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
             }
-            return await Task.FromResult(listaIntegrantes);
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+            return listaIntegrantes;
         }
         private Usuario ObtenerUsuarioPorUserId(int UserId)
         {

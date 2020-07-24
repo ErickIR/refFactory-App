@@ -17,6 +17,7 @@ namespace CitizenApp.ViewModels
         private JuntaDeVecinos selectedJunta;
 
        
+        
 
         public ObservableCollection<IntegranteJdV> IntegrantesList
         {

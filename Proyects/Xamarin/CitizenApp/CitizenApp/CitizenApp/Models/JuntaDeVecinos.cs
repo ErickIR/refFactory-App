@@ -8,10 +8,8 @@ namespace CitizenApp.Models
     public class JuntaDeVecinos
     {
         public int JuntaDeVecinosId { get; set; }
-        
+        public Barrio Barrio { get; set; }
         public int BarrioId { get; set; }
         public string Nombre { get; set; }
-        public double Latitud { get; set; }
-        public double Longitud { get; set; }
     }
 }

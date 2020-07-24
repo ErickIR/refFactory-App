@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Net;
 using System.Text;
 
 namespace CitizenApp.Models
@@ -14,6 +16,8 @@ namespace CitizenApp.Models
         public string Apellidos { get; set; }
         public string Documento { get; set; }
         public string Email { get; set; }
+
+        
 
         public string NombreCompleto
         {
