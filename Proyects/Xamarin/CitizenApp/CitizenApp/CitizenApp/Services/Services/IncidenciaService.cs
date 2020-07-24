@@ -4,6 +4,9 @@ using System.Text;
 using System.Threading.Tasks;
 using CitizenApp.Models;
 using System.Linq;
+using System.Net.Http;
+using CitizenApp.Common;
+using Newtonsoft.Json;
 
 namespace CitizenApp.Services.Services
 {
@@ -41,33 +44,33 @@ namespace CitizenApp.Services.Services
             {
                 new Incidencia()
                 {
-                    Titulo = "Incidencia #1",
+                    Titulo = "Problema en las Calles",
                     Descripcion = "Incidencia Importante.",
-                    Empleado = new Usuario() {UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
-                    Usuario = new Usuario() {UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
-                    Status = new StatusIncidencia { StatusIncidenciaId = 1, Descripcion = "En Proceso"},
+                    Empleado = new Usuario() {UsuarioId = 1, Nombres = "Autor de Incidencia: Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
+                    Usuario = new Usuario() {UsuarioId = 1, Nombres = "Autor de Incidencia: Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
+                    Status = new StatusIncidencia { StatusIncidenciaId = 1, Descripcion = "Pendiente"},
                     TipoIncidencia = new TipoIncidencia { TipoIncidenciaId = 2, Descripcion = "Mantenimiento" },
-                    Barrio = new Barrio() { BarrioId = 1, Nombre = "El Regina" }
+                    Barrio = new Barrio() { BarrioId = 1, Nombre = "Barrio: El Regina" }
                 },
                 new Incidencia()
                 {
-                    Titulo = "Incidencia #2",
+                    Titulo = "Problema en las Calles",
                     Descripcion = "Incidencia Importante.",
-                    Empleado = new Usuario() {UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
-                    Usuario = new Usuario() {UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
-                    Status = new StatusIncidencia { StatusIncidenciaId = 1, Descripcion = "En Proceso"},
+                    Empleado = new Usuario() {UsuarioId = 1, Nombres = "Autor de Incidencia: Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
+                    Usuario = new Usuario() {UsuarioId = 1, Nombres = "Autor de Incidencia: Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
+                    Status = new StatusIncidencia { StatusIncidenciaId = 2, Descripcion = "En Proceso"},
                     TipoIncidencia = new TipoIncidencia { TipoIncidenciaId = 2, Descripcion = "Mantenimiento" },
-                    Barrio = new Barrio() { BarrioId = 1, Nombre = "El Regina" }
+                    Barrio = new Barrio() { BarrioId = 1, Nombre = "Barrio: El Regina" }
                 },
                 new Incidencia()
                 {
-                    Titulo = "Incidencia #3",
+                    Titulo = "Problema en las Calles",
                     Descripcion = "Incidencia Importante.",
-                    Empleado = new Usuario() {UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
-                    Usuario = new Usuario() {UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
-                    Status = new StatusIncidencia { StatusIncidenciaId = 1, Descripcion = "En Proceso"},
+                    Empleado = new Usuario() {UsuarioId = 1, Nombres = "Autor de Incidencia: Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
+                    Usuario = new Usuario() {UsuarioId = 1, Nombres = "Autor de Incidencia: Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com"},
+                    Status = new StatusIncidencia { StatusIncidenciaId = 3, Descripcion = "Completada"},
                     TipoIncidencia = new TipoIncidencia { TipoIncidenciaId = 2, Descripcion = "Mantenimiento" },
-                    Barrio = new Barrio() { BarrioId = 1, Nombre = "El Regina" }
+                    Barrio = new Barrio() { BarrioId = 1, Nombre = "Barrio: El Regina" }
                 }
             };
         }
@@ -123,7 +126,7 @@ namespace CitizenApp.Services.Services
         {
             return await Task.FromResult(Incidencias);
         }
-
+         
         public async Task<Incidencia> ObtenerRegistroIncidenciaPorIdAsync(int itemId)
         {
             var incidencia = Incidencias.Find(cur => cur.IncidenciaId == itemId);

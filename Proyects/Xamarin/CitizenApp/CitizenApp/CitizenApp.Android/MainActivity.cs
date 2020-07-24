@@ -6,10 +6,11 @@ using Android.OS;
 using Plugin.Media;
 using Plugin.Permissions;
 using Plugin.CurrentActivity;
+using Android.Views;
 
 namespace CitizenApp.Droid
 {
-    [Activity(Label = "CooperaRD", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    [Activity(Label = "CooperaRD", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = false, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
     public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
 
@@ -23,13 +24,13 @@ namespace CitizenApp.Droid
             CrossCurrentActivity.Current.Init(this, savedInstanceState);
             
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
-            
             LoadApplication(new App());
         }
         public override void OnRequestPermissionsResult(
             int requestCode, string[] permissions,
             [GeneratedEnum] Android.Content.PM.Permission[] grantResults)
         {
+            Xamarin.Essentials.Platform.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             PermissionsImplementation
                 .Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);

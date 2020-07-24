@@ -4,11 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:controls="clr-namespace:CitizenApp.Controls"
              mc:Ignorable="d"
              x:Class="CitizenApp.Views.HomePage"
              BackgroundColor="#D9E0E9"
-             BackgroundImageSource="BackGroundMain"
-             >
+             BackgroundImageSource="main_bg"
+             NavigationPage.HasNavigationBar="true">
     
     <ContentPage.ToolbarItems>
         <ToolbarItem 
@@ -16,126 +17,181 @@
                  Order="Primary"
                  Priority="0" />
     </ContentPage.ToolbarItems>
-
+ 
     <!--<NavigationPage.TitleView>
             <Image Source="Logo_Coopera"                   
-                   HeightRequest="55"
+                   HeightRequest="100"
                VerticalOptions="Start"
                HorizontalOptions="Center" />
     </NavigationPage.TitleView>-->
 
    
     <ContentPage.Content>
-        <ScrollView>
-        <StackLayout
-            VerticalOptions="Center"
-            Padding="0,150,0,0">
-                
-            
-            <Grid
-                
-                RowSpacing="40"
-                ColumnSpacing="-50">
-                <Grid.RowDefinitions>
-                    <RowDefinition
-                        Height="*">
-                    </RowDefinition>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition
-                        Width="*">
-                    </ColumnDefinition>
-                </Grid.ColumnDefinitions>
+        <StackLayout>
+            <Image Source="Logo_Coopera"                   
+                   HeightRequest="100"
+                   VerticalOptions="Start"
+                   HorizontalOptions="Center" />
+            <Grid Margin="20, 40" RowDefinitions="*, *" ColumnDefinitions="*, *">
+                <Frame Grid.Row="0" Grid.Column="0" HasShadow="True"
+                       HeightRequest="135" WidthRequest="135" BackgroundColor="#253256"
+                       VerticalOptions="Center" HorizontalOptions="Center"
+                       CornerRadius="20" Margin="10">
+                    <StackLayout>
+                        <ImageButton Source="incidencias_btn" Padding="0" Margin="0" BackgroundColor="#253256"
+                                     VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Incidencias" TextColor="White" FontSize="18"
+                               HorizontalOptions="Center" VerticalOptions="Center" 
+                               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="0" Grid.Column="1" HasShadow="True"
+                       HeightRequest="135" WidthRequest="135" BackgroundColor="#253256"
+                       VerticalOptions="Center" HorizontalOptions="Center"
+                       CornerRadius="20" Margin="10">
+                    <StackLayout>
+                        <ImageButton Source="jdv_btn" Padding="0" Margin="0" BackgroundColor="#253256"
+                                     VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Juntas de Vecinos" TextColor="White" FontSize="18"
+                               HorizontalOptions="Center" VerticalOptions="Center" 
+                               VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="0" HasShadow="True"
+                       HeightRequest="135" WidthRequest="135" BackgroundColor="#253256"
+                       VerticalOptions="Center" HorizontalOptions="Center"
+                       CornerRadius="20" Margin="10">
+                    <StackLayout>
+                        <ImageButton Source="entidades_btn" Padding="0" Margin="0" BackgroundColor="#253256"
+                                     VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Entidades Municipales" TextColor="White" FontSize="18"
+                               HorizontalOptions="Center" VerticalOptions="Center" 
+                               VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+                <Frame Grid.Row="1" Grid.Column="1" HasShadow="True"
+                       HeightRequest="135" WidthRequest="135" BackgroundColor="#253256"
+                       VerticalOptions="Center" HorizontalOptions="Center"
+                       CornerRadius="20" Margin="10">
+                    <StackLayout>
+                        <ImageButton Source="normativas_btn" Padding="0" Margin="0" BackgroundColor="#253256"
+                                     VerticalOptions="Center" HorizontalOptions="Center" />
+                        <Label Text="Normativas" TextColor="White" FontSize="18"
+                               HorizontalOptions="Center" VerticalOptions="Center"
+                               VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                    </StackLayout>
+                </Frame>
+            </Grid>
 
-                    <Frame
-                    Grid.Row="0"
-                    Grid.Column="0"
-                    HasShadow="True"
-                    WidthRequest="135"
-                    HeightRequest="135"
-                     VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    CornerRadius="15"
-                    Padding="0">
-                        <Button
-                        BackgroundColor="White"
-                        BorderColor="Black"
-                        
-                        WidthRequest="135"
-                        HeightRequest="135"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"                                   
-                        CornerRadius="15"></Button>
-
-                    </Frame>
-                    <Frame
-                    Grid.Row="0"
-                    Grid.Column="1"
-                    HasShadow="True"
-                    WidthRequest="135"
-                    HeightRequest="135"
-                     VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    CornerRadius="15"
-                    Padding="0">
-                        <Button
-                        BackgroundColor="White"
-                        BorderColor="Black"
-                        
-                        WidthRequest="135"
-                        HeightRequest="135"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"                                   
-                        CornerRadius="15"></Button>
-
-                    </Frame>
-                    <Frame
-                    Grid.Row="1"
-                    Grid.Column="0"
-                    HasShadow="True"
-                    WidthRequest="135"
-                    HeightRequest="135"
-                     VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    CornerRadius="15"
-                    Padding="0">
-                        <ImageButton></ImageButton>
-                        <!--<Button
-                        BackgroundColor="White"
-                        BorderColor="Black"
-                        
-                        WidthRequest="135"
-                        HeightRequest="135"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"                                   
-                        CornerRadius="15"></Button>-->
-
-                    </Frame>
-                    <Frame
-                    Grid.Row="1"
-                    Grid.Column="1"
-                    HasShadow="True"
-                    WidthRequest="135"
-                    HeightRequest="135"
-                     VerticalOptions="Center"
-                    HorizontalOptions="Center"
-                    CornerRadius="15"
-                    Padding="0">
-                        <ImageButton></ImageButton>
-                        <!--<Button
-                        BackgroundColor="White"
-                        BorderColor="Black"
-                        
-                        WidthRequest="135"
-                        HeightRequest="135"
-                        VerticalOptions="Center"
-                        HorizontalOptions="Center"                                   
-                        CornerRadius="15"></Button>-->
-
-                    </Frame>
-                </Grid>
         </StackLayout>
-        </ScrollView>
+        
+        <!--<StackLayout>
+            <ScrollView>
+                <StackLayout
+                    VerticalOptions="Center"
+                    Padding="0,150,0,0">
+                    <Grid
+                        RowSpacing="40"
+                        ColumnSpacing="-50">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*">
+                                </RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*">
+                        </ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                            <Frame
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        HasShadow="True"
+                        WidthRequest="135"
+                        HeightRequest="135"
+                         VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        CornerRadius="15"
+                        Padding="0">
+                                <Button
+                            BackgroundColor="White"
+                            BorderColor="Black"
+                        
+                            WidthRequest="135"
+                            HeightRequest="135"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"                                   
+                            CornerRadius="15"></Button>
+
+                            </Frame>
+                            <Frame
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        HasShadow="True"
+                        WidthRequest="135"
+                        HeightRequest="135"
+                         VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        CornerRadius="15"
+                        Padding="0">
+                                <Button
+                            BackgroundColor="White"
+                            BorderColor="Black"
+                        
+                            WidthRequest="135"
+                            HeightRequest="135"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"                                   
+                            CornerRadius="15"></Button>
+
+                            </Frame>
+                            <Frame
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        HasShadow="True"
+                        WidthRequest="135"
+                        HeightRequest="135"
+                         VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        CornerRadius="15"
+                        Padding="0">
+                                <ImageButton></ImageButton>
+                                --><!--<Button
+                            BackgroundColor="White"
+                            BorderColor="Black"
+                        
+                            WidthRequest="135"
+                            HeightRequest="135"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"                                   
+                            CornerRadius="15"></Button>--><!--
+
+                            </Frame>
+                            <Frame
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        HasShadow="True"
+                        WidthRequest="135"
+                        HeightRequest="135"
+                         VerticalOptions="Center"
+                        HorizontalOptions="Center"
+                        CornerRadius="15"
+                        Padding="0">
+                                <ImageButton></ImageButton>
+                                --><!--<Button
+                            BackgroundColor="White"
+                            BorderColor="Black"
+                        
+                            WidthRequest="135"
+                            HeightRequest="135"
+                            VerticalOptions="Center"
+                            HorizontalOptions="Center"                                   
+                            CornerRadius="15"></Button>--><!--
+
+                            </Frame>
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>-->
     </ContentPage.Content>
 </ContentPage>
     

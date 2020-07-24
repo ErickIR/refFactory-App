@@ -6,30 +6,31 @@
              mc:Ignorable="d"
              x:Class="CitizenApp.Views.MenuPage"
              Title="Menu">
+    
     <ContentPage.Content>
-        <Grid BackgroundColor="Transparent">
+        <Grid BackgroundColor="#253256">
             <Grid.RowDefinitions>
                 <RowDefinition Height="98" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <Grid BackgroundColor="#374365">
+            <Grid BackgroundColor="#253256">
                 <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                    <Image Source="logo.png" Aspect="AspectFill" />
+                    <Image Source="Logo_Coopera.png" Aspect="AspectFill" />
                 </StackLayout>
             </Grid>
-            <StackLayout Grid.Row="1" BackgroundColor="#D9E0E9">
+            <StackLayout Grid.Row="1" BackgroundColor="#253256">
                 <ListView x:Name="ListViewMenu" IsGroupingEnabled="True"                          
                     GroupDisplayBinding="{Binding GroupName}" SeparatorVisibility="Default"
-                    HasUnevenRows="True">
+                    HasUnevenRows="True" SelectionMode="Single" >
                     <ListView.GroupHeaderTemplate>
                         <DataTemplate>
                             <ViewCell>
                                 <Label
                                    Margin="10"
                                    Text="{Binding GroupName}"
-                                   TextColor="Black"
+                                   TextColor="White"
                                    VerticalOptions="StartAndExpand"
-                                   FontFamily="{StaticResource NormalFont}" 
+                                   FontFamily="{StaticResource BoldFont}" 
                                    FontSize="Large"/>
                             </ViewCell>
                         </DataTemplate>
@@ -37,15 +38,18 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout Orientation="Horizontal" Padding="20">
-                                    <Image
-                                        Source="{Binding Icon}"
-                                        Margin="0,0,10,0" />
-                                    <Label
-                                        Text="{Binding Title}" d:Text="{Binding .}" 
-                                        FontFamily="{StaticResource BoldFont}"
-                                        FontSize="Medium" VerticalOptions="Center" TextColor="Black"  />
-                                </StackLayout>
+                                <Grid Grid.Column="1" Grid.Row="1">
+                                    <Grid>
+                                        <StackLayout Orientation="Horizontal" Padding="20" IsVisible="true">
+                                            <Image
+                                                Source="{Binding Icon}"
+                                                Margin="0,0,10,0" />
+                                            <Label
+                                                Text="{Binding Title}" d:Text="{Binding .}" FontFamily="{Binding NormalFont}"
+                                                FontSize="Medium" VerticalOptions="Center" TextColor="White"  />
+                                         </StackLayout>
+                                    </Grid>
+                                </Grid>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>

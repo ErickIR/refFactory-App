@@ -6,9 +6,11 @@
              xmlns:vm="clr-namespace:CitizenApp.ViewModels"
              xmlns:controls="clr-namespace:CitizenApp.Controls"
              mc:Ignorable="d"
+              xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView" 
+             xmlns:sharpnado="clr-namespace:Sharpnado.MaterialFrame;assembly=Sharpnado.MaterialFrame"
              x:Class="CitizenApp.Views.IncidenciasPage"
              Title="{Binding Title}"
-             BackgroundColor="#D9E0E9">
+             BackgroundImageSource="main_bg">
 
     <ContentPage.ToolbarItems>
         <ToolbarItem IconImageSource="account_circle"
@@ -22,8 +24,7 @@
                VerticalOptions="Center"
                HorizontalOptions="Center"
                TextColor="White" 
-               FontAttributes="Bold"
-               FontFamily="{StaticResource BoldFont}" />
+               FontAttributes="Bold" />
     </NavigationPage.TitleView>
 
 
@@ -71,8 +72,39 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <controls:CardView Margin="5"/>
+                                    
+                                    <StackLayout Padding="16,10">
+                                        <yummy:PancakeView CornerRadius="20">
+                                            <yummy:PancakeView.Shadow>
+                                                <yummy:DropShadow Color="#000000" Opacity="0.3" Offset="10,10" BlurRadius="10" />
+                                            </yummy:PancakeView.Shadow>
+                                            <Grid HeightRequest="250"
+                                              >
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="100" />
+                                                </Grid.RowDefinitions>
+                                                <Image Source="incidenciaEj" Aspect="AspectFill" Grid.RowSpan="2" />
+                                                <sharpnado:MaterialFrame Grid.Row="1" CornerRadius="0" MaterialBlurStyle="Dark" MaterialTheme="AcrylicBlur" />
+                                                <StackLayout
+                                                 Grid.Row="1"
+                                                HorizontalOptions="Center"
+                                                Margin="0,0,0,0"
+                                                Spacing="0">
+                                                    <Label  HorizontalTextAlignment="Center" VerticalOptions="Center" Text="{Binding Status.Descripcion}" FontSize="15" FontFamily="{StaticResource BoldFont}" TextColor="{Binding statusColor}" />
+                                                    <Label  HorizontalTextAlignment="Center" VerticalOptions="Center" Text="{Binding Titulo}" FontSize="20" FontFamily="{StaticResource BoldFont}" TextColor="White" />
+                                                    <Label  HorizontalTextAlignment="Center" VerticalOptions="Center" Text="{Binding Usuario.NombreCompleto}" FontSize="14" FontFamily="{StaticResource NormalFont}" TextColor="White" />
+                                                    <Label  HorizontalTextAlignment="Center" VerticalOptions="Center" Text="{Binding Barrio.Nombre}" FontSize="15" FontFamily="{StaticResource NormalFont}" TextColor="White" />
+
+                                                </StackLayout>
+
+                                            </Grid>
+                                        </yummy:PancakeView>
+                                    </StackLayout>
                                 </ViewCell>
+                                <!--<ViewCell>
+                                    <controls:CardView Margin="5"/>
+                                </ViewCell>-->
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

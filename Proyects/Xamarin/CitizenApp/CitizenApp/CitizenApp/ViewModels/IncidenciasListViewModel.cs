@@ -36,6 +36,7 @@ namespace CitizenApp.ViewModels
             set { SetProperty(ref _isRefreshing, value); }
         }
 
+        
 
         Incidencia _selectedIncidencia;
         public Incidencia SelectedIncidencia
