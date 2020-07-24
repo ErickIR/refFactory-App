@@ -19,6 +19,7 @@ namespace BackOfficeApp.Models
         public int BarrioId { get; set; }
         public string Titulo { get; set; }
         public string Descripccion { get; set; }
+        public string Comentario { get; set; }
 
         public virtual Barrio Barrio { get; set; }
         public virtual Usuario Empleado { get; set; }
