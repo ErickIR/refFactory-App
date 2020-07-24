@@ -54,7 +54,7 @@ namespace CitizenApp.ViewModels
                 await IncidenciaService.RegistrarNuevoApoyoIncidenciaAsync(
                     Incidencia,
                     new Usuario() { UsuarioId = 1, Nombres = "Erick", Apellidos = "Restituyo", Email = "erickrc9827@gmail.com" }
-                    );
+                );
                 Incidencia = await IncidenciaService.ObtenerRegistroIncidenciaPorIdAsync(Incidencia.IncidenciaId);
             }
             catch(Exception ex)
