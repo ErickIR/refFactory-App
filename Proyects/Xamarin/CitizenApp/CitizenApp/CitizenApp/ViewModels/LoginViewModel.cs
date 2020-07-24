@@ -1,8 +1,12 @@
 ﻿using CitizenApp.Common;
+using CitizenApp.Models;
+using CitizenApp.Services;
 using CitizenApp.Views;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace CitizenApp.ViewModels
@@ -46,14 +50,28 @@ namespace CitizenApp.ViewModels
             SignInCommand = new Command(() => ExecuteSignInCommand());
             iml = ilm;
         }
-
+        public void MakeAlter(string Titulo, string Description, string buttonText)
+        {
+            Application.Current.MainPage.DisplayAlert(Titulo, Description, buttonText);
+        }
         private void ExecuteSignInCommand()
         {
-
-            App.Current.Properties["name"] = _emailEntry;
-            App.Current.Properties["IsLoggedIn"] = true;
-            iml.ShowMainPage();
+            if (emailEntry == "fernando@reffactory.com.do" && passEntry == "123456")
+            {
+                MakeAlter("Informacion", "Se inicio sesion correctamente.", "OK");
+                App.Current.Properties["name"] = _emailEntry;
+                App.Current.Properties["IsLoggedIn"] = true;
+                iml.ShowMainPage();
+            }
+            else 
+            {
+                MakeAlter("Informacion", "El usuario o contraseña es invalido.", "OK");
+            }
+            
+            
             //Application.Current.MainPage = new MainPage();
         }
+
+     
     }
 }
