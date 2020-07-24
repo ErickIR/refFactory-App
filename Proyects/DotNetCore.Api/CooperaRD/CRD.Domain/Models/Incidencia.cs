@@ -21,6 +21,7 @@ namespace CRD.Domain.Models
         public string Descripccion { get; set; }
         public byte[] Imagen { get; set; }
         public string TituloImagen { get; set; }
+        public string Comentario { get; set; }
         public DateTime? FechaCreado { get; set; }
 
         public virtual Barrio Barrio { get; set; }
