@@ -7,6 +7,7 @@ namespace CitizenApp.Models
     public class EntidadMunicipal
     {
         public int EntidadMunicipalId { get; set; }
+        public Cargo Cargo { get; set; }
         public int CargoId { get; set; }
         public int TipoDocumentoId { get; set; }
         public int MunicipioId { get; set; }

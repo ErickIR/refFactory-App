@@ -20,7 +20,7 @@ namespace BackOfficeApp.Models
         public string Titulo { get; set; }
         public string Descripccion { get; set; }
         public string Comentario { get; set; }
-
+        public DateTime? FechaCreado { get; set; }
         public virtual Barrio Barrio { get; set; }
         public virtual Usuario Empleado { get; set; }
         public virtual StatusIncidencia Status { get; set; }

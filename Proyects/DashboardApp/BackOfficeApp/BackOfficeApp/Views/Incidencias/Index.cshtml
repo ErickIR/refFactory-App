@@ -23,7 +23,7 @@
                 @Html.DisplayNameFor(model => model.Barrio)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Empleado)
+                @Html.DisplayNameFor(model => model.Empleado.NombreCompleto)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Status)
@@ -32,7 +32,11 @@
                 @Html.DisplayNameFor(model => model.Tipo)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Usuario)
+                @Html.DisplayNameFor(model => model.Usuario.NombreCompleto)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCreado)
             </th>
             <th></th>
         </tr>
@@ -50,7 +54,7 @@
                 @Html.DisplayFor(modelItem => item.Barrio.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Empleado.Apellidos)
+                @Html.DisplayFor(modelItem => item.Empleado.NombreCompleto)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status.Descripccion)
@@ -59,7 +63,10 @@
                 @Html.DisplayFor(modelItem => item.Tipo.Descripccion)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Usuario.Apellidos)
+                @Html.DisplayFor(modelItem => item.Usuario.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreado)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.IncidenciaId">Detalles</a>

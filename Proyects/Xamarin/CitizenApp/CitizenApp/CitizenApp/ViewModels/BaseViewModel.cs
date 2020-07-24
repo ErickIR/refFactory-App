@@ -18,7 +18,7 @@ namespace CitizenApp.ViewModels
         internal LocalidadService LocalidadService = new LocalidadService();
         internal IncidenciaService IncidenciaService => DependencyService.Get<IncidenciaService>() ?? new IncidenciaService();
         internal IPageService PageService => DependencyService.Get<MasterDetailPageService>() ?? new MasterDetailPageService();
-        
+        internal EntidadesMunicipalesService EntidadesMunicipalesService => DependencyService.Get<EntidadesMunicipalesService>() ?? new EntidadesMunicipalesService();
 
         bool isBusy = false;
         public bool IsBusy

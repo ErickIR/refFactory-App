@@ -10,7 +10,7 @@ namespace CitizenApp.Services
     {
         private static readonly HttpClient _instance = new HttpClient();
 
-        static string baseUrl = "http://10.0.0.47:44346/api/";
+        static string baseUrl = "http://192.168.0.100:44346/api/";
 
         static BaseHttpClient() 
         {

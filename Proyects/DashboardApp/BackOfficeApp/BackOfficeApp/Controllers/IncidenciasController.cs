@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using BackOfficeApp.DatabaseContext;
 using BackOfficeApp.Models;
+using Microsoft.Data.SqlClient;
 
 namespace BackOfficeApp.Controllers
 {
@@ -20,10 +21,13 @@ namespace BackOfficeApp.Controllers
         }
 
         // GET: Incidencias
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string searchString)
         {
+            ViewData["CurrentFilter"] = searchString;
             var cooperaDBContext = _context.Incidencia.Include(i => i.Barrio).Include(i => i.Empleado).Include(i => i.Status).Include(i => i.Tipo).Include(i => i.Usuario);
-            return View(await cooperaDBContext.ToListAsync());
+
+
+            return View(await cooperaDBContext.OrderByDescending(inc => inc.FechaCreado).ToListAsync());
         }
 
         // GET: Incidencias/Details/5

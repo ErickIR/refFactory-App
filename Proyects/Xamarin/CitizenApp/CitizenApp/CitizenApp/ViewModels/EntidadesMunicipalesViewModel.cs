@@ -1,4 +1,6 @@
 ﻿using CitizenApp.Helper;
+using CitizenApp.Models;
+using CitizenApp.Services.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -10,21 +12,15 @@ namespace CitizenApp.ViewModels
 {
     public class EntidadesMunicipalesViewModel : BaseViewModel
     {
-        public class EntidadesMunicipales
-        {
-            public int EntidadesMunicipalesID { get; set; }
-            public string Nombre { get; set; }
-            public string Cargo { get; set; }
-            public string Imagen { get; set; }
-        }
+        
 
 
 
 
         internal readonly ClickRegulator _clickRegulator = new ClickRegulator();
-        private ObservableCollection<EntidadesMunicipales> _entidadesList;
+        private ObservableCollection<EntidadMunicipal> _entidadesList;
         
-        public ObservableCollection<EntidadesMunicipales> EntidadesList
+        public ObservableCollection<EntidadMunicipal> EntidadesList
         {
             get { return _entidadesList; }
             set { SetProperty(ref _entidadesList, value); }
@@ -35,7 +31,7 @@ namespace CitizenApp.ViewModels
 
         public EntidadesMunicipalesViewModel()
         {
-            _entidadesList = new ObservableCollection<EntidadesMunicipales>();
+            _entidadesList = new ObservableCollection<EntidadMunicipal>();
             LoadEntidadesMunicipalesCommand = new Command(async () => await ExecuteLoadEntidadesMunicipalesCommand());
         }
 
@@ -49,15 +45,7 @@ namespace CitizenApp.ViewModels
             {
 
                 _entidadesList.Clear();
-                var integrantes = new List<EntidadesMunicipales>() { 
-                    new EntidadesMunicipales{  EntidadesMunicipalesID = 1, Cargo = "Alcalde", Nombre = "Marcos Antonio Arjona", Imagen = "PersonaInt"},
-                    new EntidadesMunicipales{  EntidadesMunicipalesID = 2, Cargo = "Senador", Nombre = "Dina Parra", Imagen = "PersonaInt"},
-                    new EntidadesMunicipales{  EntidadesMunicipalesID = 3, Cargo = "Diputado", Nombre = "Jose Tomas Castilla", Imagen = "PersonaInt"},
-                    new EntidadesMunicipales{  EntidadesMunicipalesID = 4, Cargo = "Diputado", Nombre = "Pedro Miguel Chico", Imagen = "PersonaInt"},
-                    new EntidadesMunicipales{  EntidadesMunicipalesID = 5, Cargo = "Diputado", Nombre = "Noel Peinado", Imagen = "PersonaInt"},
-                    new EntidadesMunicipales{  EntidadesMunicipalesID = 6, Cargo = "Regidor", Nombre = "Francesca Pino", Imagen = "PersonaInt"},
-                    new EntidadesMunicipales{  EntidadesMunicipalesID = 7, Cargo = "Regidor", Nombre = "Gertrudis de Los Santos", Imagen = "PersonaInt"}
-                };
+                var integrantes = await EntidadesMunicipalesService.ObtenerEntidadesMunicipales();
 
                 foreach (var item in integrantes)
                 {

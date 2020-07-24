@@ -51,7 +51,7 @@ namespace CitizenApp.Views
                         MenuPages.Add(id, new NavigationPage(new EntidadesMunicipalesPage()));
                         break;
                     case (int)MenuItemType.NormativasMunicipales:
-                        MenuPages.Add(id, new NavigationPage(new HomePage()));
+                        MenuPages.Add(id, new NavigationPage(new IncidenciasPage()));
                         break;
                     case (int)MenuItemType.Informacion:
                         await OpenNormativasMunicipalesWebPage();

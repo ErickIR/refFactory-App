@@ -262,6 +262,7 @@ namespace CitizenApp.Services.Services
 
         public async Task<IEnumerable<Incidencia>> ObtenerIncidenciasPorTipoAsync(int tipoId)
         {
+            await ObtenerTodosRegistrosIncidenciaAsync();
             var incidencias = Incidencias.FindAll(inc => inc.TipoIncidencia.TipoIncidenciaId == tipoId);
 
             return await Task.FromResult(incidencias);
@@ -269,13 +270,15 @@ namespace CitizenApp.Services.Services
 
         public async Task<IEnumerable<Incidencia>> ObtenerIncidenciasPorPalabraAsync(string search)
         {
-            var incidencias = Incidencias.FindAll(inc => inc.Titulo.Contains(search) || inc.Descripcion.Contains(search));
+            await ObtenerTodosRegistrosIncidenciaAsync();
+            var incidencias = Incidencias.FindAll(inc => inc.Titulo.ToLower().Contains(search.ToLower()) || inc.Descripcion.ToLower().Contains(search.ToLower()));
 
             return await Task.FromResult(incidencias);
         }
         
         public async Task<IEnumerable<Incidencia>> ObtenerMisIncidenciasAsync(int userId)
         {
+            await ObtenerTodosRegistrosIncidenciaAsync();
             var incidencias = Incidencias.FindAll(inc => inc.Usuario.UsuarioId == userId);
 
             return await Task.FromResult(incidencias);
@@ -283,7 +286,8 @@ namespace CitizenApp.Services.Services
 
         public async Task<IEnumerable<Incidencia>> OrdenarMasVotadas()
         {
-            var incidencias = Incidencias.OrderBy(inc => inc.Apoyos);
+            await ObtenerTodosRegistrosIncidenciaAsync();
+            var incidencias = Incidencias.OrderByDescending(inc => inc.Apoyos);
             return await Task.FromResult(incidencias);
         }
     }

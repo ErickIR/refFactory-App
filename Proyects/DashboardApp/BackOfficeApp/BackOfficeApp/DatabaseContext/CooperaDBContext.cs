@@ -255,16 +255,6 @@ namespace BackOfficeApp.DatabaseContext
 
             modelBuilder.Entity<JuntaDeVecinos>(entity =>
             {
-                entity.Property(e => e.Latitud)
-                    .IsRequired()
-                    .HasMaxLength(30)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Longitud)
-                    .IsRequired()
-                    .HasMaxLength(30)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(30)
